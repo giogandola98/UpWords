@@ -7,7 +7,7 @@ class sacchetto
 public:
     sacchetto();
     int  extract_letter();
-    char convert_to_char(unsigned short int x);
+    char convert_to_char(short int x);
 
 private:
     void inizializza_sacchetto();

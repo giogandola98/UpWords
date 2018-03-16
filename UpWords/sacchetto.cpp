@@ -73,7 +73,10 @@ int sacchetto::extract_letter()
             return -1;
 }
 
-char sacchetto::convert_to_char(unsigned short int x)
+char sacchetto::convert_to_char(short int x)
 {
-    return x+'A';
+    if(x>0)
+      return x+'A';
+    else
+        return ' ';
 }
