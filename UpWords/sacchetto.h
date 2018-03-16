@@ -1,3 +1,6 @@
+/*
+ * Created by Giorgio Gandola, Matteo Carlino, Samuele Pasini
+ * */
 #ifndef SACCHETTO_H
 #define SACCHETTO_H
 #define DIM_SACCHETTO 26

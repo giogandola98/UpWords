@@ -1,13 +1,18 @@
+/*
+ * Created by Giorgio Gandola, Matteo Carlino, Samuele Pasini
+ * */
 #include "sacchetto.h"
 #include <time.h>
 #include <stdlib.h>
 sacchetto::sacchetto()
 {
+  //init
   sacchetto::inizializza_sacchetto();
 }
 
 void sacchetto::inizializza_sacchetto()
 {
+    //init array with upwords rules
          srand(time(NULL));
          Possibilita[0]=7;
          Possibilita[1]=3;
@@ -39,6 +44,7 @@ void sacchetto::inizializza_sacchetto()
 
 bool sacchetto::this_is_empty()
 {
+    //can extract letters?
     bool empity=false;
     int i=0;
     while((!empity)&&(i<DIM_SACCHETTO))
@@ -51,6 +57,7 @@ bool sacchetto::this_is_empty()
 
 bool sacchetto::check_and_scale(unsigned short int letter)
 {
+    //check if letter can be extracted
     if(Possibilita[letter]==0)
         return false;
     else
@@ -63,6 +70,7 @@ bool sacchetto::check_and_scale(unsigned short int letter)
 
 int sacchetto::extract_letter()
 {
+    //extract the letter
     int letter=rand()%DIM_SACCHETTO;
     if(check_and_scale(letter))
         return letter;
@@ -75,6 +83,7 @@ int sacchetto::extract_letter()
 
 char sacchetto::convert_to_char(short int x)
 {
+    //convert number to char
     if(x>0)
       return x+'A';
     else
