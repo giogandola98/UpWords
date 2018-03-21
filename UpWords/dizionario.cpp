@@ -20,6 +20,21 @@ void dizionario::add_to_vector(const std::string &str)
     std::size_t index= get_letter_id(extract_character(str));
     DIZIONARIO[index].push_back(str);
 }
+
+
+void dizionario::add_declinations(std::string line)
+{
+    std::size_t slash_pos = line.find('/',0);
+    if(slash_pos!=line.end())
+    {
+        for(char c : line.substr(slash_pos,line.length()-1))
+        {
+            choose_rule(c);
+        }
+
+    }
+}
+
 void dizionario::init()
 {
     //init data into vector
@@ -30,7 +45,8 @@ void dizionario::init()
     {
         while ( getline (myfile,line) )
         {
-            add_to_vector(line);
+           /* add_to_vector(line);
+            add_declinations(line);*/
         }
         myfile.close();
 
