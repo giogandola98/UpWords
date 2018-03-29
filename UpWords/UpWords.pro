@@ -10,7 +10,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = UpWords
 TEMPLATE = app
-
+CONFIG += qt
+CONFIG +=c++11
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which has been marked as deprecated (the exact warnings
 # depend on your compiler). Please consult the documentation of the
@@ -27,12 +28,14 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     sacchetto.cpp \
-    dizionario.cpp
+    dizionario.cpp \
+    fileexpander.cpp
 
 HEADERS += \
         mainwindow.h \
     sacchetto.h \
-    dizionario.h
+    dizionario.h \
+    fileexpander.h
 
 FORMS += \
         mainwindow.ui

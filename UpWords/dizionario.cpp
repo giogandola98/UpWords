@@ -7,52 +7,57 @@
 #include <vector>
 #include <algorithm>
 #include <fstream>
-dizionario::dizionario()
+#include <fileexpander.h>
+
+bool dizionario::first_run_check()
 {
+    std::ifstream myfile;
+    myfile.open(DATA_PATH,std::fstream::in);
+    if(myfile.is_open())
+    {
+        myfile.close();
+        return true;
+    }
+    else
+        return false;
+}
+dizionario::dizionario(std::string path)
+{
+    std::cout<<__FUNCTION__<<std::endl;
     //costructor
+    dizionario::PATH_DIZIONARIO=DATA_PATH;
+    if(!dizionario::first_run_check())
+        fileexpander f (path);
     init();
 }
 
 void dizionario::add_to_vector(const std::string &str)
 {
     //add a word to vector
-    std::transform(str.begin(), str.end(),str.begin(), ::toupper);
     std::size_t index= get_letter_id(extract_character(str));
     DIZIONARIO[index].push_back(str);
 }
 
-
-void dizionario::add_declinations(std::string line)
-{
-    std::size_t slash_pos = line.find('/',0);
-    if(slash_pos!=line.end())
-    {
-        for(char c : line.substr(slash_pos,line.length()-1))
-        {
-            choose_rule(c);
-        }
-
-    }
-}
-
 void dizionario::init()
 {
+    std::cout<<"LOADER"<<std::endl;
     //init data into vector
     std::string line;
     std::ifstream myfile;
-    myfile.open(PATH_DIZIONARIO,std::fstream::in);
+    myfile.open(PATH_DIZIONARIO.c_str(),std::fstream::in);
     if(myfile.is_open())
     {
         while ( getline (myfile,line) )
         {
-           /* add_to_vector(line);
-            add_declinations(line);*/
+            add_to_vector(line);
         }
         myfile.close();
 
     }
     else
-        std::cerr<<"FILE ERROR";
+        std::cerr<<__FUNCTION__<<" FILE ERROR";
+    std::cout<<"END LOADER"<<std::endl;
+
 
 }
 std::size_t dizionario::get_letter_id(const char &c)
