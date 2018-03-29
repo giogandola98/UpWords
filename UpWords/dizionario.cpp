@@ -9,6 +9,8 @@
 #include <fstream>
 #include <fileexpander.h>
 
+#define STATISTICS false
+
 bool dizionario::first_run_check()
 {
     std::ifstream myfile;
@@ -29,6 +31,17 @@ dizionario::dizionario(std::string path)
     if(!dizionario::first_run_check())
         fileexpander f (path);
     init();
+    if(STATISTICS)
+    {
+        std::cout<<"STATISRICA PAROLE"<<std::endl;
+        std::size_t n_W=0;
+        for(std::size_t x=0;x<DIM_DIZIONARIO;x++)
+        {
+            n_W+=DIZIONARIO[x].size();
+            std::cout<<char('A'+x)<<" "<< DIZIONARIO[x].size()<<std::endl;
+        }
+        std::cout<<"TOTALI :"<<n_W<<std::endl;
+    }
 }
 
 void dizionario::add_to_vector(const std::string &str)
