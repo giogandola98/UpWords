@@ -13,6 +13,7 @@ public:
     char convert_to_char(short int x);
 
 private:
+
     void inizializza_sacchetto();
     bool this_is_empty();
     bool check_and_scale(unsigned short int letter);
