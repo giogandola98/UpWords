@@ -8,7 +8,6 @@
 #include <algorithm>
 #include <fstream>
 #include <fileexpander.h>
-
 bool dizionario::first_run_check()
 {
     std::ifstream myfile;

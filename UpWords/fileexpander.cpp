@@ -179,13 +179,13 @@ void fileexpander::writeout(std::vector<std::string> s)
     }
 
 }
-void filter_otp_array(std::vector<std::string> & array)
+void filter_otp_array(std::vector<std::string> & added)
 {
   //remove words lenght then 10 chars
   //uppercase the vector
   for (std::size_t i =0;i< added.size();i++)
   {
-      if(added.at(i).length()<=DIM_CAMPO_GIOCO)
+      if(added.at(i).length()<=DIM_CAMPOGIOCO)
         std::transform(added.at(i).begin(), added.at(i).end(),added.at(i).begin(), ::toupper);
       else
         added[i]="0";

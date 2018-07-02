@@ -6,6 +6,11 @@
 #ifndef FILEEXPANDER_H
 #define FILEEXPANDER_H
 
+#define PATH_SFX "C:\\Users\\giorgio\\Documents\\GitHub\\UpWords\\dizionario\\it_IT.aff"
+#define DEBUG false
+#define DATA_PATH  "DATA.dat"
+#define DIM_CAMPOGIOCO 10
+
 struct regola
 {
     std::string erase; //da togliere

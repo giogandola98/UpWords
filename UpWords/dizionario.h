@@ -8,6 +8,9 @@
 #include <vector>
 
 #define DIM_DIZIONARIO 26
+#define DATA_PATH  "DATA.dat"
+#define DEBUG_DIZIONARIO false
+#define STATISTICS false
 
 
 class dizionario
