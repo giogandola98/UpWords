@@ -86,6 +86,7 @@ char dizionario::extract_character(const std::string &lettera)
 bool dizionario::exist(std::string &word)
 {
     //check if word is into vector array
+    //use uppercase world
     std::size_t index= get_letter_id(extract_character(word));
     std::vector<std::string>::iterator i=std::find(DIZIONARIO[index].begin(), DIZIONARIO[index].end(), word);
     if(i!=DIZIONARIO[index].end())

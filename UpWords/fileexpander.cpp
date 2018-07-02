@@ -194,6 +194,8 @@ std::vector<std::string> fileexpander::add_sfx(std::string line)
         added=search_sfx(line.substr(0,index),line.substr(index+1,line.length()));
         added.push_back(line.substr(0,index));
     }
+    else
+      added.push_back(line);
 
     //uppercase the vector
     for (std::size_t i =0;i< added.size();i++)
