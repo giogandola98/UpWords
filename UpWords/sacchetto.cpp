@@ -1,5 +1,5 @@
 /*
- * Created by Giorgio Gandola, Matteo Carlino, Samuele Pasini
+ * Created by Giorgio Gandola, Samuele Pasini
  * */
 #include "sacchetto.h"
 #include <time.h>
