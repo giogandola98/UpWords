@@ -1,12 +1,3 @@
-
-//settings
-
-
-
-
-
-
-//end settings
 #include "mainwindow.h"
 #include <QApplication>
 
@@ -19,6 +10,7 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
     MainWindow w;
+    std::cout<<"STARTING"<<std::endl;
     auto start = std::chrono::high_resolution_clock::now();
     dizionario d ("C:\\Users\\giorgio\\Documents\\GitHub\\UpWords\\dizionario\\it_IT.txt");
     auto finish = std::chrono::high_resolution_clock::now();

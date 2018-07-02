@@ -166,7 +166,7 @@ std::vector<std::string> search_sfx(const std::string &word,const std::string &r
 //writeopt
 void fileexpander::writeout(std::vector<std::string> s)
 {
-    std::cout<<"EXPANDER"<<std::endl;
+   // std::cout<<"EXPANDER"<<std::endl;
     std::ofstream myfile(DATA_PATH,std::fstream::app);
     if(myfile.is_open())
     {
@@ -185,12 +185,12 @@ void filter_otp_array(std::vector<std::string> & added)
   //uppercase the vector
   for (std::size_t i =0;i< added.size();i++)
   {
-      if(added.at(i).length()<=DIM_CAMPOGIOCO)
+      if(added[i].length()<=DIM_CAMPOGIOCO)
         std::transform(added.at(i).begin(), added.at(i).end(),added.at(i).begin(), ::toupper);
       else
-        added[i]="0";
-      added.erase(std::remove(added.begin(), added.end(), "0"), added.end());
+        added[i]="0"; 
   }
+  added.erase(std::remove(added.begin(), added.end(), "0"), added.end());
   //order
   std::sort(added.begin(),added.end());
 }
