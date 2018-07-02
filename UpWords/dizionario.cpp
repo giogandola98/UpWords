@@ -10,6 +10,7 @@
 #include <fileexpander.h>
 
 #define STATISTICS false
+#define DEBUG_DIZIONARIO false;
 
 bool dizionario::first_run_check()
 {
@@ -25,6 +26,7 @@ bool dizionario::first_run_check()
 }
 dizionario::dizionario(std::string path)
 {
+  if(DEBUG_DIZIONARIO)
     std::cout<<__FUNCTION__<<std::endl;
     //costructor
     dizionario::PATH_DIZIONARIO=DATA_PATH;
@@ -53,6 +55,7 @@ void dizionario::add_to_vector(const std::string &str)
 
 void dizionario::init()
 {
+  if(DEBUG_DIZIONARIO)
     std::cout<<"LOADER"<<std::endl;
     //init data into vector
     std::string line;
@@ -94,3 +97,5 @@ bool dizionario::exist(std::string &word)
     else
         return false;
 }
+
+#undef DEBUG_DIZIONARIO
