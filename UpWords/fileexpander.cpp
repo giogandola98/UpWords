@@ -7,9 +7,6 @@
 
 
 std::vector<lettera> ESPANSIONE;
-
-
-
 fileexpander::fileexpander(std::string path)
 {
     load_sfx();
@@ -182,6 +179,22 @@ void fileexpander::writeout(std::vector<std::string> s)
     }
 
 }
+void filter_otp_array(std::vector<std::string> & array)
+{
+  //remove words lenght then 10 chars
+  //uppercase the vector
+  for (std::size_t i =0;i< added.size();i++)
+  {
+      if(added.at(i).length()<=DIM_CAMPO_GIOCO)
+        std::transform(added.at(i).begin(), added.at(i).end(),added.at(i).begin(), ::toupper);
+      else
+        added[i]="0";
+      added.erase(std::remove(added.begin(), added.end(), "0"), added.end());
+  }
+  //order
+  std::sort(added.begin(),added.end());
+}
+
 std::vector<std::string> fileexpander::add_sfx(std::string line)
 {
     /*main function for sfx add*/
@@ -196,12 +209,7 @@ std::vector<std::string> fileexpander::add_sfx(std::string line)
     }
     else
       added.push_back(line);
-
-    //uppercase the vector
-    for (std::size_t i =0;i< added.size();i++)
-        std::transform(added.at(i).begin(), added.at(i).end(),added.at(i).begin(), ::toupper);
-    //order
-    std::sort(added.begin(),added.end());
+    filter_otp_array(added);
     return added;
 
 }

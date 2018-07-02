@@ -8,7 +8,7 @@
 #include <vector>
 
 #define DIM_DIZIONARIO 26
-#define DATA_PATH  "DATA.dat"
+
 
 class dizionario
 {

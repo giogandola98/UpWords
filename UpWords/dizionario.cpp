@@ -9,9 +9,6 @@
 #include <fstream>
 #include <fileexpander.h>
 
-#define STATISTICS false
-#define DEBUG_DIZIONARIO false;
-
 bool dizionario::first_run_check()
 {
     std::ifstream myfile;

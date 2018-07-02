@@ -6,11 +6,6 @@
 #ifndef FILEEXPANDER_H
 #define FILEEXPANDER_H
 
-//SETTINGS
-#define PATH_SFX "C:\\Users\\giorgio\\Desktop\\dizionario\\it_IT.aff"
-#define DEBUG false
-#define DATA_PATH  "DATA.dat"
-
 struct regola
 {
     std::string erase; //da togliere

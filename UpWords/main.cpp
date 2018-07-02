@@ -1,3 +1,12 @@
+
+//settings
+#define DEBUG false
+#define STATISTICS false
+#define DEBUG_DIZIONARIO false;
+#define DIM_CAMPO_GIOCO 10
+#define DATA_PATH  "DATA.dat"
+#define PATH_SFX "C:\\Users\\giorgio\\Desktop\\dizionario\\it_IT.aff"
+//end settings
 #include "mainwindow.h"
 #include <QApplication>
 #include <dizionario.h>
