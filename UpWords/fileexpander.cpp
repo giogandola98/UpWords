@@ -17,7 +17,6 @@ fileexpander::fileexpander(std::string path)
     {
         while (getline(myfile,line))
             writeout(add_sfx(line));
-
         myfile.close();
 
     }
@@ -125,6 +124,8 @@ short int regex_evalutation_end(std::string expression, std::string word)
     std::string to_compare=word;
     int to_return = -1;
     to_return= rx.indexIn(QString::fromUtf8(to_compare.c_str()),0);
+    if(to_return<1)
+        to_return = -1;
     if(DEBUG)
         std::cout<<__FUNCTION__<<" "<<word<<" "<<to_compare<<" "<<expression<<" "<<to_return<<std::endl;
     return to_return;
@@ -173,7 +174,8 @@ void fileexpander::writeout(std::vector<std::string> s)
         for(std::string l : s)
         {
             myfile<<l<<std::endl;
-           // std::cout<<l<<std::endl;
+            if(DEBUG)
+              std::cout<<l<<std::endl;
         }
         myfile.close();
     }
@@ -185,7 +187,7 @@ void filter_otp_array(std::vector<std::string> & added)
   //uppercase the vector
   for (std::size_t i =0;i< added.size();i++)
   {
-      if(added[i].length()<=DIM_CAMPOGIOCO)
+      if((added[i].length()<=DIM_CAMPOGIOCO)&&(added[i].length()>=DIM_MINIMA_PAROLE))
         std::transform(added.at(i).begin(), added.at(i).end(),added.at(i).begin(), ::toupper);
       else
         added[i]="0"; 

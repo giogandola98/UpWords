@@ -11,11 +11,14 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
     std::cout<<"STARTING"<<std::endl;
-    auto start = std::chrono::high_resolution_clock::now();
     dizionario d ("C:\\Users\\giorgio\\Documents\\GitHub\\UpWords\\dizionario\\it_IT.txt");
-    auto finish = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double> elapsed = finish - start;
-    std::cout << "dizionario_time: " << elapsed.count() << std::endl;
+    std::string test="CIAO";
+    std::cout<< "verifica in corso "<<d.exist(test);
+
+
+
+
+    //start grafica
     w.show();
     return a.exec();
 }

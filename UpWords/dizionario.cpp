@@ -47,6 +47,8 @@ void dizionario::add_to_vector(const std::string &str)
     //add a word to vector
     std::size_t index= get_letter_id(extract_character(str));
     DIZIONARIO[index].push_back(str);
+    if(DEBUG_DIZIONARIO)
+    std::cout<<str<<std::endl;
 }
 
 void dizionario::init()
@@ -61,7 +63,8 @@ void dizionario::init()
     {
         while ( getline (myfile,line) )
         {
-            add_to_vector(line);
+            if(line.length()>0)
+                add_to_vector(line);
         }
         myfile.close();
 
