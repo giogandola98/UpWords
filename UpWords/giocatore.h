@@ -11,9 +11,9 @@ public:
     //giocatore(sacchetto &s);
     bool hand_full();
     void add_letter(char letter);
-    char remove_letter(char letter);
+    char remove_letter(unsigned int index);
     unsigned int get_hand_size();
-    char get_letter(unsigned int x, unsigned int y);
+    char get_letter(unsigned int index);
     void update_points(unsigned int newScore);
 private:
     unsigned int points;

@@ -17,3 +17,13 @@ giocatore::giocatore()
  * }
  * }
  * */
+bool giocatore::hand_full()
+{
+    bool x = false;
+    short unsigned int i=0;
+    while((!x)&&(i<MAX_LETTERS_HAND))
+        if(letters[i]==' ')
+            x=true;
+    return x;
+
+}
