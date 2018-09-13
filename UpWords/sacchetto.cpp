@@ -1,18 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-/*
- * Created by Giorgio Gandola, Samuele Pasini
- * */
-=======
->>>>>>> parent of 4a8ee70... Revert "Ma vaffanculo"
-=======
->>>>>>> parent of 4a8ee70... Revert "Ma vaffanculo"
-=======
-/*
- * Created by Giorgio Gandola, Samuele Pasini
- * */
->>>>>>> parent of aedfd21... Test 2
+
 #include "sacchetto.h"
 #include <time.h>
 #include <stdlib.h>
@@ -24,11 +10,6 @@ sacchetto::sacchetto()
 
 void sacchetto::inizializza_sacchetto()
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> parent of aedfd21... Test 2
     //init array with upwords rules
          srand(time(0));
          Possibilita[0]=7;
@@ -57,15 +38,6 @@ void sacchetto::inizializza_sacchetto()
          Possibilita[23]=1;
          Possibilita[24]=2;
          Possibilita[25]=1;
-<<<<<<< HEAD
-=======
-    setLetters(l);
->>>>>>> parent of 4a8ee70... Revert "Ma vaffanculo"
-=======
-    setLetters(l);
->>>>>>> parent of 4a8ee70... Revert "Ma vaffanculo"
-=======
->>>>>>> parent of aedfd21... Test 2
 }
 
 bool sacchetto::this_is_empty()
