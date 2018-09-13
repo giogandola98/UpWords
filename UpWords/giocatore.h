@@ -1,12 +1,14 @@
 #ifndef GIOCATORE_H
 #define GIOCATORE_H
 #include <stdlib.h>
-
+#include "sacchetto.h"
 #define MAX_LETTERS_HAND 5
+
 class giocatore
 {
 public:
     giocatore();
+    //giocatore(sacchetto &s);
     bool hand_full();
     void add_letter(char letter);
     char remove_letter(char letter);

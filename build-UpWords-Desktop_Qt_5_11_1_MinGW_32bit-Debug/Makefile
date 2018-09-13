@@ -105,6 +105,8 @@ Makefile: ../UpWords/UpWords.pro C:/Qt/5.11.1/mingw53_32/mkspecs/win32-g++/qmake
 		C:/Qt/5.11.1/mingw53_32/mkspecs/modules/qt_lib_bluetooth.pri \
 		C:/Qt/5.11.1/mingw53_32/mkspecs/modules/qt_lib_bluetooth_private.pri \
 		C:/Qt/5.11.1/mingw53_32/mkspecs/modules/qt_lib_bootstrap_private.pri \
+		C:/Qt/5.11.1/mingw53_32/mkspecs/modules/qt_lib_charts.pri \
+		C:/Qt/5.11.1/mingw53_32/mkspecs/modules/qt_lib_charts_private.pri \
 		C:/Qt/5.11.1/mingw53_32/mkspecs/modules/qt_lib_concurrent.pri \
 		C:/Qt/5.11.1/mingw53_32/mkspecs/modules/qt_lib_concurrent_private.pri \
 		C:/Qt/5.11.1/mingw53_32/mkspecs/modules/qt_lib_core.pri \
@@ -200,6 +202,7 @@ Makefile: ../UpWords/UpWords.pro C:/Qt/5.11.1/mingw53_32/mkspecs/win32-g++/qmake
 		C:/Qt/5.11.1/mingw53_32/mkspecs/features/qt_config.prf \
 		C:/Qt/5.11.1/mingw53_32/mkspecs/win32-g++/qmake.conf \
 		C:/Qt/5.11.1/mingw53_32/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		C:/Qt/5.11.1/mingw53_32/mkspecs/features/exclusive_builds.prf \
 		C:/Qt/5.11.1/mingw53_32/mkspecs/features/toolchain.prf \
 		C:/Qt/5.11.1/mingw53_32/mkspecs/features/default_pre.prf \
@@ -272,6 +275,8 @@ C:/Qt/5.11.1/mingw53_32/mkspecs/modules/qt_lib_axserver_private.pri:
 C:/Qt/5.11.1/mingw53_32/mkspecs/modules/qt_lib_bluetooth.pri:
 C:/Qt/5.11.1/mingw53_32/mkspecs/modules/qt_lib_bluetooth_private.pri:
 C:/Qt/5.11.1/mingw53_32/mkspecs/modules/qt_lib_bootstrap_private.pri:
+C:/Qt/5.11.1/mingw53_32/mkspecs/modules/qt_lib_charts.pri:
+C:/Qt/5.11.1/mingw53_32/mkspecs/modules/qt_lib_charts_private.pri:
 C:/Qt/5.11.1/mingw53_32/mkspecs/modules/qt_lib_concurrent.pri:
 C:/Qt/5.11.1/mingw53_32/mkspecs/modules/qt_lib_concurrent_private.pri:
 C:/Qt/5.11.1/mingw53_32/mkspecs/modules/qt_lib_core.pri:
@@ -367,6 +372,7 @@ C:/Qt/5.11.1/mingw53_32/mkspecs/features/qt_functions.prf:
 C:/Qt/5.11.1/mingw53_32/mkspecs/features/qt_config.prf:
 C:/Qt/5.11.1/mingw53_32/mkspecs/win32-g++/qmake.conf:
 C:/Qt/5.11.1/mingw53_32/mkspecs/features/spec_post.prf:
+.qmake.stash:
 C:/Qt/5.11.1/mingw53_32/mkspecs/features/exclusive_builds.prf:
 C:/Qt/5.11.1/mingw53_32/mkspecs/features/toolchain.prf:
 C:/Qt/5.11.1/mingw53_32/mkspecs/features/default_pre.prf:
