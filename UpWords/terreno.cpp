@@ -27,15 +27,26 @@ char Terreno::getElement(unsigned int x, unsigned int y)
 short int Terreno::getLevel(unsigned int x, unsigned int y)
 {
     if((x<TERRAIN_SIZE_X)&&(y<TERRAIN_SIZE_Y))
-        return layers[x][y];
+        return (short int) layers[x][y];
     else
     {
         std::cerr<<__FUNCTION__<<" "<<"OUT OF RANGE";
         return -1;
     }
 }
-bool Terreno::insertChar(unsigned int x, unsigned int y)
+bool Terreno::insertChar(unsigned int x, unsigned int y, char letter)
 {
+    if((x<TERRAIN_SIZE_X)&&(y<TERRAIN_SIZE_Y))
+    {
+        if((getLevel(x,y)>-1)&&(getLevel(x,y)<MAX_LAYERS_NUM))
+        {
+            letters[x][y]=letter;
+            layers[x][y]++;
+            return true;
+        }
+        else return false;
+     }
+     else return false;
 
 }
 /*
