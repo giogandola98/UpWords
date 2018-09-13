@@ -6,10 +6,11 @@
 #ifndef FILEEXPANDER_H
 #define FILEEXPANDER_H
 
-//SETTINGS
-#define PATH_SFX "C:\\Users\\giorgio\\Desktop\\dizionario\\it_IT.aff"
+#define PATH_SFX "C:\\Users\\giorgio\\Documents\\GitHub\\UpWords\\dizionario\\it_IT.aff"
 #define DEBUG false
 #define DATA_PATH  "DATA.dat"
+#define DIM_MINIMA_PAROLE 3
+#define DIM_CAMPOGIOCO 10
 
 struct regola
 {

@@ -7,9 +7,6 @@
 
 
 std::vector<lettera> ESPANSIONE;
-
-
-
 fileexpander::fileexpander(std::string path)
 {
     load_sfx();
@@ -20,7 +17,6 @@ fileexpander::fileexpander(std::string path)
     {
         while (getline(myfile,line))
             writeout(add_sfx(line));
-
         myfile.close();
 
     }
@@ -128,6 +124,8 @@ short int regex_evalutation_end(std::string expression, std::string word)
     std::string to_compare=word;
     int to_return = -1;
     to_return= rx.indexIn(QString::fromUtf8(to_compare.c_str()),0);
+    if(to_return<1)
+        to_return = -1;
     if(DEBUG)
         std::cout<<__FUNCTION__<<" "<<word<<" "<<to_compare<<" "<<expression<<" "<<to_return<<std::endl;
     return to_return;
@@ -169,19 +167,36 @@ std::vector<std::string> search_sfx(const std::string &word,const std::string &r
 //writeopt
 void fileexpander::writeout(std::vector<std::string> s)
 {
-    std::cout<<"EXPANDER"<<std::endl;
+   // std::cout<<"EXPANDER"<<std::endl;
     std::ofstream myfile(DATA_PATH,std::fstream::app);
     if(myfile.is_open())
     {
         for(std::string l : s)
         {
             myfile<<l<<std::endl;
-           // std::cout<<l<<std::endl;
+            if(DEBUG)
+              std::cout<<l<<std::endl;
         }
         myfile.close();
     }
 
 }
+void filter_otp_array(std::vector<std::string> & added)
+{
+  //remove words lenght then 10 chars
+  //uppercase the vector
+  for (std::size_t i =0;i< added.size();i++)
+  {
+      if((added[i].length()<=DIM_CAMPOGIOCO)&&(added[i].length()>=DIM_MINIMA_PAROLE))
+        std::transform(added.at(i).begin(), added.at(i).end(),added.at(i).begin(), ::toupper);
+      else
+        added[i]="0"; 
+  }
+  added.erase(std::remove(added.begin(), added.end(), "0"), added.end());
+  //order
+  std::sort(added.begin(),added.end());
+}
+
 std::vector<std::string> fileexpander::add_sfx(std::string line)
 {
     /*main function for sfx add*/
@@ -194,12 +209,9 @@ std::vector<std::string> fileexpander::add_sfx(std::string line)
         added=search_sfx(line.substr(0,index),line.substr(index+1,line.length()));
         added.push_back(line.substr(0,index));
     }
-
-    //uppercase the vector
-    for (std::size_t i =0;i< added.size();i++)
-        std::transform(added.at(i).begin(), added.at(i).end(),added.at(i).begin(), ::toupper);
-    //order
-    std::sort(added.begin(),added.end());
+    else
+      added.push_back(line);
+    filter_otp_array(added);
     return added;
 
 }

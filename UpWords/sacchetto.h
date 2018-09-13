@@ -1,5 +1,5 @@
 /*
- * Created by Giorgio Gandola, Matteo Carlino, Samuele Pasini
+ * Created by Giorgio Gandola, Samuele Pasini
  * */
 #ifndef SACCHETTO_H
 #define SACCHETTO_H

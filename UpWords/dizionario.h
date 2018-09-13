@@ -1,5 +1,5 @@
 /*
- * Created by Giorgio Gandola, Matteo Carlino, Samuele Pasini
+ * Created by Giorgio Gandola, Samuele Pasini
  * */
 #ifndef DIZIONARIO_H
 #define DIZIONARIO_H
@@ -9,6 +9,9 @@
 
 #define DIM_DIZIONARIO 26
 #define DATA_PATH  "DATA.dat"
+#define DEBUG_DIZIONARIO false
+#define STATISTICS false
+
 
 class dizionario
 {
