@@ -29,13 +29,15 @@ SOURCES += \
         mainwindow.cpp \
     sacchetto.cpp \
     dizionario.cpp \
-    fileexpander.cpp
+    fileexpander.cpp \
+    terreno.cpp
 
 HEADERS += \
         mainwindow.h \
     sacchetto.h \
     dizionario.h \
-    fileexpander.h
+    fileexpander.h \
+    terreno.h
 
 FORMS += \
         mainwindow.ui
