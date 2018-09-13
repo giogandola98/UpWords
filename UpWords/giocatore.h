@@ -18,7 +18,6 @@ public:
 private:
     unsigned int points;
     char letters[MAX_LETTERS_HAND];
-    void reset();
 
 };
 
