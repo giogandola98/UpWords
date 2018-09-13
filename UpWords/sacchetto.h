@@ -1,18 +1,7 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 /*
  * Created by Giorgio Gandola, Samuele Pasini
  * */
-=======
->>>>>>> parent of 4a8ee70... Revert "Ma vaffanculo"
-=======
->>>>>>> parent of 4a8ee70... Revert "Ma vaffanculo"
-=======
-/*
- * Created by Giorgio Gandola, Samuele Pasini
- * */
->>>>>>> parent of aedfd21... Test 2
 #ifndef SACCHETTO_H
 #define SACCHETTO_H
 #define DIM_SACCHETTO 26

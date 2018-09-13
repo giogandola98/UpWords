@@ -31,7 +31,8 @@ SOURCES += \
     dizionario.cpp \
     fileexpander.cpp \
     terreno.cpp \
-    giocatore.cpp
+    giocatore.cpp \
+    combinatore.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -39,7 +40,8 @@ HEADERS += \
     dizionario.h \
     fileexpander.h \
     terreno.h \
-    giocatore.h
+    giocatore.h \
+    combinatore.h
 
 FORMS += \
         mainwindow.ui
