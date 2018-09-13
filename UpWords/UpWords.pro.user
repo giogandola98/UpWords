@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
+<<<<<<< HEAD
 <!-- Written by QtCreator 4.7.0, 2018-09-13T17:15:12. -->
+=======
+<!-- Written by QtCreator 4.0.3, 2018-07-08T11:56:05. -->
+>>>>>>> parent of 4a8ee70... Revert "Ma vaffanculo"
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>

@@ -1,23 +1,35 @@
+<<<<<<< HEAD
 /*
  * Created by Giorgio Gandola, Samuele Pasini
  * */
+=======
+>>>>>>> parent of 4a8ee70... Revert "Ma vaffanculo"
 #ifndef SACCHETTO_H
 #define SACCHETTO_H
-#define DIM_SACCHETTO 26
 
-class sacchetto
-{
-public:
-    sacchetto();
-    int  extract_letter();
-    char convert_to_char(short int x);
+#define DEBUG true
 
+#include <vector>
+#include <string>
+
+
+class Sacchetto
+{ 
 private:
+    std::vector<char> letters;              //letters in the bag
+    void defaultSetLetters();                //default settings of the game
+public:
+    Sacchetto();
+    Sacchetto(std::vector<char> l);
 
-    void inizializza_sacchetto();
-    bool this_is_empty();
-    bool check_and_scale(unsigned short int letter);
-    unsigned short int Possibilita[DIM_SACCHETTO];
+
+    std::vector<char> getLetters() const;
+    void setLetters(const std::vector<char> &value);
+    void shuffle();                     //shuffle the vector
+    std::vector<char> draw(int number);
+    char changeLetter(char c);
+    void addLetters(std::vector <char> l);
+    void addLetters(char l);            //overload single element
 
 };
 
