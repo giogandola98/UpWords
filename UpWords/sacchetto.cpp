@@ -1,7 +1,10 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * Created by Giorgio Gandola, Samuele Pasini
  * */
+=======
+>>>>>>> parent of 4a8ee70... Revert "Ma vaffanculo"
 =======
 >>>>>>> parent of 4a8ee70... Revert "Ma vaffanculo"
 #include "sacchetto.h"
@@ -97,6 +100,7 @@ void Sacchetto::defaultSetLetters()              //default letter distribution
 Sacchetto::Sacchetto(std::vector<char> l)
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     //init array with upwords rules
          srand(time(0));
          Possibilita[0]=7;
@@ -125,6 +129,9 @@ Sacchetto::Sacchetto(std::vector<char> l)
          Possibilita[23]=1;
          Possibilita[24]=2;
          Possibilita[25]=1;
+=======
+    setLetters(l);
+>>>>>>> parent of 4a8ee70... Revert "Ma vaffanculo"
 =======
     setLetters(l);
 >>>>>>> parent of 4a8ee70... Revert "Ma vaffanculo"

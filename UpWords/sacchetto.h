@@ -1,7 +1,10 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * Created by Giorgio Gandola, Samuele Pasini
  * */
+=======
+>>>>>>> parent of 4a8ee70... Revert "Ma vaffanculo"
 =======
 >>>>>>> parent of 4a8ee70... Revert "Ma vaffanculo"
 #ifndef SACCHETTO_H
