@@ -1,29 +1,23 @@
+/*
+ * Created by Giorgio Gandola, Matteo Carlino, Samuele Pasini
+ * */
 #ifndef SACCHETTO_H
 #define SACCHETTO_H
+#define DIM_SACCHETTO 26
 
-#define DEBUG true
-
-#include <vector>
-#include <string>
-
-
-class Sacchetto
-{ 
-private:
-    std::vector<char> letters;              //letters in the bag
-    void defaultSetLetters();                //default settings of the game
+class sacchetto
+{
 public:
-    Sacchetto();
-    Sacchetto(std::vector<char> l);
+    sacchetto();
+    int  extract_letter();
+    char convert_to_char(short int x);
 
+private:
 
-    std::vector<char> getLetters() const;
-    void setLetters(const std::vector<char> &value);
-    void shuffle();                     //shuffle the vector
-    std::vector<char> draw(int number);
-    char changeLetter(char c);
-    void addLetters(std::vector <char> l);
-    void addLetters(char l);            //overload single element
+    void inizializza_sacchetto();
+    bool this_is_empty();
+    bool check_and_scale(unsigned short int letter);
+    unsigned short int Possibilita[DIM_SACCHETTO];
 
 };
 
