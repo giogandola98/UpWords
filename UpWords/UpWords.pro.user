@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
+<<<<<<< HEAD
 <!-- Written by QtCreator 4.7.0, 2018-09-13T19:54:47. -->
+=======
+<!-- Written by QtCreator 4.7.0, 2018-09-13T17:15:12. -->
+>>>>>>> parent of aedfd21... Test 2
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>

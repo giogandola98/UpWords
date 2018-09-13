@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*
  * Created by Giorgio Gandola, Samuele Pasini
  * */
@@ -7,100 +8,27 @@
 >>>>>>> parent of 4a8ee70... Revert "Ma vaffanculo"
 =======
 >>>>>>> parent of 4a8ee70... Revert "Ma vaffanculo"
+=======
+/*
+ * Created by Giorgio Gandola, Samuele Pasini
+ * */
+>>>>>>> parent of aedfd21... Test 2
 #include "sacchetto.h"
-#include <iostream>
-#include <algorithm>
-
-#define DEBUG true
-
-std::vector<char> Sacchetto::getLetters() const
+#include <time.h>
+#include <stdlib.h>
+sacchetto::sacchetto()
 {
-    return letters;
+  //init
+  sacchetto::inizializza_sacchetto();
 }
 
-void Sacchetto::setLetters(const std::vector<char> &value)
-{
-    letters = value;
-}
-
-Sacchetto::Sacchetto()
-{
-    defaultSetLetters();
-}
-
-void Sacchetto::defaultSetLetters()              //default letter distribution
-{
-    letters.push_back('j');
-    letters.push_back('q');
-    letters.push_back('v');
-    letters.push_back('x');
-    letters.push_back('z');
-
-    for(size_t i=0;i<2;i++)
-    {
-        letters.push_back('k');
-        letters.push_back('w');
-        letters.push_back('y');
-    }
-
-    for(size_t i=0;i<3;i++)
-    {
-        letters.push_back('b');
-        letters.push_back('f');
-        letters.push_back('g');
-        letters.push_back('h');
-        letters.push_back('p');
-    }
-
-    for(size_t i=0;i<4;i++)
-    {
-        letters.push_back('c');
-    }
-
-    for(size_t i=0;i<5;i++)
-    {
-        letters.push_back('d');
-        letters.push_back('l');
-        letters.push_back('m');
-        letters.push_back('n');
-        letters.push_back('r');
-        letters.push_back('t');
-        letters.push_back('u');
-    }
-
-    for(size_t i=0;i<6;i++)
-    {
-        letters.push_back('s');
-    }
-
-    for(size_t i=0;i<7;i++)
-    {
-        letters.push_back('a');
-        letters.push_back('i');
-        letters.push_back('o');
-    }
-
-    for(size_t i=0;i<8;i++)
-    {
-        letters.push_back('e');
-    }
-
-    if(DEBUG)
-    {
-        for(size_t i=0;i<letters.size();i++)
-            std::cout << letters.at(i)<<", ";
-        std::cout<< std::endl;
-    }
-
-
-}
-
-
-
-Sacchetto::Sacchetto(std::vector<char> l)
+void sacchetto::inizializza_sacchetto()
 {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of aedfd21... Test 2
     //init array with upwords rules
          srand(time(0));
          Possibilita[0]=7;
@@ -129,92 +57,61 @@ Sacchetto::Sacchetto(std::vector<char> l)
          Possibilita[23]=1;
          Possibilita[24]=2;
          Possibilita[25]=1;
+<<<<<<< HEAD
 =======
     setLetters(l);
 >>>>>>> parent of 4a8ee70... Revert "Ma vaffanculo"
 =======
     setLetters(l);
 >>>>>>> parent of 4a8ee70... Revert "Ma vaffanculo"
+=======
+>>>>>>> parent of aedfd21... Test 2
 }
 
-void Sacchetto::shuffle()           //shuffle letters
+bool sacchetto::this_is_empty()
 {
-    std::random_shuffle(letters.begin(),letters.end());
-    if(DEBUG)
+    //can extract letters?
+    bool empity=false;
+    int i=0;
+    while((!empity)&&(i<DIM_SACCHETTO))
     {
-        for(size_t i=0;i<letters.size();i++)
-            std::cout << letters.at(i)<<", ";
-        std::cout<< std::endl;
+        if(Possibilita[i]>0)
+            empity=true;
     }
+    return !empity;
 }
 
-std::vector<char> Sacchetto::draw(int number)
+bool sacchetto::check_and_scale(unsigned short int letter)
 {
-    std::vector<char> tiles;
-    if(number<=letters.size())  //You can't draw more letters
-    {
-
-        for(size_t i=0;i<number;i++)
-        {
-            tiles.push_back(letters.at(0));     //draw the first
-            letters.erase(letters.begin());     //and delete it
-        }
-        if(DEBUG)
-        {
-            std::cout<<"Lettere pescate: ";
-            for(size_t i=0;i<tiles.size();i++)
-                std::cout << tiles.at(i)<<", ";
-            std::cout<<std::endl<<"Lettere rimanenti: ";
-            for(size_t i=0;i<letters.size();i++)
-                std::cout << letters.at(i)<<", ";
-            std::cout<<std::endl;
-        }
-        return tiles;
-    }
+    //check if letter can be extracted
+    if(Possibilita[letter]==0)
+        return false;
     else
-        if(DEBUG)
-        {
-            std::cout<<"Errore, stai pescando troppe lettere"<<std::endl;
-        }
-        return tiles;
-}
-
-char Sacchetto::changeLetter(char c)
-{
-    if(c>='a'||c<='z')
     {
-        letters.push_back(c);
-        std::vector<char> tile=draw(1);
-
-        if(DEBUG)
-        {
-            std::cout<<"Lettera pescata: "<<tile.at(0)<<std::endl;
-            std::cout<<"Lettera scartata: "<<c<<std::endl;
-            std::cout<<std::endl<<"Lettere rimanenti: ";
-            for(size_t i=0;i<letters.size();i++)
-                std::cout << letters.at(i)<<", ";
-            std::cout<<std::endl;
-
-
-        }
-        return tile.at(0);
+        Possibilita[letter]--;
+        return true;
     }
 
 }
 
-void Sacchetto::addLetters(std::vector <char> l)
+int sacchetto::extract_letter()
 {
-    for(size_t i=0;i<l.size();i++)
-    {
-        letters.push_back(l.at(i));
-    }
+    //extract the letter
+    int letter=rand()%DIM_SACCHETTO;
+    if(check_and_scale(letter))
+        return letter;
+    else
+        if(!this_is_empty())
+            return extract_letter();
+        else
+            return -1;
 }
 
-void Sacchetto::addLetters(char l)
+char sacchetto::convert_to_char(short int x)
 {
-    letters.push_back(l);
+    //convert number to char
+    if(x>0)
+      return x+'A';
+    else
+        return ' ';
 }
-
-
-
-
