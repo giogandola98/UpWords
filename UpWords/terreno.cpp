@@ -49,7 +49,3 @@ bool Terreno::insertChar(unsigned int x, unsigned int y, char letter)
      else return false;
 
 }
-/*
-private:
-    char letters[TERRAIN_SIZE_X][TERRAIN_SIZE_Y];
-    unsigned short int layers[TERRAIN_SIZE_X][TERRAIN_SIZE_Y];*/

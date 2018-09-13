@@ -30,14 +30,16 @@ SOURCES += \
     sacchetto.cpp \
     dizionario.cpp \
     fileexpander.cpp \
-    terreno.cpp
+    terreno.cpp \
+    giocatore.cpp
 
 HEADERS += \
         mainwindow.h \
     sacchetto.h \
     dizionario.h \
     fileexpander.h \
-    terreno.h
+    terreno.h \
+    giocatore.h
 
 FORMS += \
         mainwindow.ui
