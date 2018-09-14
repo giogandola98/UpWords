@@ -1,0 +1,12 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\sacchetto.o
+./release\dizionario.o
+./release\fileexpander.o
+./release\terreno.o
+./release\giocatore.o
+./release\combinatore.o
+./release\game.o
+./release\moc_mainwindow.o
+);

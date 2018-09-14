@@ -73,10 +73,10 @@ public:
         plainTextEdit->setGeometry(QRect(10, 220, 321, 31));
         pushButton_6 = new QPushButton(centralWidget);
         pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
-        pushButton_6->setGeometry(QRect(240, 260, 91, 31));
+        pushButton_6->setGeometry(QRect(240, 280, 91, 31));
         pushButton_7 = new QPushButton(centralWidget);
         pushButton_7->setObjectName(QStringLiteral("pushButton_7"));
-        pushButton_7->setGeometry(QRect(240, 300, 91, 31));
+        pushButton_7->setGeometry(QRect(240, 320, 91, 31));
         label_3 = new QLabel(centralWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setGeometry(QRect(10, 10, 61, 16));
