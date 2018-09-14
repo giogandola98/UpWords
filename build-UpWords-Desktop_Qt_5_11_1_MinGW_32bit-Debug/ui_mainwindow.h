@@ -12,7 +12,6 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
@@ -34,25 +33,14 @@ public:
     QAction *actionInformazioni;
     QWidget *centralWidget;
     QTableView *tableView;
-    QWidget *horizontalLayoutWidget;
-    QHBoxLayout *horizontalLayout;
-    QPushButton *pushButton_4;
-    QPushButton *pushButton_3;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton;
-    QPushButton *pushButton_5;
     QLabel *label;
     QLabel *label_2;
     QPlainTextEdit *plainTextEdit;
     QPushButton *pushButton_6;
     QPushButton *pushButton_7;
-    QWidget *horizontalLayoutWidget_2;
-    QHBoxLayout *horizontalLayout_2;
-    QLabel *label_5;
-    QLabel *label_7;
-    QLabel *label_6;
-    QLabel *label_4;
     QLabel *label_3;
+    QTableView *tableView_2;
+    QTableView *tableView_3;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menu;
@@ -63,7 +51,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(874, 486);
+        MainWindow->resize(814, 489);
         MainWindow->setUnifiedTitleAndToolBarOnMac(true);
         actionAggiungi_Giocatore = new QAction(MainWindow);
         actionAggiungi_Giocatore->setObjectName(QStringLiteral("actionAggiungi_Giocatore"));
@@ -73,40 +61,7 @@ public:
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         tableView = new QTableView(centralWidget);
         tableView->setObjectName(QStringLiteral("tableView"));
-        tableView->setGeometry(QRect(430, 10, 431, 391));
-        horizontalLayoutWidget = new QWidget(centralWidget);
-        horizontalLayoutWidget->setObjectName(QStringLiteral("horizontalLayoutWidget"));
-        horizontalLayoutWidget->setGeometry(QRect(9, 120, 401, 51));
-        horizontalLayout = new QHBoxLayout(horizontalLayoutWidget);
-        horizontalLayout->setSpacing(6);
-        horizontalLayout->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        pushButton_4 = new QPushButton(horizontalLayoutWidget);
-        pushButton_4->setObjectName(QStringLiteral("pushButton_4"));
-
-        horizontalLayout->addWidget(pushButton_4);
-
-        pushButton_3 = new QPushButton(horizontalLayoutWidget);
-        pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
-
-        horizontalLayout->addWidget(pushButton_3);
-
-        pushButton_2 = new QPushButton(horizontalLayoutWidget);
-        pushButton_2->setObjectName(QStringLiteral("pushButton_2"));
-
-        horizontalLayout->addWidget(pushButton_2);
-
-        pushButton = new QPushButton(horizontalLayoutWidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-
-        horizontalLayout->addWidget(pushButton);
-
-        pushButton_5 = new QPushButton(horizontalLayoutWidget);
-        pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
-
-        horizontalLayout->addWidget(pushButton_5);
-
+        tableView->setGeometry(QRect(370, 30, 431, 391));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(10, 100, 47, 13));
@@ -115,48 +70,26 @@ public:
         label_2->setGeometry(QRect(6, 190, 47, 13));
         plainTextEdit = new QPlainTextEdit(centralWidget);
         plainTextEdit->setObjectName(QStringLiteral("plainTextEdit"));
-        plainTextEdit->setGeometry(QRect(6, 220, 401, 31));
+        plainTextEdit->setGeometry(QRect(10, 220, 321, 31));
         pushButton_6 = new QPushButton(centralWidget);
         pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
-        pushButton_6->setGeometry(QRect(320, 270, 81, 31));
+        pushButton_6->setGeometry(QRect(240, 260, 91, 31));
         pushButton_7 = new QPushButton(centralWidget);
         pushButton_7->setObjectName(QStringLiteral("pushButton_7"));
-        pushButton_7->setGeometry(QRect(790, 410, 75, 23));
-        horizontalLayoutWidget_2 = new QWidget(centralWidget);
-        horizontalLayoutWidget_2->setObjectName(QStringLiteral("horizontalLayoutWidget_2"));
-        horizontalLayoutWidget_2->setGeometry(QRect(10, 29, 320, 51));
-        horizontalLayout_2 = new QHBoxLayout(horizontalLayoutWidget_2);
-        horizontalLayout_2->setSpacing(6);
-        horizontalLayout_2->setContentsMargins(11, 11, 11, 11);
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
-        label_5 = new QLabel(horizontalLayoutWidget_2);
-        label_5->setObjectName(QStringLiteral("label_5"));
-
-        horizontalLayout_2->addWidget(label_5);
-
-        label_7 = new QLabel(horizontalLayoutWidget_2);
-        label_7->setObjectName(QStringLiteral("label_7"));
-
-        horizontalLayout_2->addWidget(label_7);
-
-        label_6 = new QLabel(horizontalLayoutWidget_2);
-        label_6->setObjectName(QStringLiteral("label_6"));
-
-        horizontalLayout_2->addWidget(label_6);
-
-        label_4 = new QLabel(horizontalLayoutWidget_2);
-        label_4->setObjectName(QStringLiteral("label_4"));
-
-        horizontalLayout_2->addWidget(label_4);
-
+        pushButton_7->setGeometry(QRect(240, 300, 91, 31));
         label_3 = new QLabel(centralWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(10, 10, 47, 13));
+        label_3->setGeometry(QRect(10, 10, 61, 16));
+        tableView_2 = new QTableView(centralWidget);
+        tableView_2->setObjectName(QStringLiteral("tableView_2"));
+        tableView_2->setGeometry(QRect(10, 120, 321, 51));
+        tableView_3 = new QTableView(centralWidget);
+        tableView_3->setObjectName(QStringLiteral("tableView_3"));
+        tableView_3->setGeometry(QRect(10, 40, 321, 51));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 874, 21));
+        menuBar->setGeometry(QRect(0, 0, 814, 26));
         menuFile = new QMenu(menuBar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
         menu = new QMenu(menuBar);
@@ -184,19 +117,10 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
         actionAggiungi_Giocatore->setText(QApplication::translate("MainWindow", "Aggiungi Giocatore", nullptr));
         actionInformazioni->setText(QApplication::translate("MainWindow", "Informazioni", nullptr));
-        pushButton_4->setText(QApplication::translate("MainWindow", "PushButton", nullptr));
-        pushButton_3->setText(QApplication::translate("MainWindow", "PushButton", nullptr));
-        pushButton_2->setText(QApplication::translate("MainWindow", "PushButton", nullptr));
-        pushButton->setText(QApplication::translate("MainWindow", "PushButton", nullptr));
-        pushButton_5->setText(QApplication::translate("MainWindow", "PushButton", nullptr));
         label->setText(QApplication::translate("MainWindow", "Lettere", nullptr));
         label_2->setText(QApplication::translate("MainWindow", "Parola", nullptr));
         pushButton_6->setText(QApplication::translate("MainWindow", "Passa il Turno", nullptr));
         pushButton_7->setText(QApplication::translate("MainWindow", "Suggerimento", nullptr));
-        label_5->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
-        label_7->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
-        label_6->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
-        label_4->setText(QApplication::translate("MainWindow", "TextLabel", nullptr));
         label_3->setText(QApplication::translate("MainWindow", "Giocatori", nullptr));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", nullptr));
         menu->setTitle(QApplication::translate("MainWindow", "?", nullptr));
