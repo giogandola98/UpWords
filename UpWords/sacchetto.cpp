@@ -66,10 +66,10 @@ bool sacchetto::check_and_scale(unsigned short int letter)
 
 }
 
-int sacchetto::extract_letter()
+short int sacchetto::extract_letter()
 {
     //extract the letter
-    int letter=rand()%DIM_SACCHETTO;
+    unsigned short int letter=rand()%DIM_SACCHETTO;
     if(check_and_scale(letter))
         return letter;
     else
@@ -86,4 +86,19 @@ char sacchetto::convert_to_char(short int x)
       return x+'A';
     else
         return ' ';
+}
+int convert_to_int(char letter)
+{
+    return letter-'A';
+}
+
+char sacchetto::change_letter(char letter)
+{
+   if(!sacchetto::this_is_empty())
+   {
+    Possibilita[convert_to_int(letter)]++;
+    return convert_to_char(extract_letter());
+   }
+   else
+       return letter;
 }

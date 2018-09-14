@@ -10,8 +10,9 @@ class sacchetto
 {
 public:
     sacchetto();
-    int  extract_letter();
+    short int  extract_letter();
     char convert_to_char(short int x);
+    char change_letter(char letter);
 
 private:
 
