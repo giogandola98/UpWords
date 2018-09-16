@@ -20,7 +20,7 @@ public:
     static const unsigned short int DIM_SACCHETTO=DIM_DIZIONARIO;               //numero lettere alfabeto
     //classe terreno
     static const unsigned short int TERRAIN_SIZE_X=10;                          //dimensione X terreno di gioco
-    static const unsigned short int TERRAIN_SIZE_Y=10;                          //dimensione Y terreno di gioco
+    static const unsigned short int TERRAIN_SIZE_Y=TERRAIN_SIZE_X;              //dimensione Y terreno di gioco
     static const unsigned short int MAX_LAYERS_NUM=5;                           //massime lettere sovrapponibili
     //
     static const char EMPITY_FIELD =' ';
