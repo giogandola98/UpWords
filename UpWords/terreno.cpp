@@ -18,7 +18,7 @@ Terreno::Terreno()
   for(std::size_t i=0; i< costanti::TERRAIN_SIZE_X; i++)
       for(std::size_t a=0; a< costanti::TERRAIN_SIZE_Y; a++)
       {
-        letters[i][a]=' ';
+        letters[i][a]=costanti::EMPITY_FIELD;
         layers[i][a]=0;
       }
   Terreno::save_copy(); //per azzerare anche il backup

@@ -42,7 +42,7 @@ char giocatore::remove_letter(unsigned int index)
         return app;
     }
     else
-        return ' ';
+        return costanti::EMPITY_FIELD;
 
 }
 char giocatore::get_letter(unsigned int index)
@@ -50,7 +50,7 @@ char giocatore::get_letter(unsigned int index)
     if(index<costanti::MAX_LETTERS_HAND)
         return letters[index];
     else
-        return ' ';
+        return costanti::EMPITY_FIELD;
 }
 void giocatore::update_points(unsigned int newScore)
 {
