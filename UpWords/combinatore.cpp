@@ -148,7 +148,7 @@ int Combinatore::lettersCounter(std::string line)
     int c=0;
     for(size_t i=0;i<line.length();i++)
     {
-        if(line.at(i)!='*')             //is a letter, note a space
+        if(line.at(i)!='*')             //is a letter, not a space
             c++;
     }
     return c;
