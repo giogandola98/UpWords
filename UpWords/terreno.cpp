@@ -4,11 +4,11 @@
 
 void Terreno::save_copy()
 {
-    //init terrain
+    //copy terrain to terrain_old
     for(std::size_t i=0; i< TERRAIN_SIZE_X; i++)
         for(std::size_t a=0; a< TERRAIN_SIZE_Y; a++)
         {
-          letters_old[i][a]=layers[i][a];
+          letters_old[i][a]=letters[i][a];
 
         }
 }
