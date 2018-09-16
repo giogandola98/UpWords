@@ -13,8 +13,11 @@ public:
     char getElement(unsigned int x, unsigned int y);
     short int getLevel(unsigned int x, unsigned int y);
     bool insertChar(unsigned int x, unsigned int y, char letter);
+    void save_copy();
+    char getCopyElement(unsigned int x, unsigned int y);
 private:
     char letters[TERRAIN_SIZE_X][TERRAIN_SIZE_Y];
+    char letters_old[TERRAIN_SIZE_X][TERRAIN_SIZE_Y];
     unsigned short int layers[TERRAIN_SIZE_X][TERRAIN_SIZE_Y];
 };
 
