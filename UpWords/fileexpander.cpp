@@ -114,7 +114,7 @@ void fileexpander::load_sfx()
     else
         std::cerr<<"FILE ERROR";
 }
-short int regex_evalutation_end(std::string expression, std::string word)
+ int regex_evalutation_end(std::string expression, std::string word)
 {
     /*
      * compare regex exrpession. return -1 if negative and index of last occurr if match
@@ -130,7 +130,7 @@ short int regex_evalutation_end(std::string expression, std::string word)
         std::cout<<__FUNCTION__<<" "<<word<<" "<<to_compare<<" "<<expression<<" "<<to_return<<std::endl;
     return to_return;
 }
-void add_sfx(short int index,std::string word, std::vector<std::string> &declinated)
+void add_sfx(unsigned int index,std::string word, std::vector<std::string> &declinated)
 {
     lettera r = ESPANSIONE.at(index);
     std::vector<regola> regole = r.regole;
@@ -203,11 +203,11 @@ std::vector<std::string> fileexpander::add_sfx(std::string line)
     std::vector<std::string> added;
     added.clear();
     /*finding the '/' to determin if need to be expanded*/
-    short int index = line.find('/',0);
-    if((index<line.length())&&(index>=0))
+    short int index = static_cast<short int>(line.find('/',0));
+    if((static_cast<unsigned int>(index)<line.length())&&(index>=0))
     {
-        added=search_sfx(line.substr(0,index),line.substr(index+1,line.length()));
-        added.push_back(line.substr(0,index));
+        added=search_sfx(line.substr(0,static_cast<unsigned short>(index)),line.substr(static_cast<unsigned short>(index+1),line.length()));
+        added.push_back(line.substr(0,static_cast<unsigned short>(index)));
     }
     else
       added.push_back(line);
