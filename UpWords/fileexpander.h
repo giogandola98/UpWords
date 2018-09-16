@@ -3,14 +3,13 @@
 #include <algorithm>
 #include <fstream>
 #include <QRegExp>
+#include <costanti.h>
 #ifndef FILEEXPANDER_H
 #define FILEEXPANDER_H
 
 #define PATH_SFX "C:\\Users\\giorgio\\Documents\\GitHub\\UpWords\\dizionario\\it_IT.aff"
 #define DEBUG false
 #define DATA_PATH  "DATA.dat"
-#define DIM_MINIMA_PAROLE 3
-#define DIM_CAMPOGIOCO 10
 
 struct regola
 {
@@ -37,6 +36,7 @@ private:
     void load_sfx();
     //expand rules
     std::vector<std::string> add_sfx(std::string line);
+
 
 
 

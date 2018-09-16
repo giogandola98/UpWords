@@ -8,5 +8,6 @@ INPUT(
 ./debug\giocatore.o
 ./debug\combinatore.o
 ./debug\game.o
+./debug\costanti.o
 ./debug\moc_mainwindow.o
 );

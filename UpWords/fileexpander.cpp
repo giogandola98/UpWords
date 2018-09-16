@@ -187,7 +187,7 @@ void filter_otp_array(std::vector<std::string> & added)
   //uppercase the vector
   for (std::size_t i =0;i< added.size();i++)
   {
-      if((added[i].length()<=DIM_CAMPOGIOCO)&&(added[i].length()>=DIM_MINIMA_PAROLE))
+      if((added[i].length()<=costanti::DIM_CAMPOGIOCO)&&(added[i].length()>=costanti::DIM_MINIMA_PAROLE))
         std::transform(added.at(i).begin(), added.at(i).end(),added.at(i).begin(), ::toupper);
       else
         added[i]="0"; 

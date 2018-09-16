@@ -6,12 +6,9 @@
 #include <stdlib.h>
 #include <iostream>
 #include <vector>
+#include <costanti.h>
 
-#define DIM_DIZIONARIO 26
 #define DATA_PATH  "DATA.dat"
-#define DEBUG_DIZIONARIO false
-#define STATISTICS false
-
 
 class dizionario
 {
@@ -25,7 +22,7 @@ private:
     std::size_t get_letter_id(const char &c);
     char extract_character(const std::string &lettera);
     void add_to_vector(const std::string &str);
-    std::vector<std::string> DIZIONARIO[DIM_DIZIONARIO];
+    std::vector<std::string> DIZIONARIO[costanti::DIM_DIZIONARIO];
     void init();
 
 
