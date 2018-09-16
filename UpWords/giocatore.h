@@ -9,14 +9,14 @@
 class giocatore
 {
 public:
-    giocatore(std::string name);
+    giocatore(std::string name);                        //costruttore
     //giocatore(sacchetto &s);
-    bool hand_full();
-    void add_letter(char letter);
-    char remove_letter(unsigned int index);
-    unsigned int get_hand_size();
-    char get_letter(unsigned int index);
-    void update_points(unsigned int newScore);
+    bool hand_full();                                   //restituisce true se la mano è piena
+    void add_letter(char letter);                       //aggiunge una lettera alla mano del giocatore
+    char remove_letter(unsigned int index);             //rimuove una lettera dalla mano del giocatore1 e la restituisce
+    char get_letter(unsigned int index);                //restituisce una lettera in posizione X
+    void update_points(unsigned int newScore);          //aggiorna il pungeggio giocatore con quello passato
+    unsigned int get_points();                          //ritorna il puntaggio giocatore
 private:
     std::size_t get_space();
     unsigned int points;

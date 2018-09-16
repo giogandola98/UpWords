@@ -26,7 +26,7 @@ struct lettera
 class fileexpander
 {
 public:
-    fileexpander(std::string path);
+    fileexpander(std::string path);                         //costruttore, gli si da il path del dizionario, il path delle espanzioni va settato da costanti. crea un file DATA_PATH contenente il dizionario espanso
 private:
     void writeout(std::vector<std::string> s);
     //functions for rules load

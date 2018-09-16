@@ -1,8 +1,8 @@
 #include "giocatore.h"
 #include "sacchetto.h"
-giocatore::giocatore(std::string name)
+giocatore::giocatore(std::string nome)
 {
-  giocatore::name=this->name;
+  giocatore::name=nome;
   giocatore::points=0;
   for(std::size_t i = 0;i<costanti::MAX_LETTERS_HAND;i++)
       letters[i]=' ';
@@ -33,7 +33,30 @@ void giocatore::add_letter(char letter)
         letters[giocatore::get_space()]=letter;
     }
 }
-char remove_letter(unsigned int index);
-unsigned int get_hand_size();
-char get_letter(unsigned int index);
-void update_points(unsigned int newScore);
+char giocatore::remove_letter(unsigned int index)
+{
+    if(index<costanti::MAX_LETTERS_HAND)
+    {
+        char app=letters[index];
+        letters[index]=' ';
+        return app;
+    }
+    else
+        return ' ';
+
+}
+char giocatore::get_letter(unsigned int index)
+{
+    if(index<costanti::MAX_LETTERS_HAND)
+        return letters[index];
+    else
+        return ' ';
+}
+void giocatore::update_points(unsigned int newScore)
+{
+  points = newScore;
+}
+unsigned int  giocatore::get_points()
+{
+    return giocatore::points;
+}

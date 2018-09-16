@@ -13,8 +13,8 @@
 class dizionario
 {
 public:
-    dizionario(std::string path);
-    bool exist(std::string &word);
+    dizionario(std::string path);                           //costruttore, gli va passata la path del dizionario altrimenti prende quella in costanti
+    bool exist(std::string &word);                          //ritorna se una parola esiste nel dizionario
 
 private:
     bool first_run_check();
