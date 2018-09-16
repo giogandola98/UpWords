@@ -8,7 +8,6 @@
 #define FILEEXPANDER_H
 
 #define PATH_SFX "C:\\Users\\giorgio\\Documents\\GitHub\\UpWords\\dizionario\\it_IT.aff"
-#define DEBUG false
 #define DATA_PATH  "DATA.dat"
 
 struct regola

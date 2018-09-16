@@ -126,7 +126,7 @@ short int regex_evalutation_end(std::string expression, std::string word)
     to_return= rx.indexIn(QString::fromUtf8(to_compare.c_str()),0);
     if(to_return<1)
         to_return = -1;
-    if(DEBUG)
+    if(costanti::FE_DEBUG)
         std::cout<<__FUNCTION__<<" "<<word<<" "<<to_compare<<" "<<expression<<" "<<to_return<<std::endl;
     return to_return;
 }
@@ -174,7 +174,7 @@ void fileexpander::writeout(std::vector<std::string> s)
         for(std::string l : s)
         {
             myfile<<l<<std::endl;
-            if(DEBUG)
+            if(costanti::FE_DEBUG)
               std::cout<<l<<std::endl;
         }
         myfile.close();
