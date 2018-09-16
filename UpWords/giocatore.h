@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include <iostream>
 #include "sacchetto.h"
-#define MAX_LETTERS_HAND 5
+#include <costanti.h>
+
 
 class giocatore
 {
@@ -20,7 +21,7 @@ private:
     std::size_t get_space();
     unsigned int points;
     std::string name;
-    char letters[MAX_LETTERS_HAND];
+    char letters[costanti::MAX_LETTERS_HAND];
 
 };
 

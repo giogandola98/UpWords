@@ -4,14 +4,14 @@ giocatore::giocatore(std::string name)
 {
   giocatore::name=this->name;
   giocatore::points=0;
-  for(std::size_t i = 0;i<MAX_LETTERS_HAND;i++)
+  for(std::size_t i = 0;i<costanti::MAX_LETTERS_HAND;i++)
       letters[i]=' ';
 }
 bool giocatore::hand_full()
 {
     bool x = false;
     short unsigned int i=0;
-    while((!x)&&(i<MAX_LETTERS_HAND))
+    while((!x)&&(i<costanti::MAX_LETTERS_HAND))
         if(letters[i]==' ')
             x=true;
     return x;
@@ -20,7 +20,7 @@ bool giocatore::hand_full()
 std::size_t giocatore::get_space()
 {
     std::size_t i=0;
-    while((giocatore::letters[i]!=' ')&&(i<MAX_LETTERS_HAND))
+    while((giocatore::letters[i]!=' ')&&(i<costanti::MAX_LETTERS_HAND))
     {
         i++;
     }

@@ -1,11 +1,10 @@
 #ifndef TERRENO_H
 #define TERRENO_H
+#include <costanti.h>
 
 
 //COSTANTI
-#define TERRAIN_SIZE_X 10
-#define TERRAIN_SIZE_Y 10
-#define MAX_LAYERS_NUM 5
+
 class Terreno
 {
 public:
@@ -16,9 +15,9 @@ public:
     void save_copy();
     char getCopyElement(unsigned int x, unsigned int y);
 private:
-    char letters[TERRAIN_SIZE_X][TERRAIN_SIZE_Y];
-    char letters_old[TERRAIN_SIZE_X][TERRAIN_SIZE_Y];
-    unsigned short int layers[TERRAIN_SIZE_X][TERRAIN_SIZE_Y];
+    char letters[costanti::TERRAIN_SIZE_X][costanti::TERRAIN_SIZE_Y];
+    char letters_old[costanti::TERRAIN_SIZE_X][costanti::TERRAIN_SIZE_Y];
+    unsigned short int layers[costanti::TERRAIN_SIZE_X][costanti::TERRAIN_SIZE_Y];
 };
 
 #endif // TERRENO_H

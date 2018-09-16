@@ -4,7 +4,8 @@
  * */
 #ifndef SACCHETTO_H
 #define SACCHETTO_H
-#define DIM_SACCHETTO 26
+#include <costanti.h>
+
 
 class sacchetto
 {
@@ -18,7 +19,7 @@ public:
 private:
     void inizializza_sacchetto();
     bool check_and_scale(unsigned short int letter);
-    unsigned short int Possibilita[DIM_SACCHETTO];
+    unsigned short int Possibilita[costanti::DIM_SACCHETTO];
 
 };
 

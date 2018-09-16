@@ -45,7 +45,7 @@ bool sacchetto::this_is_empty()
     //can extract letters?
     bool empity=false;
     int i=0;
-    while((!empity)&&(i<DIM_SACCHETTO))
+    while((!empity)&&(i<costanti::DIM_SACCHETTO))
     {
         if(Possibilita[i]>0)
             empity=true;
@@ -69,7 +69,7 @@ bool sacchetto::check_and_scale(unsigned short int letter)
 short int sacchetto::extract_letter()
 {
     //extract the letter
-    unsigned short int letter=rand()%DIM_SACCHETTO;
+    unsigned short int letter=rand()%costanti::DIM_SACCHETTO;
     if(check_and_scale(letter))
         return letter;
     else
