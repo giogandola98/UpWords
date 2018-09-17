@@ -62,6 +62,7 @@ public:
         tableView = new QTableView(centralWidget);
         tableView->setObjectName(QStringLiteral("tableView"));
         tableView->setGeometry(QRect(370, 30, 431, 391));
+        tableView->setBaseSize(QSize(10, 10));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(10, 100, 47, 13));

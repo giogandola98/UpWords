@@ -46,6 +46,10 @@ char Terreno::getCopyElement(unsigned int x, unsigned int y)
     }
 
 }
+char [costanti::TERRAIN_SIZE_X][costanti::TERRAIN_SIZE_Y] Terreno::get_matrix()
+{
+    return letters;
+}
 short int Terreno::getLevel(unsigned int x, unsigned int y)
 {
     if((x<costanti::TERRAIN_SIZE_X)&&(y<costanti::TERRAIN_SIZE_Y))

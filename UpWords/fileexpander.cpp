@@ -82,7 +82,7 @@ void fileexpander::load_sfx(const std::string &line)
         r.sfx=splitted.at(3);
         int index=find_root(splitted.at(1));
         if(index>=0)
-            ESPANSIONE.at(index).regole.push_back(r);
+            ESPANSIONE.at(static_cast<std::size_t>(index)).regole.push_back(r);
         else
         {
             lettera e;

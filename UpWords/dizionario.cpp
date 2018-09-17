@@ -45,14 +45,15 @@ dizionario::dizionario(std::string path)
 void dizionario::add_to_vector(const std::string &str)
 {
     //add a word to vector
-    std::size_t index= get_letter_id(extract_character(str));
+    std::size_t index= dizionario::get_letter_id(extract_character(str));
     DIZIONARIO[index].push_back(str);
     if(costanti::DEBUG_DIZIONARIO)
-    std::cout<<str<<std::endl;
+      std::cout<<str<<std::endl;
 }
 
 void dizionario::init()
 {
+  //debug
   if(costanti::DEBUG_DIZIONARIO)
     std::cout<<"LOADER"<<std::endl;
     //init data into vector
