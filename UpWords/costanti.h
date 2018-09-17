@@ -23,7 +23,7 @@ public:
     static const unsigned short int TERRAIN_SIZE_Y=TERRAIN_SIZE_X;              //dimensione Y terreno di gioco
     static const unsigned short int MAX_LAYERS_NUM=5;                           //massime lettere sovrapponibili
     //
-    static const char EMPITY_FIELD =' ';
+    static const char EMPITY_FIELD ='*';
 
 
 };

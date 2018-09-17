@@ -3,6 +3,7 @@
 #include <vector>
 #include "dizionario.h"
 #include <string>
+#include <costanti.h>
 #define campodim 10                 //x and y of the field
 #define puntoPerLettera 2           //used for score
 
@@ -27,16 +28,16 @@ private:
      int lettersCounter(std::string line); //count letters in a line
 
 
-     char emptyfield[campodim][campodim] = {{'*','*','*','*','*','*','*','*','*','*'},
-                                         {'*','*','*','*','*','*','*','*','*','*'},
-                                         {'*','*','*','*','*','*','*','*','*','*'},
-                                         {'*','*','*','*','*','*','*','*','*','*'},
-                                         {'*','*','*','*','*','*','*','*','*','*'},
-                                         {'*','*','*','*','*','*','*','*','*','*'},
-                                         {'*','*','*','*','*','*','*','*','*','*'},
-                                         {'*','*','*','*','*','*','*','*','*','*'},
-                                         {'*','*','*','*','*','*','*','*','*','*'},
-                                         {'*','*','*','*','*','*','*','*','*','*'}};
+     char emptyfield[campodim][campodim]={{costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD},
+                                         {costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD},
+                                         {costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD},
+                                         {costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD},
+                                         {costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD},
+                                         {costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD},
+                                         {costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD},
+                                         {costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD},
+                                         {costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD},
+                                         {costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD}};
 
 public:
     Combinatore();

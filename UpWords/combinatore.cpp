@@ -148,7 +148,7 @@ int Combinatore::lettersCounter(std::string line)
     int c=0;
     for(size_t i=0;i<line.length();i++)
     {
-        if(line.at(i)!='*')             //is a letter, not a space
+        if(line.at(i)!=costanti::EMPITY_FIELD)             //is a letter, not a space
             c++;
     }
     return c;
@@ -254,10 +254,10 @@ void Combinatore::ricorsioneComplessa(std::string lett, std::string line, std::v
     int lettersCount;
    int emptyBefore=0;
    int emptyAfter=0;
-   while(line.at(emptyBefore)=='*')            //empty spaces before the word
+   while(line.at(emptyBefore)==costanti::EMPITY_FIELD)            //empty spaces before the word
        emptyBefore++;
 
-   while(line.at(campodim - emptyAfter - 1)=='*')
+   while(line.at(campodim - emptyAfter - 1)==costanti::EMPITY_FIELD)
        emptyAfter++;
 
    do{for(size_t k=0;k<campodim;k++)
@@ -274,7 +274,7 @@ void Combinatore::ricorsioneComplessa(std::string lett, std::string line, std::v
            i=campodim;
        else
        {
-           if(linea.at(i)=='*')             //fill the spaces
+           if(linea.at(i)==costanti::EMPITY_FIELD)             //fill the spaces
            {
                linea.at(i)=lett.at(con);
 
@@ -291,17 +291,17 @@ void Combinatore::ricorsioneComplessa(std::string lett, std::string line, std::v
        }
    }
    std::string w=linea;
-   while(w.at(0)=='*')                  //remove spaces before and after the word
+   while(w.at(0)==costanti::EMPITY_FIELD)                  //remove spaces before and after the word
    {
        w.erase(0, 1);
        r.erase(r.begin());
    }
-   while(w.at(w.length()-1)=='*')
+   while(w.at(w.length()-1)==costanti::EMPITY_FIELD)
    {
        w.erase(w.length()-1, 1);
        r.pop_back();
    }
-   size_t n = std::count(w.begin(), w.end(), '*');  //spaces inside -> isn't a word
+   size_t n = static_cast<std::size_t>(std::count(w.begin(), w.end(), static_cast<char>(costanti::EMPITY_FIELD)));  //spaces inside -> isn't a word
    std::string prova =w;
    std::transform(prova.begin(), prova.end(),prova.begin(), ::toupper);
    /*if(lett.length()>word.length()&&dictionary->exist(prova))
@@ -322,10 +322,10 @@ void Combinatore::ricorsioneComplessa(std::string lett, std::string line, std::v
             std::cout << prova << std::endl;
        }
        bool validT=true;            //trasversal words are valid
-       for(int i=0;i<r.size();i++)
+       for(std::size_t i=0;i<r.size();i++)
        {
            std::string p=r.at(i);
-           for(int j=0;j<p.length();j++)
+           for(std::size_t j=0;j<p.length();j++)
            {
                if(p.at(j)=='*')
                    p.at(j)=prova.at(i);
@@ -352,9 +352,9 @@ void Combinatore::ricorsioneComplessa(std::string lett, std::string line, std::v
    }
    //std::cout<<"CAMBIO"<<std::endl;
    }
-   }while((next_permutation(lett.begin(), lett.end()))&&(this->lettersCounter(line)+lett.length()>word.length()));      //anagram
+   }while((next_permutation(lett.begin(), lett.end()))&&(static_cast<unsigned int>(this->lettersCounter(line))+lett.length()>word.length()));      //anagram
    lettersCount=this->lettersCounter(line);                 //letters in the line
-   if(lett.length()>1&&(lett.length()+lettersCount)>word.length()+1)    //can we find a better word?
+   if(lett.length()>1&&(lett.length()+static_cast<unsigned int>(lettersCount))>word.length()+1)    //can we find a better word?
    {
    for(size_t i=0;i<lett.length();i++)      //subwords with a support variable
    {
@@ -373,7 +373,7 @@ std::string Combinatore::Anagram()  //first make it work...
     if(DEBUG)
         std::cout<<"PAROLE VERTICALI: "<<std::endl;
 
-    for(int i=0;i<campodim;i++)    //vertical scrolling
+    for(std::size_t i=0;i<campodim;i++)    //vertical scrolling
     {
         std::vector<std::string>rows;
         if(DEBUG)
@@ -382,7 +382,7 @@ std::string Combinatore::Anagram()  //first make it work...
         std::string l;
         //int firsty=0;
         bool emptyColumn = true;
-        for(int j=0; j<campodim;j++)        //is column empty?
+        for(std::size_t j=0; j<campodim;j++)        //is column empty?
         {
             std::string row;
 
@@ -392,14 +392,14 @@ std::string Combinatore::Anagram()  //first make it work...
 
                 row =field[j][i];
 
-                 for(int k=i-1;k>=0;k--)
+                 for(std::size_t k=i-1;k>=0;k--)
                  {
                      if(field[j][k]=='*')               //find the letter before and after the cell
                          k=-1;
                      else
                          row=field[j][k]+row;
                  }
-                 for(int k=i+1;k<campodim;k++)
+                 for(std::size_t k=i+1;k<campodim;k++)
                  {
                      if(field[j][k]=='*')
                          k=campodim;
@@ -424,7 +424,7 @@ std::string Combinatore::Anagram()  //first make it work...
         {
             std::cout<<l<<std::endl;
             std::cout<<"Trasversali: "<<std::endl;
-            for(int m=0;m<rows.size();m++)
+            for(std::size_t m=0;m<rows.size();m++)
             {
                 std::cout<<rows.at(m)<<std::endl;
             }
@@ -433,7 +433,7 @@ std::string Combinatore::Anagram()  //first make it work...
         if(emptyColumn==false)
         {
             std::string s(letters.begin(),letters.end());
-            if(s.length()+lettersCounter(l)>word.length())  //can we find a better word?
+            if(s.length()+static_cast<unsigned int>(lettersCounter(l))>word.length())  //can we find a better word?
              ricorsioneComplessa(s,l,rows);
         }
     }
@@ -442,7 +442,7 @@ std::string Combinatore::Anagram()  //first make it work...
     if(DEBUG)
         std::cout<<std::endl<<"PAROLE ORIZZONTALI: "<<std::endl;
 
-    for(int i=0;i<campodim;i++)    //Horizontal scrolling
+    for(std::size_t i=0;i<campodim;i++)    //Horizontal scrolling
     {
         std::vector<std::string>rows;
         if(DEBUG)
@@ -451,7 +451,7 @@ std::string Combinatore::Anagram()  //first make it work...
         std::string l;
         //int firsty=0;
         bool emptyLine = true;
-        for(int j=0; j<campodim;j++)        //is line empty?
+        for(std::size_t j=0; j<campodim;j++)        //is line empty?
         {
             std::string row;
 
@@ -461,14 +461,14 @@ std::string Combinatore::Anagram()  //first make it work...
 
                    row =field[i][j];
 
-                    for(int k=i-1;k>=0;k--)         //find the letter before and after the cell
+                    for(std::size_t k=i-1;k>=0;k--)         //find the letter before and after the cell
                     {
                         if(field[k][j]=='*')
                             k=-1;
                         else
                             row=field[k][j]+row;
                     }
-                    for(int k=i+1;k<campodim;k++)
+                    for(std::size_t k=i+1;k<campodim;k++)
                     {
                         if(field[k][j]=='*')
                             k=campodim;
@@ -482,7 +482,7 @@ std::string Combinatore::Anagram()  //first make it work...
 
 
 
-            if(field[i][j]!='*')     //set the word
+            if(field[i][j]!=costanti::EMPITY_FIELD)     //set the word
             {
 
 
@@ -497,7 +497,7 @@ std::string Combinatore::Anagram()  //first make it work...
         {
             std::cout<<l<<std::endl;
             std::cout<<"Trasversali: "<<std::endl;
-            for(int m=0;m<rows.size();m++)
+            for(std::size_t m=0;m<rows.size();m++)
             {
                 std::cout<<rows.at(m)<<std::endl;
             }
