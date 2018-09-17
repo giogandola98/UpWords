@@ -42,14 +42,14 @@ private:
 
 public:
     Combinatore();
-    Combinatore(std::vector <char> letters, dizionario *d);    //first run with empty field
+    Combinatore(std::vector <char> letters, dizionario *d);                                  //first run with empty field
     Combinatore(std::vector <char> letters, dizionario *d,char field[campodim][campodim]);
-    Combinatore(std::string letters, dizionario *d);            //string overload
+    Combinatore(std::string letters, dizionario *d);                                         //string overload
     Combinatore(std::string letters, dizionario *d,char field[campodim][campodim]);
 
 
 
-    std::vector<char> getLetters() const;                //getters and setters
+    std::vector<char> getLetters() const;                                                   //getters and setters
     void setLetters(const std::vector<char> &value);
     void setLetters(const std::string &value);
     dizionario *getDictionary() const;
@@ -59,10 +59,13 @@ public:
     int getScore() const;
     void setField(char c[campodim][campodim]);
     void setScore(int value);
+    //test
+    //{
     int getX() const;
     void setX(int value);
     int getY() const;
     void setY(int value);
+    //}
 
     std::string suggerimento();
 

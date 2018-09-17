@@ -15,7 +15,7 @@ public:
     static const unsigned short int DIM_CAMPOGIOCO=10;                          //dimensione XY campo da gioco
     static const bool FE_DEBUG =false;                                          //debug f.e. attivo
     //classe giocatore
-    static const unsigned short int MAX_LETTERS_HAND=5;                         //numero massimo di lettere per giocatore
+    static const unsigned short int MAX_LETTERS_HAND=7;                         //numero massimo di lettere per giocatore
     //classe sacchetto
     static const unsigned short int DIM_SACCHETTO=DIM_DIZIONARIO;               //numero lettere alfabeto
     //classe terreno
