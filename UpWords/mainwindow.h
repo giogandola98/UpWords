@@ -22,20 +22,26 @@ public:
 
 private slots:
     void on_pushButton_6_clicked();
-
     void on_pushButton_7_clicked();
+    void on_tableWidget_cellClicked(int row, int column);
+    void start_game();
+    void add_player();
 
 private:
     Ui::MainWindow *ui;
     void update_game_points();
     void update_terrain();
-
+    void UpdateTerrain(Terreno *terrain);
+    void terrainWidgetInit();
+    void onTurnSwitched();
+    void fillGamerHand(giocatore g);
+    sacchetto *s;
     Terreno *terrain;
     dizionario *d;
-    unsigned short int n_gamers;
-    unsigned short int turn_g;
+    unsigned short int turno_giocatore;
     Combinatore c;
     std::vector<giocatore> giocatori;
+    bool game_started;
 
 };
 

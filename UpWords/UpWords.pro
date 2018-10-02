@@ -33,7 +33,6 @@ SOURCES += \
     terreno.cpp \
     giocatore.cpp \
     combinatore.cpp \
-    game.cpp \
     costanti.cpp
 
 HEADERS += \
@@ -44,7 +43,6 @@ HEADERS += \
     terreno.h \
     giocatore.h \
     combinatore.h \
-    game.h \
     costanti.h
 
 FORMS += \
