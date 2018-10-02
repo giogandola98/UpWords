@@ -10,8 +10,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-
-
     ui->setupUi(this);
     d = new dizionario("C:\\Users\\giorgio\\Documents\\GitHub\\UpWords\\dizionario\\it_IT.txt");
     terrain=new(Terreno);
@@ -41,7 +39,6 @@ MainWindow::~MainWindow()
     delete d;
     delete terrain;
 }
-
 void MainWindow::fillGamerHand(giocatore g)
 {
     while(!g.hand_full()&&(!s->this_is_empty()))
@@ -70,11 +67,14 @@ void MainWindow::onTurnSwitched()
 }
 void MainWindow::on_pushButton_6_clicked()  //passa il turno
 {
-   if(MainWindow::turno_giocatore<giocatori.size())
-     MainWindow::turno_giocatore++;
-   else
-       MainWindow::turno_giocatore=0;
-   onTurnSwitched();
+    if(game_started)
+    {
+        if(MainWindow::turno_giocatore<giocatori.size())
+            MainWindow::turno_giocatore++;
+        else
+            MainWindow::turno_giocatore=0;
+        onTurnSwitched();
+    }
 }
 void MainWindow::UpdateTerrain(Terreno *terrain)
 {
@@ -92,12 +92,15 @@ void MainWindow::UpdateTerrain(Terreno *terrain)
 }
 void MainWindow::on_pushButton_7_clicked()  //suggerimento
 {
-    char letters[costanti::TERRAIN_SIZE_X][costanti::TERRAIN_SIZE_Y];
-    for(std::size_t x=0;x<costanti::TERRAIN_SIZE_X;x++)
-        for(std::size_t y=0;y<costanti::TERRAIN_SIZE_Y;y++)
-          letters[x][y]=terrain->getElement(x,y);
+    if(game_started)
+    {
+        char letters[costanti::TERRAIN_SIZE_X][costanti::TERRAIN_SIZE_Y];
+        for(std::size_t x=0;x<costanti::TERRAIN_SIZE_X;x++)
+            for(std::size_t y=0;y<costanti::TERRAIN_SIZE_Y;y++)
+                letters[x][y]=terrain->getElement(x,y);
 
-   //chamo il combinatore
+        //chamo il combinatore
+    }
 }
 
 void MainWindow::on_tableWidget_cellClicked(int row, int column)
@@ -108,3 +111,17 @@ void MainWindow::on_tableWidget_cellClicked(int row, int column)
     }
 
 }
+void MainWindow::start_game()
+{
+    if(giocatori.size()>costanti::MIN_PLAYERS)
+    {
+        game_started=true;
+        turno_giocatore=0;
+        onTurnSwitched();
+    }
+}
+void MainWindow::add_player()
+{
+  //aprire la finestra per inserimento giocatore (se possibile)
+}
+
