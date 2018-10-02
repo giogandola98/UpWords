@@ -1,7 +1,7 @@
 #include "combinatore.h"
 #include <algorithm>
 
-#define DEBUG true
+#define DEBUG false
 
 
 
@@ -195,7 +195,7 @@ void Combinatore::ricorsioneSemplice(std::string str, std::string res)       //f
 
 
     }
-    std::cout << res << std::endl;
+    //std::cout << res << std::endl;
 
        for( size_t i = 0; i < str.length(); i++ )
         {
@@ -229,7 +229,7 @@ void Combinatore::ricorsioneSemplice(std::string str)       //slower but we can 
             word=a;
         }
 
-    std::cout<<a<<std::endl;
+    //std::cout<<a<<std::endl;
     } while(next_permutation(a.begin(), a.end()));      //next permutation
     if(str.length()>1&&str.length()>word.length())
     {
