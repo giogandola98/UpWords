@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <fstream>
 #include <QRegExp>
+#include <thread>
 
 
 std::vector<lettera> ESPANSIONE;
@@ -16,6 +17,7 @@ fileexpander::fileexpander(std::string path)
     if(myfile.is_open())
     {
         while (getline(myfile,line))
+
             writeout(add_sfx(line));
         myfile.close();
 
@@ -167,7 +169,7 @@ std::vector<std::string> search_sfx(const std::string &word,const std::string &r
 //writeopt
 void fileexpander::writeout(std::vector<std::string> s)
 {
-   // std::cout<<"EXPANDER"<<std::endl;
+    std::cout<<"EXPANDER"<<std::endl;
     std::ofstream myfile(DATA_PATH,std::fstream::app);
     if(myfile.is_open())
     {

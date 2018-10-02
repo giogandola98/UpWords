@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <fstream>
 #include <fileexpander.h>
+#include <thread>
 bool dizionario::first_run_check()
 {
     std::ifstream myfile;
@@ -27,7 +28,10 @@ dizionario::dizionario(std::string path)
     //costructor
     dizionario::PATH_DIZIONARIO=DATA_PATH;
     if(!dizionario::first_run_check())
+    {
         fileexpander f (path);
+
+    }
     init();
     if(costanti::STATISTICS)
     {
@@ -92,11 +96,8 @@ bool dizionario::exist(std::string &word)
     //check if word is into vector array
     //use uppercase world
     std::size_t index= get_letter_id(extract_character(word));
-    std::vector<std::string>::iterator i=std::find(DIZIONARIO[index].begin(), DIZIONARIO[index].end(), word);
-    if(i!=DIZIONARIO[index].end())
-        return true;
-    else
-        return false;
+    //std::vector<std::string>::iterator i=std::find(DIZIONARIO[index].begin(), DIZIONARIO[index].end(), word);
+    return binary_search(DIZIONARIO[index].begin(), DIZIONARIO[index].end(), word);
+
 }
 
-#undef DEBUG_DIZIONARIO
