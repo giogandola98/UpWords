@@ -85,7 +85,7 @@ char sacchetto::convert_to_char(short int x)
     if(x>0)
       return x+'A';
     else
-        return ' ';
+        return costanti::EMPITY_FIELD;
 }
 int convert_to_int(char letter)
 {

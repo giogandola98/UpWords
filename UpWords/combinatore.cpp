@@ -42,12 +42,10 @@ dizionario *Combinatore::getDictionary() const
 {
     return dictionary;
 }
-
 void Combinatore::setDictionary(dizionario *value)
 {
     dictionary = value;
 }
-
 std::string Combinatore::getWord() const
 {
     return word;
@@ -56,7 +54,6 @@ void Combinatore::setWord(const std::string &value)
 {
     word = value;
 }
-
 int Combinatore::getScore() const
 {
     return score;
@@ -69,17 +66,14 @@ int Combinatore::getX() const
 {
     return x;
 }
-
 void Combinatore::setX(int value)
 {
     x = value;
 }
-
 int Combinatore::getY() const
 {
     return y;
 }
-
 void Combinatore::setY(int value)
 {
     y = value;

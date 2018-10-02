@@ -17,6 +17,7 @@ public:
     char get_letter(unsigned int index);                //restituisce una lettera in posizione X
     void update_points(unsigned int newScore);          //aggiorna il pungeggio giocatore con quello passato
     unsigned int get_points();                          //ritorna il puntaggio giocatore
+    std::string get_name();
 private:
     std::size_t get_space();
     unsigned int points;

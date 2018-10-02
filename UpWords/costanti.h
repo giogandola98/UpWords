@@ -26,6 +26,7 @@ public:
     static const char EMPITY_FIELD ='*';
     //
     static const unsigned short int MIN_PLAYERS = 2;
+    static const unsigned short int MAX_PLAYERS = 4;
 
 
 };

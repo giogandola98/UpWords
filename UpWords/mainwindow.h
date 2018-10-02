@@ -34,7 +34,9 @@ private:
     void UpdateTerrain(Terreno *terrain);
     void terrainWidgetInit();
     void onTurnSwitched();
-    void fillGamerHand(giocatore g);
+    void fillGamerHand(giocatore &g);
+    void setPlayerLabel();
+    void setLettersTable();
     sacchetto *s;
     Terreno *terrain;
     dizionario *d;

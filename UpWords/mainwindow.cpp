@@ -15,9 +15,13 @@ MainWindow::MainWindow(QWidget *parent) :
     terrain=new(Terreno);
     s = new(sacchetto);
     terrainWidgetInit();
-    //QMessageBox::information(this, "",QString::number(terrain->getElement(1,1)));
     UpdateTerrain(terrain);
     game_started=false;
+    add_player();
+    add_player();
+    add_player();
+    add_player();
+    start_game();
 }
 void MainWindow::terrainWidgetInit()
 {
@@ -39,8 +43,9 @@ MainWindow::~MainWindow()
     delete d;
     delete terrain;
 }
-void MainWindow::fillGamerHand(giocatore g)
+void MainWindow::fillGamerHand(giocatore &g)
 {
+
     while(!g.hand_full()&&(!s->this_is_empty()))
     {
         g.add_letter(s->convert_to_char(s->extract_letter()));
@@ -69,7 +74,7 @@ void MainWindow::on_pushButton_6_clicked()  //passa il turno
 {
     if(game_started)
     {
-        if(MainWindow::turno_giocatore<giocatori.size())
+        if(MainWindow::turno_giocatore<giocatori.size()-1)
             MainWindow::turno_giocatore++;
         else
             MainWindow::turno_giocatore=0;
@@ -98,11 +103,14 @@ void MainWindow::on_pushButton_7_clicked()  //suggerimento
         for(std::size_t x=0;x<costanti::TERRAIN_SIZE_X;x++)
             for(std::size_t y=0;y<costanti::TERRAIN_SIZE_Y;y++)
                 letters[x][y]=terrain->getElement(x,y);
-
+        std::string hand="";
+        for(std::size_t i =0;i<costanti::MAX_LETTERS_HAND;i++)
+            hand+=(giocatori.at(turno_giocatore).get_letter(i));
         //chamo il combinatore
+        Combinatore c (hand,d,letters);
+        QMessageBox::information(this, "SUGGERIMENTO",QString::fromStdString(c.suggerimento()));
     }
 }
-
 void MainWindow::on_tableWidget_cellClicked(int row, int column)
 {
     if(game_started)
@@ -111,17 +119,56 @@ void MainWindow::on_tableWidget_cellClicked(int row, int column)
     }
 
 }
+void MainWindow::setPlayerLabel()
+{
+   ui->giocatori_table->setRowCount(1);
+   ui->giocatori_table->setColumnCount(giocatori.size());
+   ui->giocatori_table->verticalHeader()->setVisible(false);
+   ui->giocatori_table->horizontalHeader()->setOffset(0);
+   ui->giocatori_table->horizontalHeader()->setDefaultSectionSize((ui->giocatori_table->maximumWidth()/giocatori.size())-ui->giocatori_table->maximumWidth()%giocatori.size());
+   ui->giocatori_table->verticalHeader()->setDefaultSectionSize(ui->giocatori_table->maximumHeight());
+   ui->giocatori_table->verticalHeader()->setOffset(0);
+   ui->giocatori_table->horizontalHeader()->setVisible(false);
+   ui->giocatori_table->setEditTriggers(QAbstractItemView::NoEditTriggers);
+   for(std::size_t i = 0;i<giocatori.size();i++)
+   {
+        giocatore g = giocatori.at(i);
+        ui->giocatori_table->setItem(0,i,new QTableWidgetItem(QString::fromStdString(g.get_name())));
+    }
+}
+void MainWindow::setLettersTable()
+{
+    ui->lettere_table->setRowCount(1);
+    ui->lettere_table->setColumnCount(costanti::MAX_LETTERS_HAND);
+    ui->lettere_table->verticalHeader()->setVisible(false);
+    ui->lettere_table->horizontalHeader()->setOffset(0);
+    ui->lettere_table->horizontalHeader()->setDefaultSectionSize((ui->lettere_table->width()/costanti::MAX_LETTERS_HAND)-(ui->giocatori_table->width()%costanti::MAX_LETTERS_HAND));
+    ui->lettere_table->verticalHeader()->setDefaultSectionSize(ui->lettere_table->height());
+    ui->lettere_table->verticalHeader()->setOffset(0);
+    ui->lettere_table->horizontalHeader()->setVisible(false);
+    ui->lettere_table->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+}
 void MainWindow::start_game()
 {
     if(giocatori.size()>costanti::MIN_PLAYERS)
     {
         game_started=true;
         turno_giocatore=0;
+        setLettersTable();
+        setPlayerLabel();
         onTurnSwitched();
     }
 }
 void MainWindow::add_player()
 {
   //aprire la finestra per inserimento giocatore (se possibile)
+    if(giocatori.size()<costanti::MAX_PLAYERS)
+    {
+        //.....
+        std::string nome="c";
+        giocatore g(nome);
+        giocatori.push_back(g);
+    }
 }
 
