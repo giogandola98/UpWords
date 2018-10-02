@@ -43,6 +43,7 @@ public:
     QLabel *points_txt;
     QLabel *turno_giocatore;
     QLabel *label_6;
+    QPushButton *pushButton;
     QMenuBar *menuBar;
     QMenu *menuFile;
     QMenu *menu;
@@ -72,10 +73,10 @@ public:
         label->setFont(font);
         pushButton_6 = new QPushButton(centralWidget);
         pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
-        pushButton_6->setGeometry(QRect(270, 200, 161, 51));
+        pushButton_6->setGeometry(QRect(270, 300, 161, 51));
         pushButton_7 = new QPushButton(centralWidget);
         pushButton_7->setObjectName(QStringLiteral("pushButton_7"));
-        pushButton_7->setGeometry(QRect(270, 270, 161, 61));
+        pushButton_7->setGeometry(QRect(270, 370, 161, 61));
         label_3 = new QLabel(centralWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setGeometry(QRect(10, 10, 61, 16));
@@ -108,20 +109,23 @@ public:
         lettere_table->setLayoutDirection(Qt::LeftToRight);
         label_5 = new QLabel(centralWidget);
         label_5->setObjectName(QStringLiteral("label_5"));
-        label_5->setGeometry(QRect(20, 206, 71, 20));
+        label_5->setGeometry(QRect(20, 306, 71, 20));
         label_5->setFont(font);
         points_txt = new QLabel(centralWidget);
         points_txt->setObjectName(QStringLiteral("points_txt"));
-        points_txt->setGeometry(QRect(150, 206, 47, 20));
+        points_txt->setGeometry(QRect(150, 306, 47, 20));
         points_txt->setFont(font);
         turno_giocatore = new QLabel(centralWidget);
         turno_giocatore->setObjectName(QStringLiteral("turno_giocatore"));
-        turno_giocatore->setGeometry(QRect(150, 230, 47, 20));
+        turno_giocatore->setGeometry(QRect(150, 330, 47, 20));
         turno_giocatore->setFont(font);
         label_6 = new QLabel(centralWidget);
         label_6->setObjectName(QStringLiteral("label_6"));
-        label_6->setGeometry(QRect(20, 230, 111, 20));
+        label_6->setGeometry(QRect(20, 330, 111, 20));
         label_6->setFont(font);
+        pushButton = new QPushButton(centralWidget);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setGeometry(QRect(270, 200, 161, 51));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -163,6 +167,7 @@ public:
         points_txt->setText(QApplication::translate("MainWindow", "0", nullptr));
         turno_giocatore->setText(QApplication::translate("MainWindow", "0", nullptr));
         label_6->setText(QApplication::translate("MainWindow", "Turno giocatore", nullptr));
+        pushButton->setText(QApplication::translate("MainWindow", "Conferma Inserimento", nullptr));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", nullptr));
         menu->setTitle(QApplication::translate("MainWindow", "?", nullptr));
     } // retranslateUi

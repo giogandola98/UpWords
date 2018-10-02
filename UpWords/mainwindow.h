@@ -41,9 +41,9 @@ private:
     Terreno *terrain;
     dizionario *d;
     unsigned short int turno_giocatore;
-    Combinatore c;
     std::vector<giocatore> giocatori;
     bool game_started;
+
 
 };
 
