@@ -3,7 +3,6 @@
 #include "dizionario.h"
 #include "costanti.h"
 #include "terreno.h"
-
 #include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -19,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
     UpdateTerrain(terrain);
     game_started=false;
     selected_letter=costanti::EMPITY_FIELD;
+    c=nullptr;
     add_player();
     add_player();
     add_player();
@@ -71,8 +71,10 @@ void MainWindow::onTurnSwitched()
   set_gamer_points();
   //cambio le lettere a video con quelle del nuovo giocatore
   loadRack();
-  ui->turno_giocatore->setText(QString::number(turno_giocatore+1));
   //qui devo fare lo switch del giocatore nell'array giocatori
+  ui->turno_giocatore->setText(QString::number(turno_giocatore+1));
+  //init_suggerimento();
+
 
 }
 void MainWindow::set_gamer_points()
@@ -97,6 +99,14 @@ void MainWindow::on_pushButton_7_clicked()  //suggerimento
 {
     if(game_started)
     {
+        t1->join();
+        QMessageBox::information(this, "SUGGERIMENTO",QString::fromStdString(th1_result));
+    }
+}
+void MainWindow::init_suggerimento()
+{
+    if(game_started)
+    {
         char letters[costanti::TERRAIN_SIZE_X][costanti::TERRAIN_SIZE_Y];
         for(std::size_t x=0;x<costanti::TERRAIN_SIZE_X;x++)
             for(std::size_t y=0;y<costanti::TERRAIN_SIZE_Y;y++)
@@ -105,8 +115,10 @@ void MainWindow::on_pushButton_7_clicked()  //suggerimento
         for(std::size_t i =0;i<costanti::MAX_LETTERS_HAND;i++)
             hand+=(giocatori.at(turno_giocatore).get_letter(i));
         //chamo il combinatore
-        Combinatore c (hand,d,letters);
-        QMessageBox::information(this, "SUGGERIMENTO",QString::fromStdString(c.suggerimento()));
+        if(c!=nullptr)
+          c = new Combinatore(hand,d,letters);
+        //qui dovrei runnare il codice in thread
+
     }
 }
 void MainWindow::setPlayerLabel()
@@ -270,7 +282,8 @@ void MainWindow::on_conferma_btn_clicked()
     if(to_insert.size()>0)
     {
         short int point = arbitro->insWord(to_insert);
-        std::cerr<<"PUNTI : "<<point;
+        std::cerr<<"PUNTI : "<<point<<std::endl;
+        std::cerr<<"RACK  : "<<to_insert.size()<<std::endl;
         if(point>=0)//se sono valide le lettere inserite e tutto va bene
         {
             giocatori.at(turno_giocatore).update_points(point);

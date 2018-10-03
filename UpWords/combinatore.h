@@ -67,6 +67,7 @@ public:
     void setY(int value);
     //}
 
+    void suggerimento(std::string &result);
     std::string suggerimento();
 
 

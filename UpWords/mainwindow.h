@@ -9,6 +9,7 @@
 #include <giocatore.h>
 #include <cella.h>
 #include <referee.h>
+#include <thread>
 
 namespace Ui {
 class MainWindow;
@@ -31,7 +32,6 @@ private slots:
     void on_abort_btn_clicked();
     void on_cambia_btn_clicked();
     void on_conferma_btn_clicked();
-
     void on_passaturno_btn_clicked();
 
 private:
@@ -54,15 +54,19 @@ private:
     void error_message(std::string title,std::string body);
     void enable_row(std::size_t y,std::size_t x);
     void enable_column(std::size_t x,std::size_t y);
+    void init_suggerimento();
     referee *arbitro;
     sacchetto *s;
     Terreno *terrain;
     dizionario *d;
+    Combinatore *c;
     unsigned short int turno_giocatore;
     std::vector<giocatore> giocatori;
     bool game_started;
     char selected_letter;
     std::vector<cella> to_insert;
+    std::thread t1;
+    std::string th1_result;
 
 
 };
