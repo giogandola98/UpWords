@@ -65,7 +65,7 @@ private:
     bool game_started;
     char selected_letter;
     std::vector<cella> to_insert;
-    std::thread t1;
+    std::thread *t1;
     std::string th1_result;
 
 

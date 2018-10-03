@@ -4,6 +4,7 @@
 #include "costanti.h"
 #include "terreno.h"
 #include <QMessageBox>
+#include "functional"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -73,7 +74,7 @@ void MainWindow::onTurnSwitched()
   loadRack();
   //qui devo fare lo switch del giocatore nell'array giocatori
   ui->turno_giocatore->setText(QString::number(turno_giocatore+1));
-  //init_suggerimento();
+  init_suggerimento();
 
 
 }
@@ -103,6 +104,11 @@ void MainWindow::on_pushButton_7_clicked()  //suggerimento
         QMessageBox::information(this, "SUGGERIMENTO",QString::fromStdString(th1_result));
     }
 }
+void thread_exec(std::string hand,dizionario* d,char letters[costanti::TERRAIN_SIZE_X][costanti::TERRAIN_SIZE_Y],std::string * result)
+{
+     Combinatore c(hand,d,letters);
+     *result=c.suggerimento();
+}
 void MainWindow::init_suggerimento()
 {
     if(game_started)
@@ -114,13 +120,12 @@ void MainWindow::init_suggerimento()
         std::string hand="";
         for(std::size_t i =0;i<costanti::MAX_LETTERS_HAND;i++)
             hand+=(giocatori.at(turno_giocatore).get_letter(i));
-        //chamo il combinatore
-        if(c!=nullptr)
-          c = new Combinatore(hand,d,letters);
-        //qui dovrei runnare il codice in thread
+
+
 
     }
 }
+
 void MainWindow::setPlayerLabel()
 {
    ui->giocatori_table->setRowCount(1);

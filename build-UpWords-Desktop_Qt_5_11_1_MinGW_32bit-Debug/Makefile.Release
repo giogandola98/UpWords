@@ -249,6 +249,8 @@ release/moc_mainwindow.cpp: C:/Qt/5.11.1/mingw53_32/include/QtWidgets/QMainWindo
 		../UpWords/dizionario.h \
 		../UpWords/terreno.h \
 		../UpWords/giocatore.h \
+		../UpWords/cella.h \
+		../UpWords/referee.h \
 		../UpWords/mainwindow.h \
 		release/moc_predefs.h \
 		C:/Qt/5.11.1/mingw53_32/bin/moc.exe
@@ -392,6 +394,8 @@ release/main.o: ../UpWords/main.cpp ../UpWords/mainwindow.h \
 		../UpWords/dizionario.h \
 		../UpWords/terreno.h \
 		../UpWords/giocatore.h \
+		../UpWords/cella.h \
+		../UpWords/referee.h \
 		C:/Qt/5.11.1/mingw53_32/include/QtWidgets/QApplication \
 		C:/Qt/5.11.1/mingw53_32/include/QtWidgets/qapplication.h \
 		C:/Qt/5.11.1/mingw53_32/include/QtCore/qcoreapplication.h \
@@ -514,6 +518,8 @@ release/mainwindow.o: ../UpWords/mainwindow.cpp ../UpWords/mainwindow.h \
 		../UpWords/dizionario.h \
 		../UpWords/terreno.h \
 		../UpWords/giocatore.h \
+		../UpWords/cella.h \
+		../UpWords/referee.h \
 		ui_mainwindow.h \
 		C:/Qt/5.11.1/mingw53_32/include/QtCore/QVariant \
 		C:/Qt/5.11.1/mingw53_32/include/QtWidgets/QAction \
@@ -663,10 +669,13 @@ release/costanti.o: ../UpWords/costanti.cpp ../UpWords/costanti.h
 
 release/referee.o: ../UpWords/referee.cpp ../UpWords/referee.h \
 		../UpWords/dizionario.h \
-		../UpWords/costanti.h
+		../UpWords/costanti.h \
+		../UpWords/cella.h \
+		../UpWords/terreno.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\referee.o ..\UpWords\referee.cpp
 
-release/cella.o: ../UpWords/cella.cpp ../UpWords/cella.h
+release/cella.o: ../UpWords/cella.cpp ../UpWords/cella.h \
+		../UpWords/costanti.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\cella.o ..\UpWords\cella.cpp
 
 release/moc_mainwindow.o: release/moc_mainwindow.cpp 
