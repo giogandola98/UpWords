@@ -48,6 +48,18 @@ char giocatore::remove_letter(unsigned int index)
         return costanti::EMPITY_FIELD;
 
 }
+void giocatore::remove_letter(char letter)
+{
+    std::size_t i =0;
+    while(i<costanti::MAX_LETTERS_HAND)
+        if(letters[i]==letter)
+        {
+            letters[i]=costanti::EMPITY_FIELD;
+            i=costanti::MAX_LETTERS_HAND;
+        }
+    else
+            i++;
+}
 char giocatore::get_letter(unsigned int index)
 {
     if(index<costanti::MAX_LETTERS_HAND)
@@ -57,7 +69,7 @@ char giocatore::get_letter(unsigned int index)
 }
 void giocatore::update_points(unsigned int newScore)
 {
-  points = newScore;
+  points += newScore;
 }
 unsigned int  giocatore::get_points()
 {

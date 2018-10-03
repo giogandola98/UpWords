@@ -8,5 +8,7 @@ INPUT(
 ./release\giocatore.o
 ./release\combinatore.o
 ./release\costanti.o
+./release\referee.o
+./release\cella.o
 ./release\moc_mainwindow.o
 );

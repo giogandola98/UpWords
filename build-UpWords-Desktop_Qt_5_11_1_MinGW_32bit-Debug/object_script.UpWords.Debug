@@ -8,5 +8,7 @@ INPUT(
 ./debug\giocatore.o
 ./debug\combinatore.o
 ./debug\costanti.o
+./debug\referee.o
+./debug\cella.o
 ./debug\moc_mainwindow.o
 );

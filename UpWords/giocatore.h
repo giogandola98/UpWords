@@ -18,6 +18,7 @@ public:
     void update_points(unsigned int newScore);          //aggiorna il pungeggio giocatore con quello passato
     unsigned int get_points();                          //ritorna il puntaggio giocatore
     std::string get_name();
+    void remove_letter(char letter);
 private:
     std::size_t get_space();
     unsigned int points;

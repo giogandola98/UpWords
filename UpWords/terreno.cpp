@@ -71,5 +71,16 @@ bool Terreno::insertChar(unsigned int x, unsigned int y, char letter)
      else return false;
 
 }
-
+void Terreno::resetLevel(unsigned int x,unsigned int y)
+{
+    layers[x][y]=0;
+}
+void Terreno::insertChar(unsigned int x, unsigned int y, char letter,unsigned short level)
+{
+    if((x<costanti::TERRAIN_SIZE_X)&&(y<costanti::TERRAIN_SIZE_Y))
+    {
+        letters[x][y]=letter;
+        layers[x][y]=level;
+    }
+}
 

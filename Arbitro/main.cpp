@@ -5,5 +5,5 @@ using namespace std;
 
 int main()
 {
-   referee r =  referee();
+   referee r =  referee(new dizionario(""));
 }

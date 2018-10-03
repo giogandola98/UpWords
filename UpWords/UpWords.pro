@@ -33,7 +33,9 @@ SOURCES += \
     terreno.cpp \
     giocatore.cpp \
     combinatore.cpp \
-    costanti.cpp
+    costanti.cpp \
+    referee.cpp \
+    cella.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -43,7 +45,9 @@ HEADERS += \
     terreno.h \
     giocatore.h \
     combinatore.h \
-    costanti.h
+    costanti.h \
+    referee.h \
+    cella.h
 
 FORMS += \
         mainwindow.ui
