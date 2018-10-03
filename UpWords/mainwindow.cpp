@@ -100,7 +100,7 @@ void MainWindow::on_pushButton_7_clicked()  //suggerimento
         char letters[costanti::TERRAIN_SIZE_X][costanti::TERRAIN_SIZE_Y];
         for(std::size_t x=0;x<costanti::TERRAIN_SIZE_X;x++)
             for(std::size_t y=0;y<costanti::TERRAIN_SIZE_Y;y++)
-                letters[x][y]=terrain->getElement(x,y);
+                letters[y][x]=terrain->getElement(y,x);
         std::string hand="";
         for(std::size_t i =0;i<costanti::MAX_LETTERS_HAND;i++)
             hand+=(giocatori.at(turno_giocatore).get_letter(i));
