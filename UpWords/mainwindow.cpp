@@ -13,6 +13,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     d = new dizionario("C:\\Users\\giorgio\\Documents\\GitHub\\UpWords\\dizionario\\it_IT.txt");
     terrain=new(Terreno);
+    /*
+     * qui il dizionario funziona, ritorna 1
+    std::string test = "CIAO";
+    std::cerr<<d->exist(test);*/
     s = new(sacchetto);
     arbitro=new referee(d,terrain);
     terrainWidgetInit();
@@ -26,42 +30,20 @@ MainWindow::MainWindow(QWidget *parent) :
     add_player();
     start_game();
 }
-void MainWindow::terrainWidgetInit()
-{
-    ui->tableWidget->setRowCount(costanti::DIM_CAMPOGIOCO);
-    ui->tableWidget->setColumnCount(costanti::DIM_CAMPOGIOCO);
-    ui->tableWidget->verticalHeader()->setVisible(false);
-    ui->tableWidget->horizontalHeader()->setOffset(0);
-    ui->tableWidget->horizontalHeader()->setDefaultSectionSize(45);
-    ui->tableWidget->verticalHeader()->setDefaultSectionSize(45);
-    ui->tableWidget->verticalHeader()->setOffset(0);
-    ui->tableWidget->horizontalHeader()->setVisible(false);
-    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
-
-
-}
 MainWindow::~MainWindow()
 {
     delete ui;
     delete d;
     delete terrain;
 }
+
+//FUNZIONI DI CORREDO
 void MainWindow::fillGamerHand(giocatore &g)
 {
 
     while(!g.hand_full()&&(!s->this_is_empty()))
     {
         g.add_letter(s->convert_to_char(s->extract_letter()));
-    }
-}
-void MainWindow::loadRack()
-{
-    ui->lettere_table->clear();
-    for(std::size_t i = 0; i< costanti::MAX_LETTERS_HAND;i++)
-    {
-      QString item;
-      item.append(giocatori.at(turno_giocatore).get_letter(i));
-      ui->lettere_table->setItem(0,i,new QTableWidgetItem(item));
     }
 }
 void MainWindow::onTurnSwitched()
@@ -77,6 +59,80 @@ void MainWindow::onTurnSwitched()
   init_suggerimento();
 
 
+}
+
+
+//QUI CI SONO PROBLEMI
+void MainWindow::init_suggerimento()
+{
+    if(game_started)
+    {
+        char letters[costanti::TERRAIN_SIZE_X][costanti::TERRAIN_SIZE_Y];
+        for(std::size_t x=0;x<costanti::TERRAIN_SIZE_X;x++)
+            for(std::size_t y=0;y<costanti::TERRAIN_SIZE_Y;y++)
+                letters[y][x]=terrain->getElement(y,x);
+        std::string hand="";
+        for(std::size_t i =0;i<costanti::MAX_LETTERS_HAND;i++)
+            hand+=(giocatori.at(turno_giocatore).get_letter(i));
+        if(c!=nullptr)
+            delete c;
+        c=new Combinatore(hand,d,letters); //init puntatore combinatore
+        //qui il thread
+    }
+}
+//______FINE PROBLEMI
+void MainWindow::start_game()
+{
+    if(giocatori.size()>costanti::MIN_PLAYERS)
+    {
+        game_started=true;
+        turno_giocatore=0;
+        setLettersTable();
+        setPlayerLabel();
+        onTurnSwitched();
+    }
+}
+void MainWindow::add_player()
+{
+  //aprire la finestra per inserimento giocatore (se possibile)
+    if(giocatori.size()<costanti::MAX_PLAYERS)
+    {
+        //.....
+        std::string nome="c";
+        giocatore g(nome);
+        giocatori.push_back(g);
+    }
+}
+void MainWindow::error_message(std::string title,std::string body)
+{
+    QMessageBox::information(this,QString::fromStdString(title),QString::fromStdString(body));
+}
+
+
+//FUNZIONI GUI
+void MainWindow::terrainWidgetInit()
+{
+    ui->tableWidget->setRowCount(costanti::DIM_CAMPOGIOCO);
+    ui->tableWidget->setColumnCount(costanti::DIM_CAMPOGIOCO);
+    ui->tableWidget->verticalHeader()->setVisible(false);
+    ui->tableWidget->horizontalHeader()->setOffset(0);
+    ui->tableWidget->horizontalHeader()->setDefaultSectionSize(45);
+    ui->tableWidget->verticalHeader()->setDefaultSectionSize(45);
+    ui->tableWidget->verticalHeader()->setOffset(0);
+    ui->tableWidget->horizontalHeader()->setVisible(false);
+    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+
+}
+void MainWindow::loadRack()
+{
+    ui->lettere_table->clear();
+    for(std::size_t i = 0; i< costanti::MAX_LETTERS_HAND;i++)
+    {
+      QString item;
+      item.append(giocatori.at(turno_giocatore).get_letter(i));
+      ui->lettere_table->setItem(0,i,new QTableWidgetItem(item));
+    }
 }
 void MainWindow::set_gamer_points()
 {
@@ -96,36 +152,6 @@ void MainWindow::UpdateTerrain(Terreno *terrain)
     ui->tableWidget->show();
 
 }
-void MainWindow::on_pushButton_7_clicked()  //suggerimento
-{
-    if(game_started)
-    {
-        t1->join();
-        QMessageBox::information(this, "SUGGERIMENTO",QString::fromStdString(th1_result));
-    }
-}
-void thread_exec(std::string hand,dizionario* d,char letters[costanti::TERRAIN_SIZE_X][costanti::TERRAIN_SIZE_Y],std::string * result)
-{
-     Combinatore c(hand,d,letters);
-     *result=c.suggerimento();
-}
-void MainWindow::init_suggerimento()
-{
-    if(game_started)
-    {
-        char letters[costanti::TERRAIN_SIZE_X][costanti::TERRAIN_SIZE_Y];
-        for(std::size_t x=0;x<costanti::TERRAIN_SIZE_X;x++)
-            for(std::size_t y=0;y<costanti::TERRAIN_SIZE_Y;y++)
-                letters[y][x]=terrain->getElement(y,x);
-        std::string hand="";
-        for(std::size_t i =0;i<costanti::MAX_LETTERS_HAND;i++)
-            hand+=(giocatori.at(turno_giocatore).get_letter(i));
-
-
-
-    }
-}
-
 void MainWindow::setPlayerLabel()
 {
    ui->giocatori_table->setRowCount(1);
@@ -156,60 +182,6 @@ void MainWindow::setLettersTable()
     ui->lettere_table->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
 }
-void MainWindow::start_game()
-{
-    if(giocatori.size()>costanti::MIN_PLAYERS)
-    {
-        game_started=true;
-        turno_giocatore=0;
-        setLettersTable();
-        setPlayerLabel();
-        onTurnSwitched();
-    }
-}
-void MainWindow::add_player()
-{
-  //aprire la finestra per inserimento giocatore (se possibile)
-    if(giocatori.size()<costanti::MAX_PLAYERS)
-    {
-        //.....
-        std::string nome="c";
-        giocatore g(nome);
-        giocatori.push_back(g);
-    }
-}
-void MainWindow::on_lettere_table_cellClicked(int row, int column) //click rack lettere
-{
-    if(game_started&&giocatori.at(turno_giocatore).get_letter(static_cast<unsigned int>(column))!=costanti::EMPITY_FIELD)
-    {
-      selected_letter=giocatori.at(turno_giocatore).get_letter(static_cast<unsigned int>(column));
-      ui->passaturno_btn->hide();
-      ui->lettere_table->item(row,column)->setFlags(Qt::ItemFlag::NoItemFlags);
-    }
-    else
-        selected_letter=costanti::EMPITY_FIELD;
-
-}
-void MainWindow::on_tableWidget_cellClicked(int row, int column) //click campo gioco
-{
-    if(game_started)
-    {
-        if(selected_letter!=costanti::EMPITY_FIELD)
-        {
-            to_insert.push_back(cella(static_cast<std::size_t>(column),static_cast<std::size_t>(row),selected_letter));
-            QString s;
-            s+=selected_letter;
-            ui->tableWidget->setItem(row,column,new QTableWidgetItem(s));
-            disable_grid(static_cast<std::size_t>(column),static_cast<std::size_t>(row));
-
-        }
-        else
-            error_message("ERRORE INPUT","\n Prima devi selezionare una lettera \n");
-
-    }
-    selected_letter=costanti::EMPITY_FIELD;//non dovrebbe servire ma non si sa mai
-
-}
 void MainWindow::reset_insert_data()
 {
     UpdateTerrain(terrain);
@@ -218,10 +190,6 @@ void MainWindow::reset_insert_data()
     enable_grid();
     ui->passaturno_btn->show();
     enable_rack_click();
-}
-void MainWindow::on_abort_btn_clicked() //annulla inserimento
-{
-    reset_insert_data();
 }
 void MainWindow::disable_grid()
 {
@@ -264,29 +232,16 @@ void MainWindow::disable_grid(std::size_t x,std::size_t y)
 
 
 }
-void MainWindow::on_cambia_btn_clicked() //cambia lettere nel rack
+void MainWindow::enable_rack_click()
 {
-    if(game_started)
-    {
-        if(selected_letter!=costanti::EMPITY_FIELD)
-        {
-          giocatori.at(turno_giocatore).remove_letter(selected_letter);
-          giocatori.at(turno_giocatore).add_letter(s->change_letter(selected_letter));
-          loadRack();
-        }
-        else
-            error_message("ERRORE ","\n Prima devi selezionare una lettera\n");
-    }
-}
-void MainWindow::error_message(std::string title,std::string body)
-{
-    QMessageBox::information(this,QString::fromStdString(title),QString::fromStdString(body));
-}
+    for(std::size_t i =0;i<costanti::MAX_LETTERS_HAND;i++)
+      ui->lettere_table->item(0,i)->setFlags(Qt::ItemIsEnabled|Qt::ItemIsSelectable);
+}//EVENTI GUI
 void MainWindow::on_conferma_btn_clicked()
 {
     if(to_insert.size()>0)
     {
-        short int point = arbitro->insWord(to_insert);
+        short int point = arbitro->insWord(to_insert);                              //a volte non funziona e bugga sulla prima colonna
         std::cerr<<"PUNTI : "<<point<<std::endl;
         std::cerr<<"RACK  : "<<to_insert.size()<<std::endl;
         if(point>=0)//se sono valide le lettere inserite e tutto va bene
@@ -304,6 +259,20 @@ void MainWindow::on_conferma_btn_clicked()
     }
     reset_insert_data();
 }
+void MainWindow::on_cambia_btn_clicked() //cambia lettere nel rack
+{
+    if(game_started)
+    {
+        if(selected_letter!=costanti::EMPITY_FIELD)
+        {
+          giocatori.at(turno_giocatore).remove_letter(selected_letter);
+          giocatori.at(turno_giocatore).add_letter(s->change_letter(selected_letter));
+          loadRack();
+        }
+        else
+            error_message("ERRORE ","\n Prima devi selezionare una lettera\n");
+    }
+}
 void MainWindow::on_passaturno_btn_clicked()
 {
     if(game_started)
@@ -315,8 +284,47 @@ void MainWindow::on_passaturno_btn_clicked()
         onTurnSwitched();
     }
 }
-void MainWindow::enable_rack_click()
+void MainWindow::on_abort_btn_clicked() //annulla inserimento
 {
-    for(std::size_t i =0;i<costanti::MAX_LETTERS_HAND;i++)
-      ui->lettere_table->item(0,i)->setFlags(Qt::ItemIsEnabled|Qt::ItemIsSelectable);
+    reset_insert_data();
+}
+void MainWindow::on_lettere_table_cellClicked(int row, int column) //click rack lettere
+{
+    if(game_started&&giocatori.at(turno_giocatore).get_letter(static_cast<unsigned int>(column))!=costanti::EMPITY_FIELD)
+    {
+      selected_letter=giocatori.at(turno_giocatore).get_letter(static_cast<unsigned int>(column));
+      ui->passaturno_btn->hide();
+      ui->lettere_table->item(row,column)->setFlags(Qt::ItemFlag::NoItemFlags);
+    }
+    else
+        selected_letter=costanti::EMPITY_FIELD;
+
+}
+void MainWindow::on_tableWidget_cellClicked(int row, int column) //click campo gioco
+{
+    if(game_started)
+    {
+        if(selected_letter!=costanti::EMPITY_FIELD)
+        {
+            to_insert.push_back(cella(static_cast<std::size_t>(column),static_cast<std::size_t>(row),selected_letter));
+            QString s;
+            s+=selected_letter;
+            ui->tableWidget->setItem(row,column,new QTableWidgetItem(s));
+            disable_grid(static_cast<std::size_t>(column),static_cast<std::size_t>(row));
+
+        }
+        else
+            error_message("ERRORE INPUT","\n Prima devi selezionare una lettera \n");
+
+    }
+    selected_letter=costanti::EMPITY_FIELD;//non dovrebbe servire ma non si sa mai
+
+}
+void MainWindow::on_pushButton_7_clicked()  //suggerimento
+{
+    if(game_started)
+    {
+        t1->join();
+        QMessageBox::information(this, "SUGGERIMENTO",QString::fromStdString(th1_result));
+    }
 }
