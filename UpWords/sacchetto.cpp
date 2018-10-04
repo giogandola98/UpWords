@@ -11,7 +11,7 @@ sacchetto::sacchetto()
 void sacchetto::inizializza_sacchetto()
 {
     //init array with upwords rules
-         srand(time(0));
+         srand(time(nullptr));
          Possibilita[0]=7;
          Possibilita[1]=3;
          Possibilita[2]=4;

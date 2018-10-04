@@ -57,6 +57,8 @@ void MainWindow::onTurnSwitched()
   //qui devo fare lo switch del giocatore nell'array giocatori
   ui->turno_giocatore->setText(QString::number(turno_giocatore+1));
   init_suggerimento();
+  //riabilito il bottone di cambio lettera
+  ui->cambia_btn->show();
 
 
 }
@@ -129,7 +131,6 @@ void MainWindow::launch_win()
     reset_insert_data();
     giocatori.clear();
 }
-
 //FUNZIONI GUI
 void MainWindow::terrainWidgetInit()
 {
@@ -258,7 +259,7 @@ void MainWindow::enable_rack_click()
     for(std::size_t i =0;i<costanti::MAX_LETTERS_HAND;i++)
       ui->lettere_table->item(0,i)->setFlags(Qt::ItemIsEnabled|Qt::ItemIsSelectable);
 }//EVENTI GUI
-void MainWindow::on_conferma_btn_clicked()
+void MainWindow::on_conferma_btn_clicked() //se confermo l'inserimento
 {
     if(game_started)
     {
@@ -294,6 +295,8 @@ void MainWindow::on_cambia_btn_clicked() //cambia lettere nel rack
           giocatori.at(turno_giocatore).remove_letter(selected_letter);
           giocatori.at(turno_giocatore).add_letter(s->change_letter(selected_letter));
           loadRack();
+          ui->passaturno_btn->show();  //può sempre cambiare turno in questo caso
+          ui->cambia_btn->hide();
         }
         else
             error_message("ERRORE ","\n Prima devi selezionare una lettera\n");
@@ -313,14 +316,18 @@ void MainWindow::on_passaturno_btn_clicked()
 void MainWindow::on_abort_btn_clicked() //annulla inserimento
 {
     reset_insert_data();
+    ui->cambia_btn->show();
 }
 void MainWindow::on_lettere_table_cellClicked(int row, int column) //click rack lettere
 {
     if(game_started&&giocatori.at(turno_giocatore).get_letter(static_cast<unsigned int>(column))!=costanti::EMPITY_FIELD)
     {
-      selected_letter=giocatori.at(turno_giocatore).get_letter(static_cast<unsigned int>(column));
-      ui->passaturno_btn->hide();
-      ui->lettere_table->item(row,column)->setFlags(Qt::ItemFlag::NoItemFlags);
+      if(ui->lettere_table->item(row,column)->flags()!=Qt::ItemFlag::NoItemFlags)
+      {
+        selected_letter=giocatori.at(turno_giocatore).get_letter(static_cast<unsigned int>(column));
+        ui->passaturno_btn->hide();
+        ui->lettere_table->item(row,column)->setFlags(Qt::ItemFlag::NoItemFlags);
+      }
     }
     else
         selected_letter=costanti::EMPITY_FIELD;
@@ -332,19 +339,24 @@ void MainWindow::on_tableWidget_cellClicked(int row, int column) //click campo g
     {
         if(selected_letter!=costanti::EMPITY_FIELD)
         {
-            to_insert.push_back(cella(static_cast<std::size_t>(column),static_cast<std::size_t>(row),selected_letter));
-            QString s;
-            s+=selected_letter;
-            ui->tableWidget->setItem(row,column,new QTableWidgetItem(s));
-            disable_grid(static_cast<std::size_t>(column),static_cast<std::size_t>(row));
+            if(ui->tableWidget->item(row,column)->flags()!=Qt::ItemFlag::NoItemFlags)
+            {
+                ui->cambia_btn->hide();
+                to_insert.push_back(cella(static_cast<std::size_t>(column),static_cast<std::size_t>(row),selected_letter));
+                QString s;
+                s+=selected_letter;
+                ui->tableWidget->setItem(row,column,new QTableWidgetItem(s));
+                disable_grid(static_cast<std::size_t>(column),static_cast<std::size_t>(row));
+                selected_letter=costanti::EMPITY_FIELD;
+            }
+            else
+                error_message("ERRORE INPUT","\n Seleziona un area del campo valida \n");
 
         }
         else
             error_message("ERRORE INPUT","\n Prima devi selezionare una lettera \n");
 
     }
-    selected_letter=costanti::EMPITY_FIELD;//non dovrebbe servire ma non si sa mai
-
 }
 void MainWindow::on_pushButton_7_clicked()  //suggerimento
 {
