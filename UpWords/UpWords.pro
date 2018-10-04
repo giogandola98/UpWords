@@ -35,8 +35,7 @@ SOURCES += \
     combinatore.cpp \
     costanti.cpp \
     referee.cpp \
-    cella.cpp \
-    points_calcultator.cpp
+    cella.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -48,8 +47,7 @@ HEADERS += \
     combinatore.h \
     costanti.h \
     referee.h \
-    cella.h \
-    points_calculator.h
+    cella.h
 
 FORMS += \
         mainwindow.ui

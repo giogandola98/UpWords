@@ -27,6 +27,9 @@ public:
     //
     static const unsigned short int MIN_PLAYERS = 2;
     static const unsigned short int MAX_PLAYERS = 4;
+    //
+    static const char BONUS_LETTER = 'Q';
+    static const unsigned int HAND_BONUS=20;
 
 
 };

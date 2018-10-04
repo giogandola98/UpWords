@@ -55,6 +55,7 @@ private:
     void enable_row(std::size_t y,std::size_t x);
     void enable_column(std::size_t x,std::size_t y);
     void init_suggerimento();
+    static void threadStart(std::string hand,dizionario *d,char letters[costanti::TERRAIN_SIZE_X][costanti::TERRAIN_SIZE_Y]);
     referee *arbitro;
     sacchetto *s;
     Terreno *terrain;
@@ -66,7 +67,7 @@ private:
     char selected_letter;
     std::vector<cella> to_insert;
     std::thread *t1;
-    std::string th1_result;
+    static std::string th1_result;
 
 
 };

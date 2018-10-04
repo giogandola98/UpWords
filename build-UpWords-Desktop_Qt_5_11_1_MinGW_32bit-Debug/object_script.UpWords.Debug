@@ -10,6 +10,5 @@ INPUT(
 ./debug\costanti.o
 ./debug\referee.o
 ./debug\cella.o
-./debug\points_calcultator.o
 ./debug\moc_mainwindow.o
 );

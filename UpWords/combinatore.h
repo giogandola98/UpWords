@@ -18,7 +18,6 @@ private:
      int counter;       //counter for words number
      char field[campodim][campodim];
      int x,y;       //best word x and y
-
      std::string simpleAnagram();   //no words on field
      std::string Anagram();      //words on field
      void ricorsioneSemplice(std::string str, std::string res); //simple anagram
@@ -67,7 +66,7 @@ public:
     void setY(int value);
     //}
 
-    void operator()(std::string &result);
+    static void suggerimento_thread(std::string &result);
     std::string suggerimento();
 
 

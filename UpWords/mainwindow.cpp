@@ -5,6 +5,7 @@
 #include "terreno.h"
 #include <QMessageBox>
 #include "functional"
+#include <QInputDialog>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -29,6 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     add_player();
     add_player();
     start_game();
+
 }
 MainWindow::~MainWindow()
 {
@@ -37,7 +39,11 @@ MainWindow::~MainWindow()
     delete terrain;
 }
 
-//FUNZIONI DI CORREDO
+//FUNZIONI DI CORREDO(
+void MainWindow::threadStart(std::string hand,dizionario *d,char letters[costanti::TERRAIN_SIZE_X][costanti::TERRAIN_SIZE_Y])
+{
+
+}
 void MainWindow::fillGamerHand(giocatore &g)
 {
 
@@ -60,8 +66,6 @@ void MainWindow::onTurnSwitched()
 
 
 }
-
-
 //QUI CI SONO PROBLEMI
 void MainWindow::init_suggerimento()
 {
@@ -74,10 +78,7 @@ void MainWindow::init_suggerimento()
         std::string hand="";
         for(std::size_t i =0;i<costanti::MAX_LETTERS_HAND;i++)
             hand+=(giocatori.at(turno_giocatore).get_letter(i));
-        if(c!=nullptr)
-            delete c;
-        c=new Combinatore(hand,d,letters); //init puntatore combinatore
-        //qui il thread
+        //qui il thread start
     }
 }
 //______FINE PROBLEMI
@@ -241,10 +242,11 @@ void MainWindow::on_conferma_btn_clicked()
 {
     if(to_insert.size()>0)
     {
-        short int point = arbitro->insWord(to_insert);                              //a volte non funziona e bugga sulla prima colonna
+
+        short int point = arbitro->insWord(to_insert);    //a volte non funziona e bugga sulla prima colonna
         std::cerr<<"PUNTI : "<<point<<std::endl;
         std::cerr<<"RACK  : "<<to_insert.size()<<std::endl;
-        if(point>=0)//se sono valide le lettere inserite e tutto va bene
+        if(point>0)//se sono valide le lettere inserite e tutto va bene
         {
             giocatori.at(turno_giocatore).update_points(point);
             set_gamer_points();
@@ -256,6 +258,7 @@ void MainWindow::on_conferma_btn_clicked()
             loadRack();
 
         }
+        MainWindow::on_cambia_btn_clicked();
     }
     reset_insert_data();
 }

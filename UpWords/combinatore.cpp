@@ -166,7 +166,7 @@ std::string Combinatore::suggerimento()
     else
         return Anagram();               //field with words
 }
-void Combinatore::operator()(std::string &result)
+void Combinatore::suggerimento_thread(std::string &result)
 {
     bool simple=true;
     for(size_t i=0;i<campodim;i++)        //is field empty?

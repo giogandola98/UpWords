@@ -9,7 +9,7 @@ cella::cella()
 }
 cella::cella(std::size_t x,std::size_t y,char c)
 {
-    setCella(c,x,y);
+    setCella(c,y,x);
 }
 
 
