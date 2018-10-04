@@ -33,7 +33,7 @@ MainWindow::~MainWindow()
     delete terrain;
 }
 
-//FUNZIONI DI CORREDO(
+//FUNZIONI DI CORREDO
 void MainWindow::threadStart(std::string hand,dizionario *d,char letters[costanti::TERRAIN_SIZE_X][costanti::TERRAIN_SIZE_Y])
 {
 
@@ -265,7 +265,7 @@ void MainWindow::on_conferma_btn_clicked()
         if(to_insert.size()>0)
         {
 
-            short int point = arbitro->insWord(to_insert);    //a volte non funziona e bugga sulla prima colonna
+            short int point = arbitro->insWord(to_insert);
             std::cerr<<"PUNTI : "<<point<<std::endl;
             std::cerr<<"RACK  : "<<to_insert.size()<<std::endl;
             if(point>0)//se sono valide le lettere inserite e tutto va bene
@@ -280,7 +280,7 @@ void MainWindow::on_conferma_btn_clicked()
                 loadRack();
 
             }
-            MainWindow::on_cambia_btn_clicked(); //cambia turno
+            MainWindow::on_passaturno_btn_clicked(); //cambia turno
         }
         reset_insert_data();
     }
@@ -362,7 +362,6 @@ void MainWindow::on_conferma_btn_2_clicked()
     add_player();
     setPlayerLabel();
 }
-
 void MainWindow::on_end_btn_clicked()
 {
     launch_win();
