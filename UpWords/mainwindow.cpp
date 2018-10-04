@@ -228,12 +228,12 @@ void MainWindow::enable_grid()
 }
 void MainWindow::enable_column(std::size_t x,std::size_t y)
 {
-    for(std::size_t j=x;j<costanti::DIM_CAMPOGIOCO;j++)
+    for(std::size_t j=x+1;j<costanti::DIM_CAMPOGIOCO;j++)
             ui->tableWidget->item(y,j)->setFlags(Qt::ItemIsEnabled|Qt::ItemIsSelectable);
 }
 void MainWindow::enable_row(std::size_t y,std::size_t x)
 {
-    for(std::size_t j=y;j<costanti::DIM_CAMPOGIOCO;j++)
+    for(std::size_t j=y+1;j<costanti::DIM_CAMPOGIOCO;j++)
             ui->tableWidget->item(j,x)->setFlags(Qt::ItemIsEnabled|Qt::ItemIsSelectable);
 }
 void MainWindow::disable_grid(std::size_t x,std::size_t y)
