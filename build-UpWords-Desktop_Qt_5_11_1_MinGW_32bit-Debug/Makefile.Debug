@@ -551,10 +551,6 @@ debug/mainwindow.o: ../UpWords/mainwindow.cpp ../UpWords/mainwindow.h \
 		C:/Qt/5.11.1/mingw53_32/include/QtWidgets/qrubberband.h \
 		C:/Qt/5.11.1/mingw53_32/include/QtWidgets/QLabel \
 		C:/Qt/5.11.1/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/5.11.1/mingw53_32/include/QtWidgets/QMenu \
-		C:/Qt/5.11.1/mingw53_32/include/QtWidgets/qmenu.h \
-		C:/Qt/5.11.1/mingw53_32/include/QtWidgets/QMenuBar \
-		C:/Qt/5.11.1/mingw53_32/include/QtWidgets/qmenubar.h \
 		C:/Qt/5.11.1/mingw53_32/include/QtWidgets/QPushButton \
 		C:/Qt/5.11.1/mingw53_32/include/QtWidgets/qpushbutton.h \
 		C:/Qt/5.11.1/mingw53_32/include/QtWidgets/qabstractbutton.h \
@@ -568,7 +564,14 @@ debug/mainwindow.o: ../UpWords/mainwindow.cpp ../UpWords/mainwindow.h \
 		C:/Qt/5.11.1/mingw53_32/include/QtWidgets/QWidget \
 		C:/Qt/5.11.1/mingw53_32/include/QtWidgets/QMessageBox \
 		C:/Qt/5.11.1/mingw53_32/include/QtWidgets/qmessagebox.h \
-		C:/Qt/5.11.1/mingw53_32/include/QtWidgets/qdialog.h
+		C:/Qt/5.11.1/mingw53_32/include/QtWidgets/qdialog.h \
+		C:/Qt/5.11.1/mingw53_32/include/QtWidgets/QInputDialog \
+		C:/Qt/5.11.1/mingw53_32/include/QtWidgets/qinputdialog.h \
+		C:/Qt/5.11.1/mingw53_32/include/QtWidgets/qlineedit.h \
+		C:/Qt/5.11.1/mingw53_32/include/QtGui/qtextcursor.h \
+		C:/Qt/5.11.1/mingw53_32/include/QtGui/qtextformat.h \
+		C:/Qt/5.11.1/mingw53_32/include/QtGui/qpen.h \
+		C:/Qt/5.11.1/mingw53_32/include/QtGui/qtextoption.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\UpWords\mainwindow.cpp
 
 debug/sacchetto.o: ../UpWords/sacchetto.cpp ../UpWords/sacchetto.h \

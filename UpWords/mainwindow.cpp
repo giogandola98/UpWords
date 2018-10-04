@@ -98,7 +98,7 @@ void MainWindow::start_game()
 void MainWindow::add_player()
 {
   //aprire la finestra per inserimento giocatore (se possibile)
-    if(giocatori.size()<costanti::MAX_PLAYERS)
+    if(giocatori.size()<costanti::MAX_PLAYERS&&!game_started)
     {
         QString s =QInputDialog::getText(this,"AGGIUNGI GIOCATORE","Inserisci nome giocatore");
         giocatore g(s.toStdString());
