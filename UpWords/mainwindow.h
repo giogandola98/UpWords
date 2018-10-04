@@ -38,6 +38,8 @@ private slots:
 
     void on_conferma_btn_2_clicked();
 
+    void on_end_btn_clicked();
+
 private:
     Ui::MainWindow *ui;
     void update_game_points();
@@ -59,6 +61,7 @@ private:
     void enable_row(std::size_t y,std::size_t x);
     void enable_column(std::size_t x,std::size_t y);
     void init_suggerimento();
+    void launch_win();
     static void threadStart(std::string hand,dizionario *d,char letters[costanti::TERRAIN_SIZE_X][costanti::TERRAIN_SIZE_Y]);
     referee *arbitro;
     sacchetto *s;

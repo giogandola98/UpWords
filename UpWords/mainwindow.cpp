@@ -98,7 +98,7 @@ void MainWindow::start_game()
 void MainWindow::add_player()
 {
   //aprire la finestra per inserimento giocatore (se possibile)
-    if(giocatori.size()<costanti::MAX_PLAYERS)
+    if(giocatori.size()<costanti::MAX_PLAYERS&&!game_started)
     {
         QString s =QInputDialog::getText(this,"AGGIUNGI GIOCATORE","Inserisci nome giocatore");
         giocatore g(s.toStdString());
@@ -111,7 +111,24 @@ void MainWindow::error_message(std::string title,std::string body)
 {
     QMessageBox::information(this,QString::fromStdString(title),QString::fromStdString(body));
 }
-
+void MainWindow::launch_win()
+{
+    short int max_points=0;
+    std::string max_name;
+    foreach (giocatore g, giocatori)
+    {
+        if(g.get_points()>=max_points)
+        {
+            max_points=g.get_points();
+            max_name  =g.get_name();
+        }
+    }
+    std::cerr<<max_name;
+    error_message("VITTORIA","Vince il giocatore "+max_name);
+    game_started=false;
+    reset_insert_data();
+    giocatori.clear();
+}
 
 //FUNZIONI GUI
 void MainWindow::terrainWidgetInit()
@@ -344,4 +361,9 @@ void MainWindow::on_conferma_btn_2_clicked()
 {
     add_player();
     setPlayerLabel();
+}
+
+void MainWindow::on_end_btn_clicked()
+{
+    launch_win();
 }

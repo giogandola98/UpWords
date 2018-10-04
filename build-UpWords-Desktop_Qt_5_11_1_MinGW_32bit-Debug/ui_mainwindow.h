@@ -46,6 +46,7 @@ public:
     QPushButton *passaturno_btn;
     QPushButton *conferma_btn_2;
     QPushButton *conferma_btn_3;
+    QPushButton *end_btn;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
@@ -136,7 +137,10 @@ public:
         conferma_btn_2->setGeometry(QRect(10, 10, 161, 51));
         conferma_btn_3 = new QPushButton(centralWidget);
         conferma_btn_3->setObjectName(QStringLiteral("conferma_btn_3"));
-        conferma_btn_3->setGeometry(QRect(190, 10, 161, 51));
+        conferma_btn_3->setGeometry(QRect(270, 10, 161, 51));
+        end_btn = new QPushButton(centralWidget);
+        end_btn->setObjectName(QStringLiteral("end_btn"));
+        end_btn->setGeometry(QRect(740, 10, 161, 51));
         MainWindow->setCentralWidget(centralWidget);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -169,6 +173,7 @@ public:
         passaturno_btn->setText(QApplication::translate("MainWindow", "Passa il Turno", nullptr));
         conferma_btn_2->setText(QApplication::translate("MainWindow", "Aggiungi giocatore", nullptr));
         conferma_btn_3->setText(QApplication::translate("MainWindow", "avvia gioco", nullptr));
+        end_btn->setText(QApplication::translate("MainWindow", "Termina Partita", nullptr));
     } // retranslateUi
 
 };
