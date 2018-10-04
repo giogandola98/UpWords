@@ -10,5 +10,6 @@ INPUT(
 ./release\costanti.o
 ./release\referee.o
 ./release\cella.o
+./release\points_calcultator.o
 ./release\moc_mainwindow.o
 );
