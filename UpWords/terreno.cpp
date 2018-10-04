@@ -12,6 +12,15 @@ void Terreno::save_copy()
 
         }
 }
+void Terreno::restore_copy()
+{
+    for(std::size_t i=0; i< costanti::TERRAIN_SIZE_X; i++)
+        for(std::size_t a=0; a< costanti::TERRAIN_SIZE_Y; a++)
+        {
+          letters[i][a]=letters_old[i][a];
+
+        }
+}
 Terreno::Terreno()
 {
   //init terrain

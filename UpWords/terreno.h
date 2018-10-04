@@ -16,6 +16,7 @@ public:
     void save_copy();                                                   //copia l'attuale campo da gioco in una matrice di backup (non copia i livelli e le sovrapposizioni)
     char getCopyElement(unsigned int x, unsigned int y);                //restituisce una lettera della matrice di backup in posizione xy
     void insertChar(unsigned int x, unsigned int y, char letter,unsigned short level);
+    void restore_copy();
 private:
     char letters[costanti::TERRAIN_SIZE_X][costanti::TERRAIN_SIZE_Y];
     char letters_old[costanti::TERRAIN_SIZE_X][costanti::TERRAIN_SIZE_Y];
