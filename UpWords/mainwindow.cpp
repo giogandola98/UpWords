@@ -25,12 +25,6 @@ MainWindow::MainWindow(QWidget *parent) :
     game_started=false;
     selected_letter=costanti::EMPITY_FIELD;
     c=nullptr;
-    add_player();
-    add_player();
-    add_player();
-    add_player();
-    start_game();
-
 }
 MainWindow::~MainWindow()
 {
@@ -84,7 +78,9 @@ void MainWindow::init_suggerimento()
 //______FINE PROBLEMI
 void MainWindow::start_game()
 {
-    if(giocatori.size()>costanti::MIN_PLAYERS)
+    if(!game_started)
+    {
+    if(giocatori.size()>=costanti::MIN_PLAYERS)
     {
         game_started=true;
         turno_giocatore=0;
@@ -92,17 +88,24 @@ void MainWindow::start_game()
         setPlayerLabel();
         onTurnSwitched();
     }
+    else
+        error_message("ERROR","Giocatori non sufficenti");
+    }
+    else
+        error_message("ERROR","Gioco già iniziato");
+
 }
 void MainWindow::add_player()
 {
   //aprire la finestra per inserimento giocatore (se possibile)
     if(giocatori.size()<costanti::MAX_PLAYERS)
     {
-        //.....
-        std::string nome="c";
-        giocatore g(nome);
+        QString s =QInputDialog::getText(this,"AGGIUNGI GIOCATORE","Inserisci nome giocatore");
+        giocatore g(s.toStdString());
         giocatori.push_back(g);
-    }
+        std::cerr<<giocatori.size();
+    }else
+        error_message("ERROR","Giocatori al Completo");
 }
 void MainWindow::error_message(std::string title,std::string body)
 {
@@ -240,27 +243,30 @@ void MainWindow::enable_rack_click()
 }//EVENTI GUI
 void MainWindow::on_conferma_btn_clicked()
 {
-    if(to_insert.size()>0)
+    if(game_started)
     {
-
-        short int point = arbitro->insWord(to_insert);    //a volte non funziona e bugga sulla prima colonna
-        std::cerr<<"PUNTI : "<<point<<std::endl;
-        std::cerr<<"RACK  : "<<to_insert.size()<<std::endl;
-        if(point>0)//se sono valide le lettere inserite e tutto va bene
+        if(to_insert.size()>0)
         {
-            giocatori.at(turno_giocatore).update_points(point);
-            set_gamer_points();
-            UpdateTerrain(terrain);
-            foreach (cella c, to_insert)
-            {
-                giocatori.at(turno_giocatore).remove_letter(c.getCharacter());
-            }
-            loadRack();
 
+            short int point = arbitro->insWord(to_insert);    //a volte non funziona e bugga sulla prima colonna
+            std::cerr<<"PUNTI : "<<point<<std::endl;
+            std::cerr<<"RACK  : "<<to_insert.size()<<std::endl;
+            if(point>0)//se sono valide le lettere inserite e tutto va bene
+            {
+                giocatori.at(turno_giocatore).update_points(point);
+                set_gamer_points();
+                UpdateTerrain(terrain);
+                foreach (cella c, to_insert)
+                {
+                    giocatori.at(turno_giocatore).remove_letter(c.getCharacter());
+                }
+                loadRack();
+
+            }
+            MainWindow::on_cambia_btn_clicked(); //cambia turno
         }
-        MainWindow::on_cambia_btn_clicked();
+        reset_insert_data();
     }
-    reset_insert_data();
 }
 void MainWindow::on_cambia_btn_clicked() //cambia lettere nel rack
 {
@@ -327,7 +333,15 @@ void MainWindow::on_pushButton_7_clicked()  //suggerimento
 {
     if(game_started)
     {
-        t1->join();
-        QMessageBox::information(this, "SUGGERIMENTO",QString::fromStdString(th1_result));
+
     }
+}
+void MainWindow::on_conferma_btn_3_clicked()
+{
+    start_game();
+}
+void MainWindow::on_conferma_btn_2_clicked()
+{
+    add_player();
+    setPlayerLabel();
 }

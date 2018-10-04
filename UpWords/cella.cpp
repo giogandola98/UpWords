@@ -9,14 +9,13 @@ cella::cella()
 }
 cella::cella(std::size_t x,std::size_t y,char c)
 {
-    setCella(c,y,x);
+    setCella(c,x,y);
 }
 
 
 cella::~cella()
 {
 }
-
 std::size_t cella::getH() {
     return h;
 }
@@ -45,7 +44,6 @@ bool cella::setCella(char c, std::size_t x, std::size_t y) {
             return false;
     }
 }
-
 bool cella::hcontrol() {
     if (h == costanti::MAX_LAYERS_NUM)
         return false;

@@ -34,6 +34,10 @@ private slots:
     void on_conferma_btn_clicked();
     void on_passaturno_btn_clicked();
 
+    void on_conferma_btn_3_clicked();
+
+    void on_conferma_btn_2_clicked();
+
 private:
     Ui::MainWindow *ui;
     void update_game_points();
@@ -66,8 +70,6 @@ private:
     bool game_started;
     char selected_letter;
     std::vector<cella> to_insert;
-    std::thread *t1;
-    static std::string th1_result;
 
 
 };

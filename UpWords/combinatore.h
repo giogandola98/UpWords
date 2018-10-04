@@ -66,7 +66,7 @@ public:
     void setY(int value);
     //}
 
-    static void suggerimento_thread(std::string &result);
+    void suggerimento_thread(std::string &result);
     std::string suggerimento();
 
 
