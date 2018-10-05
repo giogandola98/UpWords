@@ -37,13 +37,11 @@ void referee::copyTerreno(cella backup[costanti::DIM_CAMPOGIOCO][costanti::DIM_C
     for (int i = 0; i<costanti::DIM_CAMPOGIOCO;i++)
         for (int j = 0; j<costanti::DIM_CAMPOGIOCO;j++)
             backup[i][j].setCella(terreno[i][j].getCharacter(), terreno[i][j].getX(), terreno[i][j].getY());
-    t->save_copy();
 }
 void referee::backup(cella campo[costanti::DIM_CAMPOGIOCO][costanti::DIM_CAMPOGIOCO]) {       //ritorno alla situazione originaria
     for (int i = 0; i<costanti::DIM_CAMPOGIOCO;i++)
         for (int j = 0; j<costanti::DIM_CAMPOGIOCO;j++)
             terreno[i][j].setCella(campo[i][j].getCharacter(), campo[i][j].getX(), campo[i][j].getY());
-    t->restore_copy();
 }
 void referee::setTerreno(std::vector<cella> letter) {    //posiziono le celle inserite
     for (std::size_t i = 0;i<letter.size();i++) {

@@ -56,7 +56,6 @@ void MainWindow::onTurnSwitched()
   loadRack();
   //qui devo fare lo switch del giocatore nell'array giocatori
   ui->turno_giocatore->setText(QString::number(turno_giocatore+1));
-  init_suggerimento();
   //riabilito il bottone di cambio lettera
   ui->cambia_btn->show();
 
@@ -70,11 +69,14 @@ void MainWindow::init_suggerimento()
         char letters[costanti::TERRAIN_SIZE_X][costanti::TERRAIN_SIZE_Y];
         for(std::size_t x=0;x<costanti::TERRAIN_SIZE_X;x++)
             for(std::size_t y=0;y<costanti::TERRAIN_SIZE_Y;y++)
-                letters[y][x]=terrain->getElement(y,x);
+                letters[x][y]=terrain->getElement(y,x);
         std::string hand="";
         for(std::size_t i =0;i<costanti::MAX_LETTERS_HAND;i++)
             hand+=(giocatori.at(turno_giocatore).get_letter(i));
         //qui il thread start
+        if(c!=nullptr)
+            delete c;
+        c=new Combinatore(hand,d,letters);
     }
 }
 //______FINE PROBLEMI
@@ -105,7 +107,7 @@ void MainWindow::add_player()
         QString s =QInputDialog::getText(this,"AGGIUNGI GIOCATORE","Inserisci nome giocatore");
         giocatore g(s.toStdString());
         giocatori.push_back(g);
-        std::cerr<<giocatori.size();
+
     }else
         error_message("ERROR","Giocatori al Completo");
 }
@@ -362,7 +364,8 @@ void MainWindow::on_pushButton_7_clicked()  //suggerimento
 {
     if(game_started)
     {
-
+        init_suggerimento();
+        error_message("SUGGERIMENTO",c->suggerimento());
     }
 }
 void MainWindow::on_conferma_btn_3_clicked()
