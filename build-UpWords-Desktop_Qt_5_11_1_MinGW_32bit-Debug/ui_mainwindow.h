@@ -117,7 +117,7 @@ public:
         points_txt->setFont(font);
         turno_giocatore = new QLabel(centralWidget);
         turno_giocatore->setObjectName(QStringLiteral("turno_giocatore"));
-        turno_giocatore->setGeometry(QRect(150, 400, 47, 20));
+        turno_giocatore->setGeometry(QRect(150, 400, 111, 20));
         turno_giocatore->setFont(font);
         label_6 = new QLabel(centralWidget);
         label_6->setObjectName(QStringLiteral("label_6"));

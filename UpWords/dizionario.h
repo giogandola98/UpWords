@@ -17,7 +17,7 @@ public:
     bool exist(std::string &word);                          //ritorna se una parola esiste nel dizionario
 
 private:
-    bool first_run_check();
+    bool first_run_check();                                 //controlla se esiste il dizionario espanso
     std::string PATH_DIZIONARIO;
     std::size_t get_letter_id(const char &c);
     char extract_character(const std::string &lettera);

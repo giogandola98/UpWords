@@ -55,7 +55,7 @@ void MainWindow::onTurnSwitched()
   //cambio le lettere a video con quelle del nuovo giocatore
   loadRack();
   //qui devo fare lo switch del giocatore nell'array giocatori
-  ui->turno_giocatore->setText(QString::number(turno_giocatore+1));
+  ui->turno_giocatore->setText(QString::fromStdString(giocatori.at(turno_giocatore).get_name()));
   //riabilito il bottone di cambio lettera
   ui->cambia_btn->show();
 
@@ -281,12 +281,13 @@ void MainWindow::on_conferma_btn_clicked() //se confermo l'inserimento
                     giocatori.at(turno_giocatore).remove_letter(c.getCharacter());
                 }
                 loadRack();
+                MainWindow::on_passaturno_btn_clicked(); //cambia turno
 
             }
-            MainWindow::on_passaturno_btn_clicked(); //cambia turno
         }
-        reset_insert_data();
     }
+     onTurnSwitched();
+    reset_insert_data();  //qui bugga tanto
 }
 void MainWindow::on_cambia_btn_clicked() //cambia lettere nel rack
 {
