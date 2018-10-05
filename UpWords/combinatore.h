@@ -11,6 +11,7 @@
 class Combinatore
 {
 private:
+     const bool DEBUG = costanti::DEBUG_SUGGERIMENTO;
      std::vector <char> letters;
      dizionario* dictionary;
      std::string word;
@@ -27,16 +28,16 @@ private:
      int lettersCounter(std::string line); //count letters in a line
 
 
-     char emptyfield[campodim][campodim]={  {costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD},
-                                            {costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD},
-                                            {costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD},
-                                            {costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD},
-                                            {costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD},
-                                            {costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD},
-                                            {costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD},
-                                            {costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD},
-                                            {costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD},
-                                            {costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD,costanti::EMPITY_FIELD}
+     char emptyfield[campodim][campodim]={  {costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD},
+                                            {costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD},
+                                            {costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD},
+                                            {costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD},
+                                            {costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD},
+                                            {costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD},
+                                            {costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD},
+                                            {costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD},
+                                            {costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD},
+                                            {costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD,costanti::EMPTY_FIELD}
                                          };
 
 public:

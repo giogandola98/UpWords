@@ -3,7 +3,7 @@
 cella::cella()
 {
     h = 0;
-    character = costanti::EMPITY_FIELD;
+    character = costanti::EMPTY_FIELD;
     raw = 0;
     column = 0;
 }

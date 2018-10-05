@@ -23,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
     terrainWidgetInit();
     UpdateTerrain(terrain);
     game_started=false;
-    selected_letter=costanti::EMPITY_FIELD;
+    selected_letter=costanti::EMPTY_FIELD;
     c=nullptr;
 }
 MainWindow::~MainWindow()
@@ -210,7 +210,7 @@ void MainWindow::reset_insert_data()
 {
     UpdateTerrain(terrain);
     to_insert.clear();
-    selected_letter=costanti::EMPITY_FIELD;
+    selected_letter=costanti::EMPTY_FIELD;
     enable_grid();
     ui->passaturno_btn->show();
     enable_rack_click();
@@ -292,7 +292,7 @@ void MainWindow::on_cambia_btn_clicked() //cambia lettere nel rack
 {
     if(game_started)
     {
-        if(selected_letter!=costanti::EMPITY_FIELD)
+        if(selected_letter!=costanti::EMPTY_FIELD)
         {
           giocatori.at(turno_giocatore).remove_letter(selected_letter);
           giocatori.at(turno_giocatore).add_letter(s->change_letter(selected_letter));
@@ -322,7 +322,7 @@ void MainWindow::on_abort_btn_clicked() //annulla inserimento
 }
 void MainWindow::on_lettere_table_cellClicked(int row, int column) //click rack lettere
 {
-    if(game_started&&giocatori.at(turno_giocatore).get_letter(static_cast<unsigned int>(column))!=costanti::EMPITY_FIELD)
+    if(game_started&&giocatori.at(turno_giocatore).get_letter(static_cast<unsigned int>(column))!=costanti::EMPTY_FIELD)
     {
       if(ui->lettere_table->item(row,column)->flags()!=Qt::ItemFlag::NoItemFlags)
       {
@@ -332,14 +332,14 @@ void MainWindow::on_lettere_table_cellClicked(int row, int column) //click rack 
       }
     }
     else
-        selected_letter=costanti::EMPITY_FIELD;
+        selected_letter=costanti::EMPTY_FIELD;
 
 }
 void MainWindow::on_tableWidget_cellClicked(int row, int column) //click campo gioco
 {
     if(game_started)
     {
-        if(selected_letter!=costanti::EMPITY_FIELD)
+        if(selected_letter!=costanti::EMPTY_FIELD)
         {
             if(ui->tableWidget->item(row,column)->flags()!=Qt::ItemFlag::NoItemFlags)
             {
@@ -349,7 +349,7 @@ void MainWindow::on_tableWidget_cellClicked(int row, int column) //click campo g
                 s+=selected_letter;
                 ui->tableWidget->setItem(row,column,new QTableWidgetItem(s));
                 disable_grid(static_cast<std::size_t>(column),static_cast<std::size_t>(row));
-                selected_letter=costanti::EMPITY_FIELD;
+                selected_letter=costanti::EMPTY_FIELD;
             }
             else
                 error_message("ERRORE INPUT","\n Seleziona un area del campo valida \n");

@@ -1,11 +1,6 @@
 #include "combinatore.h"
 #include <algorithm>
 
-#define DEBUG true
-
-
-
-
 //***************************************************************************************
 //Getters and setters
 
@@ -151,7 +146,7 @@ int Combinatore::lettersCounter(std::string line)
     int c=0;
     for(size_t i=0;i<line.length();i++)
     {
-        if(line.at(i)!=costanti::EMPITY_FIELD)             //is a letter, not a space
+        if(line.at(i)!=costanti::EMPTY_FIELD)             //is a letter, not a space
             c++;
     }
     return c;
@@ -273,10 +268,10 @@ void Combinatore::ricorsioneComplessa(std::string lett, std::string line, std::v
     int lettersCount;
     int emptyBefore=0;
     int emptyAfter=0;
-    while(line.at(emptyBefore)==costanti::EMPITY_FIELD)            //empty spaces before the word
+    while(line.at(emptyBefore)==costanti::EMPTY_FIELD)            //empty spaces before the word
         emptyBefore++;
 
-    while(line.at(static_cast<unsigned int>(campodim - emptyAfter - 1))==costanti::EMPITY_FIELD)
+    while(line.at(static_cast<unsigned int>(campodim - emptyAfter - 1))==costanti::EMPTY_FIELD)
         emptyAfter++;
 
     do{
@@ -294,7 +289,7 @@ void Combinatore::ricorsioneComplessa(std::string lett, std::string line, std::v
                     i=campodim;
                 else
                 {
-                    if(linea.at(i)==costanti::EMPITY_FIELD)             //fill the spaces
+                    if(linea.at(i)==costanti::EMPTY_FIELD)             //fill the spaces
                     {
                         linea.at(i)=lett.at(con);
 
@@ -311,17 +306,17 @@ void Combinatore::ricorsioneComplessa(std::string lett, std::string line, std::v
                 }
             }
             std::string w=linea;
-            while(w.at(0)==costanti::EMPITY_FIELD)                  //remove spaces before and after the word
+            while(w.at(0)==costanti::EMPTY_FIELD)                  //remove spaces before and after the word
             {
                 w.erase(0, 1);
                 r.erase(r.begin());
             }
-            while(w.at(w.length()-1)==costanti::EMPITY_FIELD)
+            while(w.at(w.length()-1)==costanti::EMPTY_FIELD)
             {
                 w.erase(w.length()-1, 1);
                 r.pop_back();
             }
-            size_t n = static_cast<std::size_t>(std::count(w.begin(), w.end(), static_cast<char>(costanti::EMPITY_FIELD)));  //spaces inside -> isn't a word
+            size_t n = static_cast<std::size_t>(std::count(w.begin(), w.end(), static_cast<char>(costanti::EMPTY_FIELD)));  //spaces inside -> isn't a word
             std::string prova =w;
             std::transform(prova.begin(), prova.end(),prova.begin(), ::toupper);
             /*if(lett.length()>word.length()&&dictionary->exist(prova))
@@ -404,22 +399,20 @@ std::string Combinatore::Anagram()  //first make it work...
         bool emptyColumn = true;
         for(std::size_t j=0; j<campodim;j++)        //is column empty?
         {
-            std::cerr<<"\n siamo qui \n";
             std::string row;
             l+=field[j][i];
             row =field[j][i];
 
             for(short int k=i-1;k>=0;k--)
             {
-                std::cerr<<"\n siamo qui sotto \n";
-                if(field[j][k]==costanti::EMPITY_FIELD)               //find the letter before and after the cell
+                if(field[j][k]==costanti::EMPTY_FIELD)               //find the letter before and after the cell
                     k=-1;
                 else
                     row=field[j][k]+row;
             }
             for(std::size_t k=i+1;k<campodim;k++)
             {
-                if(field[j][k]==costanti::EMPITY_FIELD)
+                if(field[j][k]==costanti::EMPTY_FIELD)
                     k=campodim;
                 else
                     row+=field[j][k];
@@ -427,7 +420,7 @@ std::string Combinatore::Anagram()  //first make it work...
             rows.push_back(row);               //and create the trasversal words
 
 
-            if(field[j][i]!=costanti::EMPITY_FIELD)     //set the word
+            if(field[j][i]!=costanti::EMPTY_FIELD)     //set the word
             {
 
 
@@ -500,7 +493,7 @@ std::string Combinatore::Anagram()  //first make it work...
 
 
 
-            if(field[i][j]!=costanti::EMPITY_FIELD)     //set the word
+            if(field[i][j]!=costanti::EMPTY_FIELD)     //set the word
             {
 
 

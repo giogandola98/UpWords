@@ -197,13 +197,13 @@ bool referee::search_space(std::vector<cella> &letter){
     if ((letter.size()>1) && (letter.at(0).getX() == letter.at(letter.size() - 1).getX()))	//verticale
 	{
 		for (std::size_t i = letter.at(0).getY();i<letter.at(letter.size() - 1).getY();i++)
-			if (terreno[letter.at(0).getX()][i].getCharacter() == costanti::EMPITY_FIELD)	//se nel terreno tra la prima cella e l'ultima c e un campo vuoto vuol dire che ci sono spazi
+			if (terreno[letter.at(0).getX()][i].getCharacter() == costanti::EMPTY_FIELD)	//se nel terreno tra la prima cella e l'ultima c e un campo vuoto vuol dire che ci sono spazi
 				return false;
 	}
 	if ((letter.size()>1) && (letter.at(0).getY() == letter.at(letter.size() - 1).getY()))	//orizzontale
 	{
 		for (std::size_t i = letter.at(0).getX();i<letter.at(letter.size() - 1).getX();i++)	//se nel terreno tra la prima cella e l'ultima c e un campo vuoto vuol dire che ci sono spazi
-			if (terreno[i][letter.at(0).getY()].getCharacter() == costanti::EMPITY_FIELD)
+			if (terreno[i][letter.at(0).getY()].getCharacter() == costanti::EMPTY_FIELD)
 				return false;
 	}
 	return true;
@@ -229,16 +229,16 @@ bool referee::controlloIncrocio(std::vector<cella> letter){
 		int x = letter.at(i).getX();
 		int y = letter.at(i).getY();
 		if (x != 0)
-			if (terreno[x - 1][y].getCharacter() != costanti::EMPITY_FIELD)
+			if (terreno[x - 1][y].getCharacter() != costanti::EMPTY_FIELD)
 				return true;
 		if (x != costanti::DIM_CAMPOGIOCO)
-			if (terreno[x + 1][y].getCharacter() != costanti::EMPITY_FIELD)
+			if (terreno[x + 1][y].getCharacter() != costanti::EMPTY_FIELD)
 				return true;
 		if (y != 0)
-			if (terreno[x][y - 1].getCharacter() != costanti::EMPITY_FIELD)
+			if (terreno[x][y - 1].getCharacter() != costanti::EMPTY_FIELD)
 				return true;
 		if (y != costanti::DIM_CAMPOGIOCO)
-			if (terreno[x][y + 1].getCharacter() != costanti::EMPITY_FIELD)
+			if (terreno[x][y + 1].getCharacter() != costanti::EMPTY_FIELD)
 				return true;
 
 	}
