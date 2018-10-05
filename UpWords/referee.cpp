@@ -61,7 +61,7 @@ void referee::getCells(cella letter, char vers, std::vector<cella> &celle) {
 		if (letter.getY() != 0)		//se non sono nel punto piu in alto del campo
 		{
 
-			for (std::size_t i = letter.getY() - 1;i > 0;i--)		//scorro tutto il campo al contrario per avere l'iniziale 
+            for (short int i = letter.getY() - 1;i >= 0;i--)		//scorro tutto il campo al contrario per avere l'iniziale
 			{
 				if (terreno[letter.getX()][i].getCharacter() == '*') {	//quando non trovo più lettere esco dal ciclo
 
@@ -87,7 +87,7 @@ void referee::getCells(cella letter, char vers, std::vector<cella> &celle) {
 		initWord.setCella(letter.getCharacter(), letter.getX(), letter.getY());
 		if (letter.getX() != 0)
 		{
-			for (std::size_t i = letter.getX() - 1;i > 0;i--)
+            for (short int i = letter.getX() - 1;i >= 0;i--)
 			{
 				if (terreno[i][letter.getY()].getCharacter() == '*') {
 					break;
@@ -113,7 +113,7 @@ std::string referee::getString(cella letter, char vers) {    //richiedo se devo 
 		initWord.setCella(letter.getCharacter(), letter.getX(), letter.getY());
 		if (letter.getY() != 0)
 		{
-			for (std::size_t i = letter.getY();i > 0;i--)
+            for (short int i = letter.getY();i >= 0;i--)
 			{
 				if (terreno[letter.getX()][i].getCharacter() == '*') {
 
@@ -136,7 +136,7 @@ std::string referee::getString(cella letter, char vers) {    //richiedo se devo 
 		initWord.setCella(letter.getCharacter(), letter.getX(), letter.getY());
 		if (letter.getX() != 0)
 		{
-			for (std::size_t i = letter.getX();i > 0;i--)
+            for (short int i = letter.getX();i >= 0;i--)
 			{
 
 				if (terreno[i][letter.getY()].getCharacter() == '*') {
