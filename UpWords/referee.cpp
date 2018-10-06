@@ -58,21 +58,21 @@ void referee::getCells(cella letter, char vers, std::vector<cella> &celle) {
 	if (vers == 'v')
 	{
 		initWord.setCella(letter.getCharacter(), letter.getX(), letter.getY());
-		if (letter.getY() != 0)		//se non sono nel punto piu in alto del campo
+		if (letter.getY() != 0)
 		{
 
-            for (short int i = letter.getY() - 1;i >= 0;i--)		//scorro tutto il campo al contrario per avere l'iniziale
+			for (std::size_t i = letter.getY() - 1;i >= 0;i--)			// metti uguale COGLIONE
 			{
-				if (terreno[letter.getX()][i].getCharacter() == '*') {	//quando non trovo più lettere esco dal ciclo
+				if (terreno[letter.getX()][i].getCharacter() == '*') {
 
 					break;
 				}
-				initWord.setCella(terreno[letter.getX()][i].getCharacter(), i, letter.getY());	//setto ogni volta la mia nuovo cella di inizio
+				initWord.setCella(terreno[letter.getX()][i].getCharacter(), letter.getX(),i);
 			}
 		}
 		
 
-		//ricompongo la parola	a partire dalla initWord
+		//ricompongo la parola
 		for (std::size_t i = initWord.getY();i<costanti::DIM_CAMPOGIOCO;i++)
 		{
 			if (terreno[initWord.getX()][i].getCharacter() != '*')
@@ -81,13 +81,13 @@ void referee::getCells(cella letter, char vers, std::vector<cella> &celle) {
 				break;
 		}
 	}
-	if (vers == 'o')		//eseguo le stesse operazioni ma in orizzontale
+	if (vers == 'o')
 	{
 		//vado all'inizio della parola
 		initWord.setCella(letter.getCharacter(), letter.getX(), letter.getY());
 		if (letter.getX() != 0)
 		{
-            for (short int i = letter.getX() - 1;i >= 0;i--)
+			for (std::size_t i = letter.getX() - 1;i >= 0;i--)
 			{
 				if (terreno[i][letter.getY()].getCharacter() == '*') {
 					break;
@@ -108,18 +108,18 @@ void referee::getCells(cella letter, char vers, std::vector<cella> &celle) {
 std::string referee::getString(cella letter, char vers) {    //richiedo se devo cercarla in veritcale o in orizzontale e restituisco la parola intorno alla lettera indicata
     std::string word = "";
 	cella initWord = cella();
-	if (vers == 'v')		//stesse cose fatte nella getCells
+	if (vers == 'v')
 	{
 		initWord.setCella(letter.getCharacter(), letter.getX(), letter.getY());
 		if (letter.getY() != 0)
 		{
-            for (short int i = letter.getY();i >= 0;i--)
+			for (std::size_t i = letter.getY();i >= 0;i--)
 			{
 				if (terreno[letter.getX()][i].getCharacter() == '*') {
 
 					break;
 				}
-				initWord.setCella(terreno[letter.getX()][i].getCharacter(), i, letter.getY());
+				initWord.setCella(terreno[letter.getX()][i].getCharacter(), letter.getX(), i);
 			}
 		}
 		for (std::size_t i = initWord.getY();i<costanti::DIM_CAMPOGIOCO;i++)
@@ -136,7 +136,7 @@ std::string referee::getString(cella letter, char vers) {    //richiedo se devo 
 		initWord.setCella(letter.getCharacter(), letter.getX(), letter.getY());
 		if (letter.getX() != 0)
 		{
-            for (short int i = letter.getX();i >= 0;i--)
+			for (std::size_t i = letter.getX();i >=0;i--)
 			{
 
 				if (terreno[i][letter.getY()].getCharacter() == '*') {
@@ -177,14 +177,13 @@ bool referee::isValid(std::vector<cella> letter) {
 	}
 	//controlla esistenza parole
 	for (std::size_t i = 0;i<letter.size();i++) {
-		if (wordExistV(letter.at(i)))	//controlla l'esistenza della parola in verticale
+		if (wordExistV(letter.at(i)))
 		{
-			if (wordExistOr(letter.at(i))) {	//controlla l'esistenza della parola in orizzontale
-				if (!exist(letter.at(0)))	//controlla che non sia ripetuta
+			if (!wordExistOr(letter.at(i))) {
+				
 					return false;
 			}
-			else
-				return false;
+			
 		}
 		else
 			return false;
@@ -229,17 +228,54 @@ bool referee::controlloIncrocio(std::vector<cella> letter){
 		int x = letter.at(i).getX();
 		int y = letter.at(i).getY();
 		if (x != 0)
-			if (terreno[x - 1][y].getCharacter() != costanti::EMPTY_FIELD)
-				return true;
-		if (x != costanti::DIM_CAMPOGIOCO)
-			if (terreno[x + 1][y].getCharacter() != costanti::EMPTY_FIELD)
-				return true;
+            if (terreno[x - 1][y].getCharacter() != costanti::EMPTY_FIELD)
+				if (letter.size() != 1)
+				{
+					if (i != 0)
+					{
+						if (x - 1 != letter.at(i - 1).getX())
+							return true;
+					}
+					else return true;
+				}
+				else
+					return true;
+		if (x != costanti::DIM_CAMPOGIOCO-1)
+            if (terreno[x + 1][y].getCharacter() != costanti::EMPTY_FIELD)
+				if (letter.size() != 1)
+				{
+					if (i != letter.size() ) {
+						if (x + 1 != letter.at(i + 1).getX())
+							return true;
+					}
+					else return true;
+				}
+				else
+					return true;
 		if (y != 0)
-			if (terreno[x][y - 1].getCharacter() != costanti::EMPTY_FIELD)
-				return true;
-		if (y != costanti::DIM_CAMPOGIOCO)
-			if (terreno[x][y + 1].getCharacter() != costanti::EMPTY_FIELD)
-				return true;
+            if (terreno[x][y - 1].getCharacter() != costanti::EMPTY_FIELD)
+				if (letter.size() != 1)
+				{				
+					if (i != 0) {
+						if (y - 1 != letter.at(i - 1).getY())
+							return true;
+					}
+					else return true;
+				}
+				else
+					return true;
+		if (y != costanti::DIM_CAMPOGIOCO-1)
+            if (terreno[x][y + 1].getCharacter() != costanti::EMPTY_FIELD)
+				if (letter.size() != 1)
+				{
+					if (i != letter.size() ) {
+						if (y + 1 != letter.at(i + 1).getY())
+							return true;
+					}
+					else return true;
+				}
+				else
+					return true;
 
 	}
 	return false;
@@ -258,100 +294,45 @@ bool referee::wordExistOr(cella letter){
         return true;
     return d->exist(word);	//se no controllo nel dizionario l'esistenza
 }
-bool referee::exist(cella letter) {          //ottengo le due parole attorno alla mia lettera inserita, se ve ne sono due uguali segnalo l'errore
-    std::string wordV = getString(letter, 'v');
-	std::string wordO = getString(letter, 'o');
-
-	int contv = 0;	//MAX = 1
-	int conto = 0;	//MAX = 1
-	//conto il numero di ricorrenze in veriticale e in orizzantale nel campo da gioco....se gia presente è un errore
-	
-	for (std::size_t i = 0; i<costanti::DIM_CAMPOGIOCO;i++)
-
-		for (std::size_t j = 0;j<costanti::DIM_CAMPOGIOCO;j++) {
-			if (wordV.length() > 1) {
-				if (terreno[i][j].getCharacter() == wordV.at(0))
-				{
-					std::string temp = getString(terreno[i][j], 'v');
-
-					if (wordV == temp)
-					{
-						if (contv == 1)
-						{
-							return false;
-						}
-						else
-						{
-							contv++;
-						}
-					}
-				}
-			}
-			if (wordO.length() > 1) {
-				if (terreno[i][j].getCharacter() == wordO.at(0))
-				{
-
-					std::string temp1 = getString(terreno[i][j], 'o');
-					if (wordO == temp1)
-					{
-						if (conto == 1)
-						{
-							return false;
-						}
-						else
-						{
-							conto++;
-						}
-					}
-				}
-			}
-		}
-	return true;
-}
-//***************************************************************************************************
-
 //Punteggio
 //***************************************************************************************************
 void referee::getPoints(std::vector<cella> letter) {
     punteggio = 0;
 	std::vector<cella> parola;
 	std::vector<cella> incrocio;
-
-
 	if (letter.at(0).getX() == letter.at(letter.size() - 1).getX())  //veritcale
 	{
-		getCells(letter.at(0), 'v', parola);		//ottengo le celle che compongono l'intera parola
+		getCells(letter.at(0), 'v', parola);
 		for (std::size_t i = 0; i < parola.size();i++)
 		{
-			if (parola.at(i).getH() == 1)		//se la cella ha altezza 1 vale 2 punti 
+			if (parola.at(i).getH() == 1)
 				punteggio += 2;
-			else		//se no 1
+			else
 				punteggio += 1;
-			incrocio.clear();		//tengo pulito l'incrocio
-			getCells(parola.at(i), 'o', incrocio);		//carico la parola con cui incrocia 
-			if (incrocio.size() > 1)		//se non è composta da una lettera sola calcolo il punteggio
+			incrocio.clear();
+			getCells(parola.at(i), 'o', incrocio);
+			if (incrocio.size() > 1)
 			{
 				for (std::size_t j = 0; j < incrocio.size();j++) {
 					if (incrocio.at(j).getH() == 1)
 						punteggio += 2;
 					else
 						punteggio += 1;
-					if (incrocio.at(j).getCharacter() == 'q')
+					if (incrocio.at(j).getCharacter() == 'Q')
 						punteggio += 2;
-				}/*
+				}
 				if (parola.at(i).getH() == 1)
 					punteggio -= 2;
 				else
-					punteggio -= 1;*/
+					punteggio -= 1;
 
 			}
-			if (parola.at(i).getCharacter() == 'q')	//la q da due punti extra
+			if (parola.at(i).getCharacter() == 'Q')
 				punteggio += 2;
 		}
 	}
 	else                                    //orizzontale
 	{
-		//stesse operazione eseguite per il verticale
 		getCells(letter.at(0), 'o', parola);
 		for (std::size_t i = 0; i < parola.size();i++)
 		{
@@ -369,22 +350,22 @@ void referee::getPoints(std::vector<cella> letter) {
 						punteggio += 2;
 					else
 						punteggio += 1;
-					if (incrocio.at(j).getCharacter() == 'q')
+					if (incrocio.at(j).getCharacter() == 'Q')
 						punteggio += 2;
-				}/*
+				}
 				if (parola.at(i).getH() == 1)
 					punteggio -= 2;
 				else
-					punteggio -= 1;*/
+					punteggio -= 1;
 
 			}
-			if (parola.at(i).getCharacter() == 'q')
+			if (parola.at(i).getCharacter() == 'Q')
 				punteggio += 2;
 		}
 
 	}
 
-	if (parola.size() == 7)	//ha messo giu tutte le parole quindi 20 punti extra
+	if (parola.size() == 7)	//ha messo giu tutte le parole
 	{
 		punteggio += 20;
 	}
