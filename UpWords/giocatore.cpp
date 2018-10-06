@@ -22,7 +22,7 @@ bool giocatore::hand_full()
 }
 std::size_t giocatore::get_space()
 {
-    std::size_t i=0;
+    short int i=0;
     while((giocatore::letters[i]!=costanti::EMPTY_FIELD)&&(i<costanti::MAX_LETTERS_HAND))
     {
         i++;
@@ -79,4 +79,12 @@ unsigned int  giocatore::get_points()
 std::string giocatore::get_name()
 {
     return giocatore::name;
+}
+unsigned short int giocatore::n_letters()
+{
+    short unsigned int spaces=0;
+    for(std::size_t i=0;i<costanti::MAX_LETTERS_HAND;i++)
+        if(letters[i]==costanti::EMPTY_FIELD)
+            spaces++;
+    return costanti::MAX_LETTERS_HAND-spaces;
 }

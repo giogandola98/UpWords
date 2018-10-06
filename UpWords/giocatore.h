@@ -19,6 +19,7 @@ public:
     unsigned int get_points();                          //ritorna il puntaggio giocatore
     std::string get_name();
     void remove_letter(char letter);
+    unsigned short int n_letters();
 private:
     std::size_t get_space();
     unsigned int points;

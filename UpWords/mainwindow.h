@@ -33,11 +33,8 @@ private slots:
     void on_cambia_btn_clicked();
     void on_conferma_btn_clicked();
     void on_passaturno_btn_clicked();
-
     void on_conferma_btn_3_clicked();
-
     void on_conferma_btn_2_clicked();
-
     void on_end_btn_clicked();
 
 private:
@@ -62,7 +59,11 @@ private:
     void enable_column(std::size_t x,std::size_t y);
     void init_suggerimento();
     void launch_win();
-    static void threadStart(std::string hand,dizionario *d,char letters[costanti::TERRAIN_SIZE_X][costanti::TERRAIN_SIZE_Y]);
+    void showControls();
+    void show_passaturno();
+    void hide_passaturno();
+    void show_cambialettera();
+    void hide_cambialettera();
     referee *arbitro;
     sacchetto *s;
     Terreno *terrain;

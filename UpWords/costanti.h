@@ -34,6 +34,9 @@ public:
     //suggerimento
     static const bool DEBUG_SUGGERIMENTO = false;
 
+    //game
+    static const unsigned int PENALITA = 5;
+
 
 };
 
