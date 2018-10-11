@@ -76,7 +76,7 @@ short int sacchetto::extract_letter()
         if(!this_is_empty())
             return extract_letter();
         else
-            return -1;
+            return convert_to_int(costanti::EMPTY_FIELD);
 }
 
 char sacchetto::convert_to_char(short int x)
@@ -87,7 +87,7 @@ char sacchetto::convert_to_char(short int x)
     else
         return costanti::EMPTY_FIELD;
 }
-int convert_to_int(char letter)
+int sacchetto::convert_to_int(char letter)
 {
     return letter-'A';
 }

@@ -14,7 +14,7 @@ class dizionario
 {
 public:
     dizionario(std::string path);                           //costruttore, gli va passata la path del dizionario altrimenti prende quella in costanti
-    bool exist(std::string &word);                          //ritorna se una parola esiste nel dizionario
+    bool exist(const std::string &word);                          //ritorna se una parola esiste nel dizionario
 
 private:
     bool first_run_check();                                 //controlla se esiste il dizionario espanso

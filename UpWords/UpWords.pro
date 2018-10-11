@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 #compiling optimizations
-QMAKE_CXXFLAGS += -O3
+#QMAKE_CXXFLAGS += -O3
 QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets

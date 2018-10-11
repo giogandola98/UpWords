@@ -91,7 +91,7 @@ char dizionario::extract_character(const std::string &lettera)
 {
     return lettera[0];
 }
-bool dizionario::exist(std::string &word)
+bool dizionario::exist(const std::string &word)
 {
     //check if word is into vector array
     //use uppercase world

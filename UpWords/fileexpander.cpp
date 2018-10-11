@@ -116,12 +116,12 @@ void fileexpander::load_sfx()
     else
         std::cerr<<"FILE ERROR";
 }
- int regex_evalutation_end(std::string expression, std::string word)
+int regex_evalutation_end(std::string expression, std::string word)
 {
     /*
      * compare regex exrpession. return -1 if negative and index of last occurr if match
      * */
-    expression+="$";
+    expression+="$"; //last occurr
     QRegExp rx(expression.c_str());
     std::string to_compare=word;
     int to_return = -1;
@@ -144,7 +144,7 @@ void add_sfx(unsigned int index,std::string word, std::vector<std::string> &decl
         {
             //use regex to erase the part of the string
             if(r.sfx=="0")
-              declinated.push_back(word.substr(0,regex_evalutation_end(r.erase,word)));
+                declinated.push_back(word.substr(0,regex_evalutation_end(r.erase,word)));
             else
                 declinated.push_back(word.substr(0,regex_evalutation_end(r.erase,word))+r.sfx);
         }
@@ -159,7 +159,9 @@ std::vector<std::string> search_sfx(const std::string &word,const std::string &r
 
     for(const char c:rules)
     {
-        std::string a;a.clear();a+=c;
+        std::string a;
+        a.clear();
+        a+=c;
         int index=find_root(a);
         if(index>=0)
             add_sfx(index,word,added);
@@ -177,7 +179,7 @@ void fileexpander::writeout(std::vector<std::string> s)
         {
             myfile<<l<<std::endl;
             if(costanti::FE_DEBUG)
-              std::cout<<l<<std::endl;
+                std::cout<<l<<std::endl;
         }
         myfile.close();
     }
@@ -185,18 +187,18 @@ void fileexpander::writeout(std::vector<std::string> s)
 }
 void filter_otp_array(std::vector<std::string> & added)
 {
-  //remove words lenght then 10 chars
-  //uppercase the vector
-  for (std::size_t i =0;i< added.size();i++)
-  {
-      if((added[i].length()<=costanti::DIM_CAMPOGIOCO)&&(added[i].length()>=costanti::DIM_MINIMA_PAROLE))
-        std::transform(added.at(i).begin(), added.at(i).end(),added.at(i).begin(), ::toupper);
-      else
-        added[i]="0"; 
-  }
-  added.erase(std::remove(added.begin(), added.end(), "0"), added.end());
-  //order
-  std::sort(added.begin(),added.end());
+    //remove words lenght then 10 chars
+    //uppercase the vector
+    for (std::size_t i =0;i< added.size();i++)
+    {
+        if((added[i].length()<=costanti::DIM_CAMPOGIOCO)&&(added[i].length()>=costanti::DIM_MINIMA_PAROLE))
+            std::transform(added.at(i).begin(), added.at(i).end(),added.at(i).begin(), ::toupper);
+        else
+            added[i]="0";
+    }
+    added.erase(std::remove(added.begin(), added.end(), "0"), added.end());
+    //order
+    std::sort(added.begin(),added.end());
 }
 
 std::vector<std::string> fileexpander::add_sfx(std::string line)
@@ -212,7 +214,7 @@ std::vector<std::string> fileexpander::add_sfx(std::string line)
         added.push_back(line.substr(0,static_cast<unsigned short>(index)));
     }
     else
-      added.push_back(line);
+        added.push_back(line);
     filter_otp_array(added);
     return added;
 

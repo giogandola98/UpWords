@@ -10,7 +10,6 @@ class giocatore
 {
 public:
     giocatore(std::string name);                        //costruttore
-    //giocatore(sacchetto &s);
     bool hand_full();                                   //restituisce true se la mano è piena
     void add_letter(char letter);                       //aggiunge una lettera alla mano del giocatore
     char remove_letter(unsigned int index);             //rimuove una lettera dalla mano del giocatore1 e la restituisce
