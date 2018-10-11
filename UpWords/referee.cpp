@@ -61,7 +61,7 @@ void referee::getCells(cella letter, char vers, std::vector<cella> &celle) {
 		if (letter.getY() != 0)
 		{
 
-			for (std::size_t i = letter.getY() - 1;i >= 0;i--)			// metti uguale COGLIONE
+			for (int i = letter.getY() - 1;i >= 0;i--)			// metti uguale COGLIONE
 			{
 				if (terreno[letter.getX()][i].getCharacter() == '*') {
 
@@ -87,7 +87,7 @@ void referee::getCells(cella letter, char vers, std::vector<cella> &celle) {
 		initWord.setCella(letter.getCharacter(), letter.getX(), letter.getY());
 		if (letter.getX() != 0)
 		{
-			for (std::size_t i = letter.getX() - 1;i >= 0;i--)
+			for (int i = letter.getX() - 1;i >= 0;i--)
 			{
 				if (terreno[i][letter.getY()].getCharacter() == '*') {
 					break;
@@ -228,7 +228,7 @@ bool referee::controlloIncrocio(std::vector<cella> letter){
 		int x = letter.at(i).getX();
 		int y = letter.at(i).getY();
 		if (x != 0)
-            if (terreno[x - 1][y].getCharacter() != costanti::EMPTY_FIELD)
+			if (terreno[x - 1][y].getCharacter() != costanti::EMPITY_FIELD)
 				if (letter.size() != 1)
 				{
 					if (i != 0)
@@ -241,7 +241,7 @@ bool referee::controlloIncrocio(std::vector<cella> letter){
 				else
 					return true;
 		if (x != costanti::DIM_CAMPOGIOCO-1)
-            if (terreno[x + 1][y].getCharacter() != costanti::EMPTY_FIELD)
+			if (terreno[x + 1][y].getCharacter() != costanti::EMPITY_FIELD)
 				if (letter.size() != 1)
 				{
 					if (i != letter.size() ) {
@@ -253,7 +253,7 @@ bool referee::controlloIncrocio(std::vector<cella> letter){
 				else
 					return true;
 		if (y != 0)
-            if (terreno[x][y - 1].getCharacter() != costanti::EMPTY_FIELD)
+			if (terreno[x][y - 1].getCharacter() != costanti::EMPITY_FIELD)
 				if (letter.size() != 1)
 				{				
 					if (i != 0) {
@@ -265,7 +265,7 @@ bool referee::controlloIncrocio(std::vector<cella> letter){
 				else
 					return true;
 		if (y != costanti::DIM_CAMPOGIOCO-1)
-            if (terreno[x][y + 1].getCharacter() != costanti::EMPTY_FIELD)
+			if (terreno[x][y + 1].getCharacter() != costanti::EMPITY_FIELD)
 				if (letter.size() != 1)
 				{
 					if (i != letter.size() ) {
@@ -293,13 +293,67 @@ bool referee::wordExistOr(cella letter){
     if(word.size()<=costanti::DIM_MINIMA_PAROLE)	//le parole con meno di tre lettere sono sempre vere
         return true;
     return d->exist(word);	//se no controllo nel dizionario l'esistenza
-}
+}/*
+bool referee::exist(cella letter) {          //ottengo le due parole attorno alla mia lettera inserita, se ve ne sono due uguali segnalo l'errore
+    std::string wordV = getString(letter, 'v');
+	std::string wordO = getString(letter, 'o');
+
+	int contv = 0;	//MAX = 1
+	int conto = 0;	//MAX = 1
+	//conto il numero di ricorrenze in veriticale e in orizzantale nel campo da gioco....se gia presente è un errore
+	
+	for (std::size_t i = 0; i<costanti::DIM_CAMPOGIOCO;i++)
+
+		for (std::size_t j = 0;j<costanti::DIM_CAMPOGIOCO;j++) {
+			if (wordV.length() > 1) {
+				if (terreno[i][j].getCharacter() == wordV.at(0))
+				{
+					std::string temp = getString(terreno[i][j], 'v');
+
+					if (wordV == temp)
+					{
+						if (contv == 1)
+						{
+							return false;
+						}
+						else
+						{
+							contv++;
+						}
+					}
+				}
+			}
+			if (wordO.length() > 1) {
+				if (terreno[i][j].getCharacter() == wordO.at(0))
+				{
+
+					std::string temp1 = getString(terreno[i][j], 'o');
+					if (wordO == temp1)
+					{
+						if (conto == 1)
+						{
+							return false;
+						}
+						else
+						{
+							conto++;
+						}
+					}
+				}
+			}
+		}
+	return true;
+}*/
+//***************************************************************************************************
+
 //Punteggio
 //***************************************************************************************************
 void referee::getPoints(std::vector<cella> letter) {
     punteggio = 0;
 	std::vector<cella> parola;
 	std::vector<cella> incrocio;
+
+
 	if (letter.at(0).getX() == letter.at(letter.size() - 1).getX())  //veritcale
 	{
 		getCells(letter.at(0), 'v', parola);

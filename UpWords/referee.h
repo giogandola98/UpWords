@@ -36,7 +36,7 @@ private:
     bool search_space(std::vector<cella> &letter);
     bool controlloAltezza(std::vector<cella> letter);
 	bool controlloIncrocio(std::vector<cella> letter);
-    //bool exist(cella letter);   //control that word does not exist yet
+        bool exist(cella letter);   //control that word does not exist yet
     bool wordExistV(cella letter);
     bool wordExistOr(cella letter);
    //punteggio
