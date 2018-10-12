@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
+<<<<<<< HEAD
 <!-- Written by QtCreator 4.7.0, 2018-10-12T11:56:57. -->
+=======
+<!-- Written by QtCreator 4.7.0, 2018-10-11T20:04:46. -->
+>>>>>>> parent of 4853f3d... Fix Carlino 1
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>

@@ -228,7 +228,7 @@ bool referee::controlloIncrocio(std::vector<cella> letter){
 		int x = letter.at(i).getX();
 		int y = letter.at(i).getY();
 		if (x != 0)
-            if (terreno[x - 1][y].getCharacter() != costanti::EMPTY_FIELD)
+			if (terreno[x - 1][y].getCharacter() != costanti::EMPITY_FIELD)
 				if (letter.size() != 1)
 				{
 					if (i != 0)
@@ -241,7 +241,7 @@ bool referee::controlloIncrocio(std::vector<cella> letter){
 				else
 					return true;
 		if (x != costanti::DIM_CAMPOGIOCO-1)
-            if (terreno[x + 1][y].getCharacter() != costanti::EMPTY_FIELD)
+			if (terreno[x + 1][y].getCharacter() != costanti::EMPITY_FIELD)
 				if (letter.size() != 1)
 				{
 					if (i != letter.size() ) {
@@ -253,7 +253,7 @@ bool referee::controlloIncrocio(std::vector<cella> letter){
 				else
 					return true;
 		if (y != 0)
-            if (terreno[x][y - 1].getCharacter() != costanti::EMPTY_FIELD)
+			if (terreno[x][y - 1].getCharacter() != costanti::EMPITY_FIELD)
 				if (letter.size() != 1)
 				{				
 					if (i != 0) {
@@ -265,7 +265,7 @@ bool referee::controlloIncrocio(std::vector<cella> letter){
 				else
 					return true;
 		if (y != costanti::DIM_CAMPOGIOCO-1)
-            if (terreno[x][y + 1].getCharacter() != costanti::EMPTY_FIELD)
+			if (terreno[x][y + 1].getCharacter() != costanti::EMPITY_FIELD)
 				if (letter.size() != 1)
 				{
 					if (i != letter.size() ) {
