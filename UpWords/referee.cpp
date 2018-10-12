@@ -228,7 +228,7 @@ bool referee::controlloIncrocio(std::vector<cella> letter){
 		int x = letter.at(i).getX();
 		int y = letter.at(i).getY();
 		if (x != 0)
-			if (terreno[x - 1][y].getCharacter() != costanti::EMPITY_FIELD)
+            if (terreno[x - 1][y].getCharacter() != costanti::EMPTY_FIELD)
 				if (letter.size() != 1)
 				{
 					if (i != 0)
@@ -241,7 +241,7 @@ bool referee::controlloIncrocio(std::vector<cella> letter){
 				else
 					return true;
 		if (x != costanti::DIM_CAMPOGIOCO-1)
-			if (terreno[x + 1][y].getCharacter() != costanti::EMPITY_FIELD)
+            if (terreno[x + 1][y].getCharacter() != costanti::EMPTY_FIELD)
 				if (letter.size() != 1)
 				{
 					if (i != letter.size() ) {
@@ -253,7 +253,7 @@ bool referee::controlloIncrocio(std::vector<cella> letter){
 				else
 					return true;
 		if (y != 0)
-			if (terreno[x][y - 1].getCharacter() != costanti::EMPITY_FIELD)
+            if (terreno[x][y - 1].getCharacter() != costanti::EMPTY_FIELD)
 				if (letter.size() != 1)
 				{				
 					if (i != 0) {
@@ -265,7 +265,7 @@ bool referee::controlloIncrocio(std::vector<cella> letter){
 				else
 					return true;
 		if (y != costanti::DIM_CAMPOGIOCO-1)
-			if (terreno[x][y + 1].getCharacter() != costanti::EMPITY_FIELD)
+            if (terreno[x][y + 1].getCharacter() != costanti::EMPTY_FIELD)
 				if (letter.size() != 1)
 				{
 					if (i != letter.size() ) {
@@ -315,23 +315,22 @@ void referee::getPoints(std::vector<cella> letter) {
 				punteggio += 1;
 			incrocio.clear();
 			getCells(parola.at(i), 'o', incrocio);
-            if (incrocio.size() > 1)
-            {
-                for (std::size_t j = 0; j < incrocio.size();j++)
-                {
-                    if (incrocio.at(j).getH() == 1)
-                        punteggio += 2;
-                    else
-                        punteggio += 1;
-                    if (incrocio.at(j).getCharacter() == 'Q')
-                        punteggio += 2;
-                }
-                if (parola.at(i).getH() == 1)
-                    punteggio -= 2;
-                else
-                    punteggio -= 1;
+			if (incrocio.size() > 1)
+			{
+				for (std::size_t j = 0; j < incrocio.size();j++) {
+					if (incrocio.at(j).getH() == 1)
+						punteggio += 2;
+					else
+						punteggio += 1;
+					if (incrocio.at(j).getCharacter() == 'Q')
+						punteggio += 2;
+				}
+				if (parola.at(i).getH() == 1)
+					punteggio -= 2;
+				else
+					punteggio -= 1;
 
-            }
+			}
 			if (parola.at(i).getCharacter() == 'Q')
 				punteggio += 2;
 		}

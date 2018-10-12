@@ -64,6 +64,7 @@ private:
     void hide_passaturno();
     void show_cambialettera();
     void hide_cambialettera();
+    referee *arbitro;
     sacchetto *s;
     Terreno *terrain;
     dizionario *d;
@@ -73,6 +74,8 @@ private:
     bool game_started;
     char selected_letter;
     std::vector<cella> to_insert;
+
+
 };
 
 #endif // MAINWINDOW_H

@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     std::string test = "CIAO";
     std::cerr<<d->exist(test);*/
     s = new(sacchetto);
+    arbitro=new referee(d,terrain);
     terrainWidgetInit();
     UpdateTerrain(terrain);
     game_started=false;
@@ -30,7 +31,6 @@ MainWindow::~MainWindow()
     delete ui;
     delete d;
     delete terrain;
-    delete c;
 }
 
 //FUNZIONI DI CORREDO
@@ -57,6 +57,7 @@ void MainWindow::onTurnSwitched()
 
 
 }
+//QUI CI SONO PROBLEMI
 void MainWindow::init_suggerimento()
 {
     if(game_started)
@@ -74,7 +75,7 @@ void MainWindow::init_suggerimento()
         c=new Combinatore(hand,d,letters);
     }
 }
-
+//______FINE PROBLEMI
 void MainWindow::start_game()
 {
     if(!game_started)
@@ -130,6 +131,7 @@ void MainWindow::launch_win()
             max_name  =g.get_name();
         }
     }
+    std::cerr<<max_name;
     error_message("VITTORIA","Vince il giocatore "+max_name);
     game_started=false;
     reset_insert_data();
@@ -186,9 +188,9 @@ void MainWindow::UpdateTerrain(Terreno *terrain)
         for(std::size_t y =0;y<costanti::DIM_CAMPOGIOCO;y++)
         {
             QString item;
-            item.clear();
             item.append(terrain->getElement(x,y));
             ui->tableWidget->setItem(y,x,new QTableWidgetItem(item));
+            item.clear();
         }
     ui->tableWidget->update();
     ui->tableWidget->show();
@@ -260,10 +262,10 @@ void MainWindow::disable_grid(std::size_t x,std::size_t y)
     disable_grid();
     if(to_insert.size()>1)
     {
-        if(to_insert.at(0).getY()!=y)
-            enable_row(y,x);
+        if(to_insert.at(0).getY()==y)
+           enable_column(x,y);
         else
-            enable_column(x,y);
+          enable_row(y,x);
     }
     else
     {
@@ -284,8 +286,9 @@ void MainWindow::on_conferma_btn_clicked() //se confermo l'inserimento
     if(game_started)
     {
         if(to_insert.size()>0)
-        {   referee a (d,terrain);
-            short int point = a.insWord(to_insert);
+        {
+
+            short int point = arbitro->insWord(to_insert);
             std::cerr<<"PUNTI : "<<point<<std::endl;
             std::cerr<<"RACK  : "<<to_insert.size()<<std::endl;
             if(point>0)//se sono valide le lettere inserite e tutto va bene
@@ -322,7 +325,6 @@ void MainWindow::on_cambia_btn_clicked() //cambia lettere nel rack
           loadRack();
           show_passaturno();  //può sempre cambiare turno in questo caso
           hide_cambialettera();
-          selected_letter=costanti::EMPTY_FIELD;
         }
         else
             error_message("ERRORE ","\n Prima devi selezionare una lettera\n");
