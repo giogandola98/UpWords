@@ -45,7 +45,7 @@ bool cella::setCella(char c, std::size_t x, std::size_t y) {
     }
 }
 bool cella::hcontrol() {
-    if (h == costanti::MAX_LAYERS_NUM)
+    if (h >= costanti::MAX_LAYERS_NUM)
         return false;
     else
         return true;

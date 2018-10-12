@@ -19,7 +19,6 @@ MainWindow::MainWindow(QWidget *parent) :
     std::string test = "CIAO";
     std::cerr<<d->exist(test);*/
     s = new(sacchetto);
-    arbitro=new referee(d,terrain);
     terrainWidgetInit();
     UpdateTerrain(terrain);
     game_started=false;
@@ -32,7 +31,6 @@ MainWindow::~MainWindow()
     delete d;
     delete terrain;
     delete c;
-    delete arbitro;
 }
 
 //FUNZIONI DI CORREDO
@@ -286,9 +284,8 @@ void MainWindow::on_conferma_btn_clicked() //se confermo l'inserimento
     if(game_started)
     {
         if(to_insert.size()>0)
-        {
-
-            short int point = arbitro->insWord(to_insert);
+        {   referee a (d,terrain);
+            short int point = a.insWord(to_insert);
             std::cerr<<"PUNTI : "<<point<<std::endl;
             std::cerr<<"RACK  : "<<to_insert.size()<<std::endl;
             if(point>0)//se sono valide le lettere inserite e tutto va bene

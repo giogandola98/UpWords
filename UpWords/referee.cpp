@@ -293,57 +293,7 @@ bool referee::wordExistOr(cella letter){
     if(word.size()<=costanti::DIM_MINIMA_PAROLE)	//le parole con meno di tre lettere sono sempre vere
         return true;
     return d->exist(word);	//se no controllo nel dizionario l'esistenza
-}/*
-bool referee::exist(cella letter) {          //ottengo le due parole attorno alla mia lettera inserita, se ve ne sono due uguali segnalo l'errore
-    std::string wordV = getString(letter, 'v');
-	std::string wordO = getString(letter, 'o');
-
-	int contv = 0;	//MAX = 1
-	int conto = 0;	//MAX = 1
-	//conto il numero di ricorrenze in veriticale e in orizzantale nel campo da gioco....se gia presente è un errore
-	
-	for (std::size_t i = 0; i<costanti::DIM_CAMPOGIOCO;i++)
-
-		for (std::size_t j = 0;j<costanti::DIM_CAMPOGIOCO;j++) {
-			if (wordV.length() > 1) {
-				if (terreno[i][j].getCharacter() == wordV.at(0))
-				{
-					std::string temp = getString(terreno[i][j], 'v');
-
-					if (wordV == temp)
-					{
-						if (contv == 1)
-						{
-							return false;
-						}
-						else
-						{
-							contv++;
-						}
-					}
-				}
-			}
-			if (wordO.length() > 1) {
-				if (terreno[i][j].getCharacter() == wordO.at(0))
-				{
-
-					std::string temp1 = getString(terreno[i][j], 'o');
-					if (wordO == temp1)
-					{
-						if (conto == 1)
-						{
-							return false;
-						}
-						else
-						{
-							conto++;
-						}
-					}
-				}
-			}
-		}
-	return true;
-}*/
+}
 //***************************************************************************************************
 
 //Punteggio
@@ -365,22 +315,23 @@ void referee::getPoints(std::vector<cella> letter) {
 				punteggio += 1;
 			incrocio.clear();
 			getCells(parola.at(i), 'o', incrocio);
-			if (incrocio.size() > 1)
-			{
-				for (std::size_t j = 0; j < incrocio.size();j++) {
-					if (incrocio.at(j).getH() == 1)
-						punteggio += 2;
-					else
-						punteggio += 1;
-					if (incrocio.at(j).getCharacter() == 'Q')
-						punteggio += 2;
-				}
-				if (parola.at(i).getH() == 1)
-					punteggio -= 2;
-				else
-					punteggio -= 1;
+            if (incrocio.size() > 1)
+            {
+                for (std::size_t j = 0; j < incrocio.size();j++)
+                {
+                    if (incrocio.at(j).getH() == 1)
+                        punteggio += 2;
+                    else
+                        punteggio += 1;
+                    if (incrocio.at(j).getCharacter() == 'Q')
+                        punteggio += 2;
+                }
+                if (parola.at(i).getH() == 1)
+                    punteggio -= 2;
+                else
+                    punteggio -= 1;
 
-			}
+            }
 			if (parola.at(i).getCharacter() == 'Q')
 				punteggio += 2;
 		}
